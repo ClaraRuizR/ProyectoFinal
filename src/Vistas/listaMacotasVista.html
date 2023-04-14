@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/listaMascotas.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Sans+Narrow&display=swap+Arimo&family=EB+Garamond&display=swap" rel="stylesheet">
+    <title>Buscar mascota</title>
+</head>
+<body>
+    <div class="contenedor">
+        <header>
+            <div class="imgLogo">
+                <img src="../../img/logo.png" alt="logo">
+            </div>
+            <div class="nav">
+                <a href=''>Cerrar sesión</a>
+            </div>
+        </header>
+        
+        <div class="cuerpo">
+            <h1>Buscar fichas de mascota</h1>
+            <div id="filtros">
+                <form action="">
+                    <label for="selectFiltros">Filtrar por:</label>
+                    <select name="selectFiltros" id="selectFiltros">
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                    </select>
+                    <label for="filtro"></label>
+                    <input type="text" placeholder="Escribe aquí...">
+                </form>
+            </div>
+            <table>
+
+                <tr>
+                    <th><div id="dato">Nombre</div></th>
+                    <th><div id="dato">Sexo</div></th>
+                    <th><div id="dato">Pasaporte</div></th>
+                    <th><div id="dato">Titular</div></th>
+                    <th><div id="dato">Fecha Alta</div></th>
+                    <th><div id="dato">Domicilio</div></th>
+                </tr>
+                
+               <tr>
+                    <td><div id="dato">Emi</div></td>
+                    <td><div id="dato">Macho</div></td>
+                    <td><div id="dato">ES040594191</div></td>
+                    <td><div id="dato">Clara Ruiz</div></td>
+                    <td><div id="dato">24/09/22</div></td>
+                    <td><div id="dato">C/Falsa, 123</div></td>
+               </tr>
+
+               <tr>
+                    <td><div id="dato">Weepy</div></td>
+                    <td><div id="dato">Macho</div></td>
+                    <td><div id="dato">ES040594192</div></td>
+                    <td><div id="dato">Pau Valls</div></td>
+                    <td><div id="dato">05/09/20</div></td>
+                    <td><div id="dato">C/Michi, 456</div></td>
+                </tr>
+
+                <tr>
+                    <td><div id="dato">Chacho</div></td>
+                    <td><div id="dato">Macho</div></td>
+                    <td><div id="dato">ES040594193</div></td>
+                    <td><div id="dato">Alicia Ruiz</div></td>
+                    <td><div id="dato">05/09/20</div></td>
+                    <td><div id="dato">C/aaa, 789</div></td>
+                </tr>
+            </table>
+            <div class="enlacePie"><a href=''>Nueva mascota</a></div>
+        </div>
+        <footer></footer>
+    </div>
+    
+    
+</body>
+</html>

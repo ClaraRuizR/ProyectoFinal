@@ -1,0 +1,105 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+header{
+    height: 10%;
+    width: 100%;
+    background-color: rgb(36, 173, 173);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.contenedor{
+    height: 100vh;
+    width: 100%;
+}
+
+.cuerpo{
+    height: 90%;
+    margin-top: 50px;
+}
+
+table{
+    width: 80%;
+    margin: auto;
+}
+
+table, td, tr, th{
+    border-collapse: collapse;
+    border: 1px rgb(37, 112, 121) solid;
+    font-family: 'EB Garamond', serif;
+    font-size: 20px;
+}
+
+td{
+    color: black;
+}
+
+tr, th{
+    height: 20px;
+    padding: 10px;
+    color: white;
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+th{
+    font-variant: small-caps;
+    font-size: 25px;
+    letter-spacing: 1px;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #f1dae8;
+    color: #fff;
+  }
+
+th{
+    background-color: rgb(36, 173, 173);
+}
+
+#dato{
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+    font-family: 'EB Garamond', serif;
+    margin-bottom: 25px;
+}
+
+.nav{
+    height: 30%;
+    width: 100%;
+    text-align: right;
+    margin-right: 20px;
+}
+
+.enlacePie{
+    width: 80%;
+    margin: auto;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.imgLogo{
+    height: 60%;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+img{
+    height: 60px;
+    width: 60px;
+}
+
+#filtros{
+    margin: auto;
+    width: 300px;
+    font-family: 'EB Garamond', serif;
+    margin-bottom: 20px;
+}
