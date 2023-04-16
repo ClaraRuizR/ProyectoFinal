@@ -69,15 +69,14 @@ tbody tr:nth-child(odd) {
   }
 
 td{
-    padding: 30px;
+    padding: 20px;
     font-family: 'PT Sans Narrow', sans-serif;
-    color: rgb(0, 128, 128);
 }
 
 #texto{
     width: 80%;
     text-align: justify;
-    color: black;
+    color: rgb(97, 97, 97);
 }
 
 fieldset{

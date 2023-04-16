@@ -4,7 +4,7 @@
 }
 
 header{
-    height: 10%;
+    height: 100px;
     width: 100%;
     background-color: rgb(36, 173, 173);
     display: flex;
@@ -14,12 +14,11 @@ header{
 }
 
 .contenedor{
-    height: 100vh;
     width: 100%;
 }
 
 .cuerpo{
-    height: 90%;
+    margin-bottom: 100px;
     margin-top: 50px;
 }
 
@@ -31,7 +30,7 @@ table{
 table, td, tr, th{
     border-collapse: collapse;
     border: 1px rgb(37, 112, 121) solid;
-    font-family: 'EB Garamond', serif;
+    font-family: 'PT Sans Narrow', sans-serif;
     font-size: 20px;
 }
 
@@ -43,7 +42,6 @@ tr, th{
     height: 20px;
     padding: 10px;
     color: white;
-    font-family: 'PT Sans Narrow', sans-serif;
 }
 
 th{
@@ -67,8 +65,12 @@ th{
 
 h1{
     text-align: center;
-    font-family: 'EB Garamond', serif;
     margin-bottom: 25px;
+    margin-top: 25px;
+    font-size: 50px;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-weight: 900;
+    color: rgb(206, 61, 133);
 }
 
 .nav{
@@ -100,6 +102,6 @@ img{
 #filtros{
     margin: auto;
     width: 300px;
-    font-family: 'EB Garamond', serif;
+    font-family: 'PT Sans Narrow', sans-serif;
     margin-bottom: 20px;
 }

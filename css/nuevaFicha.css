@@ -34,23 +34,25 @@ img{
 
 h1{
     text-align: center;
-    font-family: 'EB Garamond', serif;
     margin-bottom: 25px;
     margin-top: 25px;
+    font-size: 50px;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-weight: 900;
+    color: rgb(206, 61, 133);
 }
 
 .contenedor{
-    height: 100vh;
     width: 100%;
 }
 
 .cuerpo{
-
+    margin-bottom: 100px;
     margin-top: 50px;
 }
 
 table{
-    width: 40%;
+    width: 100%;
     margin: auto;
 }
 
@@ -60,13 +62,37 @@ table, td, tr, th{
     border: 0;
 }
 
+tbody tr:nth-child(odd) {
+    background-color: #f1dae8;
+
+  }
+
 td{
     width: 50%;
+    padding: 20px;
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+fieldset{
+    width: 70%;
+    margin: auto;
+    padding: 30px;
+    margin-bottom: 50px;
+    border: none;
+    border-top: 2px solid rgb(206, 61, 133);
+}
+
+legend{
+    font-size: 30px;
+    font-family: 'PT Sans Narrow', sans-serif;
+    padding: 10px;
+    color: rgb(206, 61, 133);
+    font-weight: 900;
 }
 
 input, select{
     height: 23px;
-    width: 100%;
+    width: 380px;
 }
 
 #botonEnviar{

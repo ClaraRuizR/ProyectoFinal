@@ -24,70 +24,73 @@
         <div class="cuerpo">
             <h1>Alta: nueva mascota</h1>
             <form action="">
-                <table cellspacing="0">
+                <fieldset>
+                    <legend>Información de mascota</legend>
+                    <table cellspacing="0">
                     
-                    <tr>
-                        <td><label for="pasaporteMascota">Pasaporte:</label></td>
-                        <td><input type="text" id="pasaporteMascota" name="pasaporteMascota"></td>
-                    </tr>
-
-                    <tr>
-                        <td><label for="nombreMascota">Nombre:</label></td>
-                        <td><input type="text" id="nombreMascota" name="nombreMascota" required></td>
-                    </tr>
-                    
-                    <tr>
-                        <td><label for="titularMascota">Titular:</label></td>
-                        <td><input type="text" id="titularMascota" name="titularMascota"></td>
-                    </tr>
-
-                    <tr>
-                        <td><label for="selectEspecieMascota">Especie:</label></td>
-                        <td><select name="selectEspecieMascota" id="selectEspecieMascota" required>
-                            <option value="FEL">FEL</option>
-                            <option value="CAN">CAN</option>
-                            <option value="Otros">Otros</option>
-                        </select></td>
-                    </tr>
-
-                    <tr>
-                        <td><label for="razaMascota">Raza:</label></td>
-                        <td><input type="text" id="razaMascota" name="razaMascota"></td>
-                    </tr>
-
-                    <tr>
-                        <td><label for="selectSexoMascota">Sexo:</label></td>
-                        <td><select name="selectSexoMascota" id="selectSexoMascota" required>
-                            <option value="Macho">Macho</option>
-                            <option value="Hembra">Hembra</option>
-                        </select></td>
-                    </tr>
-
-                    <tr>
-                        <td><label for="colorMascota">Color:</label></td>
-                        <td><input type="text" id="colorMascota" name="colorMascota"></td>
-                    </tr>
-
-                    <tr>
-                        <td><label for="codigoChipMascota">Código chip:</label></td>
-                        <td><input type="text" id="codigoChipMascota" name="codigoChipMascota"></td>
-                    </tr>
-
-                    <tr>
-                        <td><label for="fechaNacimientoMascota">Fecha de nacimiento:</label></td>
-                        <td><input type="date" id="fechaNacimientoMascota" name="fechaNacimientoMascota"></td>
-                    </tr>
-
-                    <tr>
-                        <td><label for="selectOperadoMascota">Operado:</label></td>
-                        <td><select name="selectSexoMascota" id="selectOperadoMascota" required>
-                            <option value="Si">Sí</option>
-                            <option value="No">No</option>
-                            <option value="?">?</option>
-                        </select></td>
-                    </tr>
-
-                </table>
+                        <tr>
+                            <td><label for="pasaporteMascota">Pasaporte:</label></td>
+                            <td><input placeholder="Escribe aquí..." type="text" id="pasaporteMascota" name="pasaporteMascota"></td>
+                        </tr>
+    
+                        <tr>
+                            <td><label for="nombreMascota">Nombre:</label></td>
+                            <td><input placeholder="Escribe aquí..." type="text" id="nombreMascota" name="nombreMascota" required></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><label for="titularMascota">Titular:</label></td>
+                            <td><input placeholder="Escribe aquí..." type="text" id="titularMascota" name="titularMascota"></td>
+                        </tr>
+    
+                        <tr>
+                            <td><label for="selectEspecieMascota">Especie:</label></td>
+                            <td><select name="selectEspecieMascota" id="selectEspecieMascota" required>
+                                <option value="FEL">FEL</option>
+                                <option value="CAN">CAN</option>
+                                <option value="Otros">Otros</option>
+                            </select></td>
+                        </tr>
+    
+                        <tr>
+                            <td><label for="razaMascota">Raza:</label></td>
+                            <td><input placeholder="Escribe aquí..." type="text" id="razaMascota" name="razaMascota"></td>
+                        </tr>
+    
+                        <tr>
+                            <td><label for="selectSexoMascota">Sexo:</label></td>
+                            <td><select name="selectSexoMascota" id="selectSexoMascota" required>
+                                <option value="Macho">Macho</option>
+                                <option value="Hembra">Hembra</option>
+                            </select></td>
+                        </tr>
+    
+                        <tr>
+                            <td><label for="colorMascota">Color:</label></td>
+                            <td><input placeholder="Escribe aquí..." type="text" id="colorMascota" name="colorMascota"></td>
+                        </tr>
+    
+                        <tr>
+                            <td><label for="codigoChipMascota">Código chip:</label></td>
+                            <td><input placeholder="Escribe aquí..." type="text" id="codigoChipMascota" name="codigoChipMascota"></td>
+                        </tr>
+    
+                        <tr>
+                            <td><label for="fechaNacimientoMascota">Fecha de nacimiento:</label></td>
+                            <td><input type="date" id="fechaNacimientoMascota" name="fechaNacimientoMascota"></td>
+                        </tr>
+    
+                        <tr>
+                            <td><label for="selectOperadoMascota">Operado:</label></td>
+                            <td><select name="selectSexoMascota" id="selectOperadoMascota" required>
+                                <option value="Si">Sí</option>
+                                <option value="No">No</option>
+                                <option value="?">?</option>
+                            </select></td>
+                        </tr>
+    
+                    </table>
+                </fieldset>
                 <br><br>
                 <input type="submit" value="Enviar" id="botonEnviar">
             </form>

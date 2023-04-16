@@ -24,34 +24,37 @@
         <div class="cuerpo">
             <h1>Alta: nuevo titular</h1>
             <form action="">
-                <table cellspacing="0">
+                <fieldset>
+                    <legend>Información de titular</legend>
+                    <table cellspacing="0">
                     
-                    <tr>
-                        <td><label for="nombreTitular">Nombre:</label></td>
-                        <td><input type="text" id="nombreTitular" name="nombreTitular" required></td>
-                    </tr>
-
-                    <tr>
-                        <td><label for="dniTitular">DNI:</label></td>
-                        <td><input type="text" id="dniTitular" name="dniTitular" required></td>
-                    </tr>
-                    
-                    <tr>
-                        <td><label for="domicilioTitular">Domicilio:</label></td>
-                        <td><input type="text" id="domicilioTitular" name="domicilioTitular"></td>
-                    </tr>
-
-                    <tr>
-                        <td><label for="codigoPostalTitular">Código postal:</label></td>
-                        <td><input type="text" id="codigoPostalTitular" name="codigoPostalTitular"></td>
-                    </tr>
-
-                    <tr>
-                        <td><label for="numeroContactoTitular">Número de contacto:</label></td>
-                        <td><input type="text" id="numeroContactoTitular" name="numeroContactoTitular" required></td>
-                    </tr>
-
-                </table>
+                        <tr>
+                            <td><label for="nombreTitular">Nombre:</label></td>
+                            <td><input type="text" placeholder="Escribe aquí..." id="nombreTitular" name="nombreTitular" required></td>
+                        </tr>
+    
+                        <tr>
+                            <td><label for="dniTitular">DNI:</label></td>
+                            <td><input type="text" placeholder="Escribe aquí..." id="dniTitular" name="dniTitular" required></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><label for="domicilioTitular">Domicilio:</label></td>
+                            <td><input type="text" placeholder="Escribe aquí..." id="domicilioTitular" name="domicilioTitular"></td>
+                        </tr>
+    
+                        <tr>
+                            <td><label for="codigoPostalTitular">Código postal:</label></td>
+                            <td><input type="text" placeholder="Escribe aquí..." id="codigoPostalTitular" name="codigoPostalTitular"></td>
+                        </tr>
+    
+                        <tr>
+                            <td><label for="numeroContactoTitular">Número de contacto:</label></td>
+                            <td><input type="text" placeholder="Escribe aquí..." id="numeroContactoTitular" name="numeroContactoTitular" required></td>
+                        </tr>
+    
+                    </table>
+                </fieldset>
                 <br><br>
                 <input type="submit" value="Enviar" id="botonEnviar">
             </form>
