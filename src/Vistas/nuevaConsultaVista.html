@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/nuevaConsulta.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Sans+Narrow&display=swap+Arimo&family=EB+Garamond&display=swap" rel="stylesheet">
+    <title>Nueva consulta</title>
+</head>
+<body>
+    <div class="contenedor">
+        <header>
+            <div class="imgLogo">
+                <img src="../../img/logo.png" alt="logo">
+            </div>
+            <div class="nav">
+                <a href=''>Cerrar sesión</a>
+            </div>
+        </header>
+        
+        <div class="cuerpo">
+            <h1>Nueva consulta</h1>
+            <form action="">
+
+                <table cellspacing="0">
+                    
+                    <tr>
+                        <td><label for="veterinario">Veterinario:</label></td>
+                        <td><input type="text" id="veterinario" name="veterinario" required></td>
+                    </tr>
+
+                </table>
+
+                <fieldset>
+
+                    <table>
+                        <legend>Anamnesis</legend>
+                        <tr>
+                            <td><label for="fechaConsulta">Fecha:</label></td>
+                            <td><input type="date" id="fechaConsulta" name="fechaConsulta"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="motivoConsulta">Motivo consulta:</label></td>
+                            <td><textarea id="motivoConsulta" cols="50" rows="5" name="motivoConsulta"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td><label for="antecedentesConsulta">Antecedentes:</label></td>
+                            <td><textarea id="antecedentesConsulta" cols="50" rows="5" name="antecedentesConsulta"></textarea></td>
+                        </tr>
+                    </table>
+
+                </fieldset>
+
+                <fieldset>
+                    
+                    <table>
+                        <legend>EFG</legend>
+                        <tr>
+                            <td><label for="pesoMascotaConsulta">Peso:</label></td>
+                            <td><input type="number" id="pesoMascotaConsulta" name="pesoMascotaConsulta"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="temperaturaMascotaConsulta">Temperatura:</label></td>
+                            <td><input type="number" id="temperaturaMascotaConsulta" name="temperaturaMascotaConsulta"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="exploracionConsulta">Exploración física:</label></td>
+                            <td><textarea id="exploracionConsulta" cols="50" rows="5" name="exploracionConsulta"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td><label for="diagnosticoConsulta">Diagnostico:</label></td>
+                            <td><textarea id="diagnosticoConsulta" cols="50" rows="5" name="diagnosticoConsulta"></textarea></td>
+                        </tr>
+                    </table>
+                    
+                </fieldset>
+
+                <fieldset>
+                    <legend>Procedimientos/Medicación</legend>
+                    <table>
+                        <tr>
+                            <td><label for="actuacionConsulta">Actuación:</label></td>
+                            <td><textarea id="actuacionConsulta" cols="50" rows="5" name="actuacionConsulta"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td><label for="procedimientosConsulta">Procedimientos:</label></td>
+                            <td><textarea id="procedimientosConsulta" cols="50" rows="5" name="procedimientosConsulta"></textarea></td>                        
+                        </tr>
+                        <tr>
+                            <td><label for="anestesiaConsulta">Anestesia:</label></td>
+                            <td><textarea id="anestesiaConsulta" cols="50" rows="5" name="anestesiaConsulta"></textarea></td>                        
+                        </tr>
+                        <tr>
+                            <td><label for="medicacionInyectadaConsulta">Medicación inyectada:</label></td>
+                            <td><textarea id="medicacionInyectadaConsulta" cols="50" rows="5" name="medicacionInyectadaConsulta"></textarea></td>                        
+                        </tr>
+                        <tr>
+                            <td><label for="medicamentosCedidosConsulta">Medicamentos cedidos:</label></td>
+                            <td><textarea id="medicamentosCedidosConsulta" cols="50" rows="5" name="medicamentosCedidosConsulta"></textarea></td>                        
+                        </tr>
+                        <tr>
+                            <td><label for="dietasConsulta">Medicamentos cedidos:</label></td>
+                            <td><textarea id="dietasConsulta" cols="50" rows="5" name="dietasConsulta"></textarea></td>                        
+                        </tr>
+                        <tr>
+                            <td><label for="tiendaConsulta">Tienda:</label></td>
+                            <td><textarea id="tiendaConsulta" cols="50" rows="5" name="tiendaConsulta"></textarea></td>                        
+                        </tr>
+                        <tr>
+                            <td><label for="otrosConsulta">Otros:</label></td>
+                            <td><textarea id="otrosConsulta" cols="50" rows="5" name="otrosConsulta"></textarea></td>                        
+                        </tr>
+                    </table>
+                </fieldset>
+
+                <fieldset>
+                    
+                    <legend>Multimedia</legend>
+                    <table>
+                        <tr>
+                            <td><label for="fotosConsulta">Fotos/Videos/Ecografías:</label></td>
+                            <td><input type="file" id="fotosConsulta" name="fotosConsulta"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="analiticasConsulta">Analíticas:</label></td>
+                            <td><input type="file" id="analiticasConsulta" name="analiticasConsulta"></td>
+                        </tr>
+                    </table>
+                    
+                </fieldset>
+
+                <br><br>
+                <input type="submit" value="Enviar" id="botonEnviar">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
