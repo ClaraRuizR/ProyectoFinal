@@ -1,0 +1,103 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+header{
+    height: 100px;
+    width: 100%;
+    background-color: rgb(36, 173, 173);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.nav{
+    height: 30%;
+    width: 100%;
+    text-align: right;
+    margin-right: 20px;
+}
+
+.imgLogo{
+    height: 60%;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+img{
+    height: 60px;
+    width: 60px;
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    font-size: 50px;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-weight: 900;
+    color: rgb(206, 61, 133);
+}
+
+.contenedor{
+    width: 100%;
+}
+
+.cuerpo{
+    margin-bottom: 100px;
+    margin-top: 50px;
+}
+
+table{
+    width: 100%;
+    margin: auto;
+}
+
+table, td, tr, th{
+    
+    font-size: 20px;
+    border: 0;
+
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #f1dae8;
+
+  }
+
+td{
+    padding: 30px;
+    font-family: 'PT Sans Narrow', sans-serif;
+    color: rgb(0, 128, 128);
+}
+
+#texto{
+    width: 80%;
+    text-align: justify;
+    color: black;
+}
+
+fieldset{
+    width: 70%;
+    margin: auto;
+    padding: 30px;
+    margin-bottom: 50px;
+    border: none;
+    border-top: 2px solid rgb(206, 61, 133);
+}
+
+legend{
+    font-size: 30px;
+    font-family: 'PT Sans Narrow', sans-serif;
+    padding: 10px;
+    color: rgb(206, 61, 133);
+    font-weight: 900;
+}
+
+#botonEnviar{
+    width: 200px;
+    margin-left: 50%;
+}
