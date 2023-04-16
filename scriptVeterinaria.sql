@@ -22,13 +22,13 @@ CREATE TABLE `T_Titular`(
 
 CREATE TABLE `T_Trabajador`(
 	`ID` INTEGER,
-    `nombre` INTEGER DEFAULT NULL,
+    `nombre` VARCHAR(50) DEFAULT NULL,
     `apellidos` VARCHAR(50) DEFAULT NULL,
-    `cargo` ENUM('Veterinario/a','ACV','Peluquero/a') DEFAULT NULL,
-    `n_colegiado` VARCHAR(100) DEFAULT NULL,
+    `trabajo` ENUM('Veterinario/a','ACV','Peluquero/a') DEFAULT NULL,
+    `n_colegiado` VARCHAR(10) DEFAULT NULL,
     `fecha_alta` DATE DEFAULT NULL,
     `num_contacto` INTEGER DEFAULT NULL,
-    `id_usuario` INTEGER,
+    `id_usuario` INTEGER DEFAULT NULL,
     PRIMARY KEY (`ID`)
 );
 
@@ -110,12 +110,12 @@ CREATE TABLE `T_Prescripcion`(
     PRIMARY KEY (`ID`)
 );
 
-CREATE TABLE `T_Imagen`(
+CREATE TABLE `T_Fichero`(
 	`ID` INTEGER,
     `id_consulta` INTEGER DEFAULT NULL,
     `id_mascota` INTEGER DEFAULT NULL,
     `fecha_hora_subida` DATETIME DEFAULT NULL,
-    `imagen` LONGBLOB DEFAULT NULL,
+    `fichero` LONGBLOB DEFAULT NULL,
     PRIMARY KEY (`ID`)
 );
 
