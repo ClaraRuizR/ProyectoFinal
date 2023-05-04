@@ -1,11 +1,13 @@
 DROP TABLE IF EXISTS `T_Reserva_Trabajador`;
-DROP TABLE IF EXISTS `T_Titular`;
-DROP TABLE IF EXISTS `T_Mascota`;
+DROP TABLE IF EXISTS `T_Reserva`;
+DROP TABLE IF EXISTS `T_Prescripcion`;
+DROP TABLE IF EXISTS `T_Fichero`;
 DROP TABLE IF EXISTS `T_Consulta`;
 DROP TABLE IF EXISTS `T_Trabajador`;
 DROP TABLE IF EXISTS `T_Usuario`;
-DROP TABLE IF EXISTS `T_Reserva`;
-DROP TABLE IF EXISTS `T_Prescripción`;
+DROP TABLE IF EXISTS `T_Mascota`;
+DROP TABLE IF EXISTS `T_Titular`;
+
 
 /*TABLE CREATION*/
 
@@ -59,7 +61,7 @@ CREATE TABLE `T_Mascota`(
 CREATE TABLE `T_Consulta`(
 	`ID` INTEGER AUTO_INCREMENT,
     `id_mascota` INTEGER DEFAULT NULL,
-    `id_veterinario` VARCHAR(50) DEFAULT NULL,
+    `id_veterinario`INTEGER DEFAULT NULL,
     `fecha` DATE DEFAULT NOW(),
     `motivo_consulta` VARCHAR(500) DEFAULT NULL,
     `peso` DECIMAL(5,2) DEFAULT NULL,
@@ -128,7 +130,7 @@ ALTER TABLE T_Mascota ADD FOREIGN KEY (id_titular) REFERENCES T_Titular (ID);
 
 ALTER TABLE T_Consulta ADD FOREIGN KEY (id_mascota) REFERENCES T_Mascota (ID);
 
-ALTER TABLE T_Consulta ADD FOREIGN KEY (id_veterinario) REFERENCES T_Trajabador (ID);
+ALTER TABLE T_Consulta ADD FOREIGN KEY (id_veterinario) REFERENCES T_trabajador (ID);
 
 ALTER TABLE T_Reserva ADD FOREIGN KEY (id_mascota) REFERENCES T_Mascota (ID);
 
@@ -144,6 +146,19 @@ ALTER TABLE T_Prescripcion ADD FOREIGN KEY (id_mascota) REFERENCES T_Mascota (ID
 
 ALTER TABLE T_Prescripcion ADD FOREIGN KEY (id_veterinario) REFERENCES T_Trabajador (ID);
 
-ALTER TABLE T_Imagen ADD FOREIGN KEY (id_consulta) REFERENCES T_Consulta (ID);
+ALTER TABLE T_Fichero ADD FOREIGN KEY (id_consulta) REFERENCES T_Consulta (ID);
 
-ALTER TABLE T_Imagen ADD FOREIGN KEY (id_mascota) REFERENCES T_Mascota (ID);
+ALTER TABLE T_Fichero ADD FOREIGN KEY (id_mascota) REFERENCES T_Mascota (ID);
+
+
+/*INSERTS*/
+
+INSERT INTO T_Titular VALUES 
+(1, 'Clara Ruiz', '43465253V', 'Calle Falsa, 123', 07009, 666666666, '11-09-2019')
+(2, 'Pau Valls', '43452023B', 'Calle Falsa, 123', 07009, 677777777, '11-09-2021'),
+(3, 'Alicia Ruiz', '43625128M', 'Calle Cuenca, 2', 07009, 688888888, '11-09-2018');
+
+INSERT INTO T_Mascota VALUES 
+(1, 'ES052588521', 'Weepy', 2, 'FEL', 'Europeo', 'Macho', 'Blanco y atigrado naranja', '258632145885210', '01-02-2019', 'Sí', '11-09-2019')
+(2, 'ES052588522', 'Emi', 1, 'FEL', 'Europeo', 'Macho', 'Blanco y atigrado marrón', '258632145885211', '01-02-2020', 'Sí', '11-09-2021'),
+(3, 'ES052588523', 'Chacho', 3, 'CAN', 'Mezcla', 'Macho', 'Marrón', '258632145885212', '01-02-2018', 'Sí', '11-09-2018');
