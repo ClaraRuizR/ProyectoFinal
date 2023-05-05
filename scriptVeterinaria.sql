@@ -154,11 +154,11 @@ ALTER TABLE T_Fichero ADD FOREIGN KEY (id_mascota) REFERENCES T_Mascota (ID);
 /*INSERTS*/
 
 INSERT INTO T_Titular VALUES 
-(1, 'Clara Ruiz', '43465253V', 'Calle Falsa, 123', 07009, 666666666, '11-09-2019')
-(2, 'Pau Valls', '43452023B', 'Calle Falsa, 123', 07009, 677777777, '11-09-2021'),
-(3, 'Alicia Ruiz', '43625128M', 'Calle Cuenca, 2', 07009, 688888888, '11-09-2018');
+(1, 'Clara Ruiz', '43465253V', 'Calle Falsa, 123', 07009, 666666666, '2021-09-11')
+(2, 'Pau Valls', '43452023B', 'Calle Falsa, 123', 07009, 677777777, '2019-09-11'),
+(3, 'Alicia Ruiz', '43625128M', 'Calle Cuenca, 2', 07009, 688888888, '2018-09-11');
 
 INSERT INTO T_Mascota VALUES 
-(1, 'ES052588521', 'Weepy', 2, 'FEL', 'Europeo', 'Macho', 'Blanco y atigrado naranja', '258632145885210', '01-02-2019', 'Sí', '11-09-2019')
-(2, 'ES052588522', 'Emi', 1, 'FEL', 'Europeo', 'Macho', 'Blanco y atigrado marrón', '258632145885211', '01-02-2020', 'Sí', '11-09-2021'),
-(3, 'ES052588523', 'Chacho', 3, 'CAN', 'Mezcla', 'Macho', 'Marrón', '258632145885212', '01-02-2018', 'Sí', '11-09-2018');
+(1, 'ES052588521', 'Weepy', 2, 'FEL', 'Europeo', 'Macho', 'Blanco y atigrado naranja', '258632145885210', '2019-01-02', 'Sí', '2019-09-11')
+(2, 'ES052588522', 'Emi', 1, 'FEL', 'Europeo', 'Macho', 'Blanco y atigrado marrón', '258632145885211', '2020-01-02', 'Sí', '2021-09-11'),
+(3, 'ES052588523', 'Chacho', 3, 'CAN', 'Mezcla', 'Macho', 'Marrón', '258632145885212', '2018-01-02', 'Sí', '2018-09-11');

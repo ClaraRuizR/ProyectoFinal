@@ -101,7 +101,12 @@ img{
 
 #filtros{
     margin: auto;
-    width: 300px;
+    width: 375px;
     font-family: 'PT Sans Narrow', sans-serif;
     margin-bottom: 20px;
+    text-align: center;
+}
+
+input{
+    margin-left: 7px;
 }
