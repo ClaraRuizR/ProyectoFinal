@@ -1,3 +1,22 @@
+<?php
+ini_set('display_errors', 'On');
+ini_set('html_errors', 0);
+require_once("../Negocio/mascotasNegocio.php");
+require_once("../Negocio/titularNegocio.php");
+require_once("../Negocio/consultaNegocio.php");
+
+
+$mascotasNegocio = new MascotasNegocio();
+$titularesNegocio = new TitularNegocio();
+$consultasNegocio = new ConsultaNegocio();
+
+$idMascota = $_GET["id"];
+
+$listaMascotas = $mascotasNegocio->obtener('ID', $idMascota);
+$titular = $titularesNegocio->buscarTitularPorId($listaMascotas[0]->getTitular());
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,7 +41,7 @@
         </header>
         
         <div class="cuerpo">
-            <h1>Emi</h1>
+            <h1><?php print($listaMascotas[0]->getNombre())?></h1>
 
             <fieldset>
                 <legend>Datos de mascota</legend>
@@ -31,52 +50,54 @@
 
                     <tr>
                         <td>Nombre:</td>
-                        <td>Emi</td>
+                        <td>
+                            <?php print($listaMascotas[0]->getNombre())?>
+                        </td>
                     </tr>
     
                     <tr>
                         <td>Fecha de nacimiento:</td>
-                        <td></td>
+                        <td><?php print($listaMascotas[0]->getFechaNacimiento())?></td>
                     </tr>
                     
                    <tr>
                         <td>Especie:</td>
-                        <td>FEL</td>
+                        <td><?php print($listaMascotas[0]->getEspecie())?></td>
                    </tr>
     
                     <tr>
                         <td>Sexo:</td>
-                        <td>Macho</td>
+                        <td><?php print($listaMascotas[0]->getSexo())?></td>
                     </tr>
     
                     <tr>
                         <td>Raza:</td>
-                        <td>Europeo</td>
+                        <td><?php print($listaMascotas[0]->getRaza())?></td>
                     </tr>
     
                     <tr>
                         <td>Color:</td>
-                        <td>Blanco y atigrado</td>
+                        <td><?php print($listaMascotas[0]->getColor())?></td>
                     </tr>
     
                     <tr>
                         <td>Pasaporte:</td>
-                        <td>---------</td>
+                        <td><?php print($listaMascotas[0]->getPasaporte())?></td>
                     </tr>
     
                     <tr>
                         <td>Código de chip:</td>
-                        <td>---------</td>
+                        <td><?php print($listaMascotas[0]->getCodigoChip())?></td>
                     </tr>
     
                     <tr>
                         <td>Operado:</td>
-                        <td>Sí</td>
+                        <td><?php print($listaMascotas[0]->getOperado())?></td>
                     </tr>
     
                     <tr>
                         <td>Fecha de alta:</td>
-                        <td>24/09/22</td>
+                        <td><?php print($listaMascotas[0]->getFechaAlta())?></td>
                     </tr>
     
     
@@ -89,11 +110,11 @@
                 <table cellspacing="0">
                     <tr>
                         <td>Nombre:</td>
-                        <td>Clara Ruiz</td>
+                        <td><?php print($titular->getNombre())?></td>
                     </tr>
                     <tr>
                         <td>Residencia:</td>
-                        <td>C/ Falsa, 123</td>
+                        <td><?php print($titular->getDomicilio())?></td>
                     </tr>
                 </table>
                 <div class="enlacePie"><a href=''>Acceder a ficha</a></div>
@@ -104,10 +125,18 @@
             <fieldset>
                 <legend>Consultas</legend>
                 <table cellspacing="0">
-                    <tr>
-                        <td>24/09/22</td>
-                        <td><a href="">Ver consulta</a></td>
-                    </tr>
+                    <?php 
+
+                    $listaConsultas = $consultasNegocio->buscarConsultasporMascota($listaMascotas[0]->getID());
+
+                    foreach($listaConsultas as $consulta){
+                        echo"<tr>";
+                        echo"<td>".$consulta->getFecha()."</td>";
+                        echo"<td><a href='consultaVista.php?id=".$consulta->getID()."'>Ver consulta</a></td>";
+                        echo"</tr>";
+                    }
+                    ?>
+                    
                 </table>
             </fieldset>
         </div>

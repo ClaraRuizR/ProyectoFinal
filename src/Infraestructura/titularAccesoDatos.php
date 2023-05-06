@@ -6,8 +6,7 @@ ini_set('html_errors', 0);
 class TitularAccesoDatos
 {
 	
-	function __construct()
-	{
+	function __construct(){
     }
 
 	function obtener()
@@ -25,10 +24,9 @@ class TitularAccesoDatos
 
 		$titulares =  array();
 
-        while ($myrow = $result->fetch_assoc()) 
-        {
+        while ($myrow = $result->fetch_assoc()){
+			
 			array_push($titulares,$myrow);
-
         }
 		return $titulares;
 	}
