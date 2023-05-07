@@ -1,3 +1,28 @@
+<?php
+
+ini_set('display_errors', 'On');
+ini_set('html_errors', 0);
+
+require_once ("../Negocio/usuarioNegocio.php");
+
+if ($_SERVER["REQUEST_METHOD"]=="POST"){
+    $usuarioNegocio = new UsuarioNegocio();
+    $perfil =  $usuarioNegocio->verificar($_POST['nombre_usuario'], $_POST['clave']);
+
+    if ($perfil==="Administrador/a"||$perfil==="Veterinario/a"||$perfil==="ACV"){
+        session_start();
+        $_SESSION['nombre_usuario'] = $_POST['nombre_usuario'];
+        header("Location: listaMascotasVista.php?filtros=no");
+    }else if($perfil==="Peluquero/a"){
+        session_start();
+        $_SESSION['nombre_usuario'] = $_POST['nombre_usuario'];
+        header("Location: listaMascotasVista.php?filtros=no");
+    }else{
+        $error = true;
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,10 +42,16 @@
             <div class="paginaLogin">
                 <div class="formulario">
                     <form class="formularioLogin" method = "POST" action = "">
-                        <input class="usuario" name="usuario" type="text" placeholder="Nombre de usuario"/>
+                        <input class="nombre_usuario" name="nombre_usuario" type="text" placeholder="Nombre de usuario"/>
                         <input type="password" placeholder="Contraseña" id = "clave" name = "clave"/>
                         <input clas='button' type = "submit">
                     </form>
+                    <?php
+                    if (isset($error))
+                    {
+                        print("<div> No tienes acceso </div>");
+                    }
+                ?>
                 </div>
             </div>
         </div>

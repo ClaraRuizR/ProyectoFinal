@@ -23,7 +23,7 @@ CREATE TABLE `T_Titular`(
 );
 
 CREATE TABLE `T_Trabajador`(
-	`ID` INTEGER,
+	`ID` INTEGER AUTO_INCREMENT,
     `nombre` VARCHAR(50) DEFAULT NULL,
     `apellidos` VARCHAR(50) DEFAULT NULL,
     `trabajo` ENUM('Veterinario/a','ACV','Peluquero/a') DEFAULT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE `T_Trabajador`(
 );
 
 CREATE TABLE `T_Usuario`(
-	`ID` INTEGER,
+	`ID` INTEGER AUTO_INCREMENT,
     `nombre_usuario` VARCHAR(100) DEFAULT NULL,
     `perfil`ENUM('Veterinario/a','ACV','Peluquero/a','Administrador/a') DEFAULT NULL,
     `clave` VARCHAR(100) DEFAULT NULL,
