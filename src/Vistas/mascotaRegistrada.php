@@ -3,7 +3,7 @@
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 
-require_once("../Negocio/mascotasNegocio.php");
+require_once("../Controlador/mascotasControlador.php");
 
 $pasaporte = $_POST["pasaporteMascota"];
 $nombre = $_POST["nombreMascota"];
@@ -16,8 +16,8 @@ $codigoChip = $_POST["codigoChipMascota"];
 $fechaNacimiento = $_POST["fechaNacimientoMascota"];
 $operado = $_POST["selectOperadoMascota"];
 
-$mascotasNegocio = new MascotasNegocio();
-$respuesta = $mascotasNegocio->crearFicha($pasaporte, $nombre, $titular, $especie, $raza, $sexo, $color, $codigoChip, $fechaNacimiento, $operado);
+$mascotasControlador = new MascotasControlador();
+$respuesta = $mascotasControlador->crearFicha($pasaporte, $nombre, $titular, $especie, $raza, $sexo, $color, $codigoChip, $fechaNacimiento, $operado);
 
 ?>
 
@@ -48,7 +48,7 @@ $respuesta = $mascotasNegocio->crearFicha($pasaporte, $nombre, $titular, $especi
             <div class="mensaje">
                 <?php
                 echo"$respuesta";
-                echo"<a id='enlaceFichaCreada' href='fichaMascotaVista.php?id=".$mascotasNegocio->obtenerIdUltimaMascotaRegistrada()."'>Ver ficha</a>";
+                echo"<a id='enlaceFichaCreada' href='fichaMascotaVista.php?id=".$mascotasControlador->obtenerIdUltimaMascotaRegistrada()."'>Ver ficha</a>";
                 echo"<a id='enlaceFichaCreada' href='listaMascotasVista.php?filtros=no'>Volver a la lista de mascotas</a>";
                 ?>
             </div>

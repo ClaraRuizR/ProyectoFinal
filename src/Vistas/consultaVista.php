@@ -1,20 +1,20 @@
 <?php
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
-require_once("../Negocio/mascotasNegocio.php");
-require_once("../Negocio/titularNegocio.php");
-require_once("../Negocio/consultaNegocio.php");
-require_once("../Negocio/trabajadorNegocio.php");
+require_once("../Controlador/mascotasControlador.php");
+require_once("../Controlador/titularControlador.php");
+require_once("../Controlador/consultaControlador.php");
+require_once("../Controlador/trabajadorControlador.php");
 
-$mascotasNegocio = new MascotasNegocio();
-$titularesNegocio = new TitularNegocio();
-$consultasNegocio = new ConsultaNegocio();
-$trabajadoresNegocio = new TrabajadorNegocio();
+$mascotasControlador = new MascotasControlador();
+$titularesControlador = new TitularControlador();
+$consultasControlador = new ConsultaControlador();
+$trabajadoresControlador = new TrabajadorControlador();
 
 $id = $_GET["id"];
 
-$consulta = $consultasNegocio->buscarConsultasporId($id);
-$veterinario = $trabajadoresNegocio->buscarTrabajadorPorId($consulta->getIdVeterinario());
+$consulta = $consultasControlador->buscarConsultasporId($id);
+$veterinario = $trabajadoresControlador->buscarTrabajadorPorId($consulta->getIdVeterinario());
 
 ?>
 
@@ -59,7 +59,7 @@ $veterinario = $trabajadoresNegocio->buscarTrabajadorPorId($consulta->getIdVeter
                     <tr>
                         <td>Mascota:</td>
                         <?php
-                        $mascota = $mascotasNegocio->obtener('ID', $consulta->getIdMascota());
+                        $mascota = $mascotasControlador->obtener('ID', $consulta->getIdMascota());
                             echo"<td><a href='fichaMascotaVista.php?id=".$consulta->getIdMascota()."'>";
                             print($mascota[0]->getNombre());
                             echo"</a></td>";

@@ -1,11 +1,9 @@
 <?php
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
-require_once("../Infraestructura/consultaAccesoDatos.php");
+require_once("../Modelo/consultaModelo.php");
 
-//REVISAR ATRIBUTOS
-
-class ConsultaNegocio{
+class ConsultaControlador{
     
     private $ID;
     private $idMascota;
@@ -143,17 +141,17 @@ class ConsultaNegocio{
     }
 
     function obtener(){
-        $consultas = new ConsultaAccesoDatos();
+        $consultas = new ConsultaModelo();
         $arrayConsultas = $consultas->obtener();
 
 		$listaConsultas =  array();
 
         foreach ($arrayConsultas as $consulta){
            
-            $consultasNegocio = new ConsultaNegocio();
-            $consultasNegocio->Init($consulta['ID'], $consulta['id_mascota'], $consulta['id_veterinario'], $consulta['fecha'], $consulta['motivo_consulta'], $consulta['antecedentes'], $consulta['peso'], $consulta['temperatura'], $consulta['exploracion_fisica'], $consulta['diagnostico'], $consulta['actuacion'], $consulta['procedimientos'], $consulta['anestesia'], $consulta['medicacion_inyectada'], $consulta['medicamentos_cedidos'], $consulta['dietas'], $consulta['tienda'], $consulta['otros']);
+            $consultasControlador = new ConsultaControlador();
+            $consultasControlador->Init($consulta['ID'], $consulta['id_mascota'], $consulta['id_veterinario'], $consulta['fecha'], $consulta['motivo_consulta'], $consulta['antecedentes'], $consulta['peso'], $consulta['temperatura'], $consulta['exploracion_fisica'], $consulta['diagnostico'], $consulta['actuacion'], $consulta['procedimientos'], $consulta['anestesia'], $consulta['medicacion_inyectada'], $consulta['medicamentos_cedidos'], $consulta['dietas'], $consulta['tienda'], $consulta['otros']);
             
-            array_push($listaConsultas, $consultasNegocio);
+            array_push($listaConsultas, $consultasControlador);
         }
                 
         return $listaConsultas;
@@ -161,8 +159,8 @@ class ConsultaNegocio{
 
     function buscarConsultasporMascota($idMascota){
 
-        $consultasNegocio = new ConsultaNegocio();
-        $listaConsultas = $consultasNegocio->obtener();
+        $consultasControlador = new ConsultaControlador();
+        $listaConsultas = $consultasControlador->obtener();
 
         $arrayConsultas =  array();
 
@@ -179,8 +177,8 @@ class ConsultaNegocio{
 
     function buscarConsultasporId($idConsulta){
 
-        $consultasNegocio = new ConsultaNegocio();
-        $listaConsultas = $consultasNegocio->obtener();
+        $consultasControlador = new ConsultaControlador();
+        $listaConsultas = $consultasControlador->obtener();
 
         foreach($listaConsultas as $consulta){
 
@@ -193,16 +191,16 @@ class ConsultaNegocio{
 
     function crearConsulta($veterinario, $mascota, $motivoConsulta, $fechaConsulta, $antecedentesConsulta, $pesoMascotaConsulta, $temperaturaMascotaConsulta, $exploracionConsulta, $diagnosticoConsulta, $actuacionConsulta, $procedimientosConsulta, $anestesiaConsulta, $medicacionInyectadaConsulta, $medicamentosCedidosConsulta, $dietasConsulta, $tiendaConsulta, $otrosConsulta, $fotosConsulta, $analiticasConsulta){
 
-        $consultasAccesoDatos = new ConsultaAccesoDatos();
-        $respuesta = $consultasAccesoDatos->crearConsulta($veterinario, $mascota, $motivoConsulta, $fechaConsulta, $antecedentesConsulta, $pesoMascotaConsulta, $temperaturaMascotaConsulta, $exploracionConsulta, $diagnosticoConsulta, $actuacionConsulta, $procedimientosConsulta, $anestesiaConsulta, $medicacionInyectadaConsulta, $medicamentosCedidosConsulta, $dietasConsulta, $tiendaConsulta, $otrosConsulta, $fotosConsulta, $analiticasConsulta);
+        $consultasModelo = new ConsultaModelo();
+        $respuesta = $consultasModelo->crearConsulta($veterinario, $mascota, $motivoConsulta, $fechaConsulta, $antecedentesConsulta, $pesoMascotaConsulta, $temperaturaMascotaConsulta, $exploracionConsulta, $diagnosticoConsulta, $actuacionConsulta, $procedimientosConsulta, $anestesiaConsulta, $medicacionInyectadaConsulta, $medicamentosCedidosConsulta, $dietasConsulta, $tiendaConsulta, $otrosConsulta, $fotosConsulta, $analiticasConsulta);
         
         return $respuesta;
     }
 
     function obtenerIdUltimaConsultaRegistrada(){
 
-		$consultasAccesoDatos = new ConsultaAccesoDatos();
-        $arrayConsultas = $consultasAccesoDatos->obtener(-1, -1);
+		$consultasModelo = new ConsultaModelo();
+        $arrayConsultas = $consultasModelo->obtener(-1, -1);
 
         $ultimaEntrada = end($arrayConsultas);
 

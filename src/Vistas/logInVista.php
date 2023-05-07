@@ -3,11 +3,11 @@
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 
-require_once ("../Negocio/usuarioNegocio.php");
+require_once ("../Controlador/usuarioControlador.php");
 
 if ($_SERVER["REQUEST_METHOD"]=="POST"){
-    $usuarioNegocio = new UsuarioNegocio();
-    $perfil =  $usuarioNegocio->verificar($_POST['nombre_usuario'], $_POST['clave']);
+    $usuarioControlador = new UsuarioControlador();
+    $perfil =  $usuarioControlador->verificar($_POST['nombre_usuario'], $_POST['clave']);
 
     if ($perfil==="Administrador/a"||$perfil==="Veterinario/a"||$perfil==="ACV"){
         session_start();

@@ -2,18 +2,14 @@
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 
-class UsuarioAccesoDatos
-{
+class UsuarioModelo{
 	
-	function __construct()
-    {
+	function __construct(){
     }
 
-	function insertar($usuario, $perfil, $clave)
-	{
+	function insertar($usuario, $perfil, $clave){
 		$conexion = mysqli_connect('localhost','Clara','2223');
-		if (mysqli_connect_errno())
-		{
+		if (mysqli_connect_errno()){
 				echo "Error al conectar a MySQL: ". mysqli_connect_error();
 		}
  		
@@ -26,11 +22,9 @@ class UsuarioAccesoDatos
 		return $res;
 	}
 
-    function verificar($usuario,$clave)
-    {
+    function verificar($usuario,$clave){
         $conexion = mysqli_connect('localhost','Clara','2223');
-		if (mysqli_connect_errno())
-		{
+		if (mysqli_connect_errno()){
 				echo "Error al conectar a MySQL: ". mysqli_connect_error();
 		}
         mysqli_select_db($conexion, 'veterinaria');
@@ -41,24 +35,20 @@ class UsuarioAccesoDatos
         $res = $consulta->get_result();
 
 
-        if ($res->num_rows==0)
-        {
+        if ($res->num_rows==0){
             return 'NOT_FOUND';
         }
 
-        if ($res->num_rows>1)
-        {
+        if ($res->num_rows>1){
             return 'NOT_FOUND';
         }
 
         $myrow = $res->fetch_assoc();
         $x = $myrow['clave'];
-        if (password_verify($clave, $x))
-        {
+        if (password_verify($clave, $x)){
             return $myrow['perfil'];
         } 
-        else 
-        {
+        else{
             return 'NOT_FOUND';
         }
     }

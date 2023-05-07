@@ -1,9 +1,9 @@
 <?php
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
-require_once("../Infraestructura/titularAccesoDatos.php");
+require_once("../Modelo/titularModelo.php");
 
-class TitularNegocio{
+class TitularControlador{
     
     private $ID;
     private $nombre;
@@ -63,17 +63,17 @@ class TitularNegocio{
     }
 
     function obtener(){
-        $titulares = new TitularAccesoDatos();
+        $titulares = new TitularModelo();
         $arrayTitulares = $titulares->obtener();
 
 		$listaTitulares =  array();
 
         foreach ($arrayTitulares as $titular){
            
-            $titularesNegocio = new TitularNegocio();
-            $titularesNegocio->Init($titular['ID'], $titular['nombre'], $titular['DNI'], $titular['domicilio'], $titular['codigo_postal'], $titular['num_contacto'], $titular['fecha_alta']);
+            $titularesControlador = new TitularControlador();
+            $titularesControlador->Init($titular['ID'], $titular['nombre'], $titular['DNI'], $titular['domicilio'], $titular['codigo_postal'], $titular['num_contacto'], $titular['fecha_alta']);
             
-            array_push($listaTitulares, $titularesNegocio);
+            array_push($listaTitulares, $titularesControlador);
         }
                 
         return $listaTitulares;
@@ -81,8 +81,8 @@ class TitularNegocio{
 
     function buscarTitularPorId($idTitular){
 
-        $titularesNegocio = new TitularNegocio();
-        $listaTitulares = $titularesNegocio->obtener();
+        $titularesControlador = new TitularControlador();
+        $listaTitulares = $titularesControlador->obtener();
 
         foreach($listaTitulares as $titular){
 

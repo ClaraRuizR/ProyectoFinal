@@ -3,17 +3,14 @@
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 
-class TrabajadorAccesoDatos
-{
+class TrabajadorModelo{
 	
 	function __construct(){
     }
 
-	function obtener()
-	{
+	function obtener(){
 		$conexion = mysqli_connect('localhost','Clara','2223');
-		if (mysqli_connect_errno())
-		{
+		if (mysqli_connect_errno()){
 				echo "Error al conectar a MySQL: ". mysqli_connect_error();
 		}
  		mysqli_select_db($conexion, 'veterinaria');

@@ -1,18 +1,18 @@
 <?php
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
-require_once("../Negocio/mascotasNegocio.php");
-require_once("../Negocio/titularNegocio.php");
+require_once("../Controlador/mascotasControlador.php");
+require_once("../Controlador/titularControlador.php");
 
-$mascotasNegocio = new MascotasNegocio();
-$titularesNegocio = new TitularNegocio();
+$mascotasControlador = new MascotasControlador();
+$titularesControlador = new TitularControlador();
 
 if ($_GET["filtros"] == 'si'){
     $filtro = $_POST["selectFiltros"];
     $textoFiltro = $_POST["textoFiltro"];
-    $listaMascotas = $mascotasNegocio->obtener($filtro, $textoFiltro);
+    $listaMascotas = $mascotasControlador->obtener($filtro, $textoFiltro);
 }else{
-    $listaMascotas = $mascotasNegocio->obtener(-1, -1);
+    $listaMascotas = $mascotasControlador->obtener(-1, -1);
 }
 
 ?>
@@ -76,7 +76,7 @@ if ($_GET["filtros"] == 'si'){
 
                 foreach($listaMascotas as $mascota){
 
-                    $titular = $titularesNegocio->buscarTitularPorId($mascota->getTitular());
+                    $titular = $titularesControlador->buscarTitularPorId($mascota->getTitular());
 
                     echo"<tr>";
                     echo"<td><div id='dato'>";

@@ -3,8 +3,8 @@
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 
-require_once("../Negocio/consultaNegocio.php");
-require_once("../Negocio/MascotasNegocio.php");
+require_once("../Controlador/consultaControlador.php");
+require_once("../Controlador/MascotasControlador.php");
 
 $veterinario = intval($_POST["veterinario"]);
 $mascota = intval($_POST["mascota"]);
@@ -26,8 +26,8 @@ $otrosConsulta = $_POST["otrosConsulta"];
 $fotosConsulta = $_POST["fotosConsulta"];
 $analiticasConsulta = $_POST["analiticasConsulta"];
 
-$consultaNegocio = new ConsultaNegocio();
-$respuesta = $consultaNegocio->crearConsulta($veterinario, $mascota, $motivoConsulta, $fechaConsulta, $antecedentesConsulta, $pesoMascotaConsulta, $temperaturaMascotaConsulta, $exploracionConsulta, $diagnosticoConsulta, $actuacionConsulta, $procedimientosConsulta, $anestesiaConsulta, $medicacionInyectadaConsulta, $medicamentosCedidosConsulta, $dietasConsulta, $tiendaConsulta, $otrosConsulta, $fotosConsulta, $analiticasConsulta);
+$consultaControlador = new ConsultaControlador();
+$respuesta = $consultaControlador->crearConsulta($veterinario, $mascota, $motivoConsulta, $fechaConsulta, $antecedentesConsulta, $pesoMascotaConsulta, $temperaturaMascotaConsulta, $exploracionConsulta, $diagnosticoConsulta, $actuacionConsulta, $procedimientosConsulta, $anestesiaConsulta, $medicacionInyectadaConsulta, $medicamentosCedidosConsulta, $dietasConsulta, $tiendaConsulta, $otrosConsulta, $fotosConsulta, $analiticasConsulta);
 
 ?>
 
@@ -58,7 +58,7 @@ $respuesta = $consultaNegocio->crearConsulta($veterinario, $mascota, $motivoCons
             <div class="mensaje">
                 <?php
                 echo"$respuesta";
-                echo"<a id='enlaceFichaCreada' href='consultaVista.php?id=".$consultaNegocio->obtenerIdUltimaConsultaRegistrada()."'>Ver consulta</a>";
+                echo"<a id='enlaceFichaCreada' href='consultaVista.php?id=".$consultaControlador->obtenerIdUltimaConsultaRegistrada()."'>Ver consulta</a>";
                 ?>
             </div>
         </div>

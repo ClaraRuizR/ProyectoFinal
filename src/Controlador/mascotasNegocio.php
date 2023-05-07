@@ -1,10 +1,10 @@
 <?php
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
-require_once("../Infraestructura/mascotasAccesoDatos.php");
+require_once("../Modelo/mascotasModelo.php");
 
 
-class MascotasNegocio{
+class MascotasControlador{
     
     private $ID;
     private $pasaporte;
@@ -99,17 +99,17 @@ class MascotasNegocio{
     }
 
     function obtener($filtro, $textoFiltro){
-        $mascotas = new mascotasAccesoDatos();
+        $mascotas = new mascotasModelo();
         $arrayMascotas = $mascotas->obtener($filtro, $textoFiltro);
 
 		$listaMascotas =  array();
 
         foreach ($arrayMascotas as $mascota){
            
-            $mascotasNegocio = new MascotasNegocio();
-            $mascotasNegocio->Init($mascota['ID'], $mascota['pasaporte'], $mascota['nombre'], $mascota['id_titular'], $mascota['especie'], $mascota['raza'], $mascota['sexo'], $mascota['color'], $mascota['codigo_chip'], $mascota['fecha_nacimiento'], $mascota['operado'], $mascota['fecha_alta']);
+            $mascotasControlador = new MascotasControlador();
+            $mascotasControlador->Init($mascota['ID'], $mascota['pasaporte'], $mascota['nombre'], $mascota['id_titular'], $mascota['especie'], $mascota['raza'], $mascota['sexo'], $mascota['color'], $mascota['codigo_chip'], $mascota['fecha_nacimiento'], $mascota['operado'], $mascota['fecha_alta']);
             
-            array_push($listaMascotas, $mascotasNegocio);
+            array_push($listaMascotas, $mascotasControlador);
         }
                 
         return $listaMascotas;
@@ -117,15 +117,15 @@ class MascotasNegocio{
 
     function crearFicha($pasaporte, $nombre, $titular, $especie, $raza, $sexo, $color, $codigoChip, $fechaNacimiento, $operado){
 
-        $mascotasAccesoDatos = new MascotasAccesoDatos();
-        $respuesta = $mascotasAccesoDatos->crearFicha($pasaporte, $nombre, $titular, $especie, $raza, $sexo, $color, $codigoChip, $fechaNacimiento, $operado);
+        $mascotasModelo = new MascotasModelo();
+        $respuesta = $mascotasModelo->crearFicha($pasaporte, $nombre, $titular, $especie, $raza, $sexo, $color, $codigoChip, $fechaNacimiento, $operado);
         
         return $respuesta;
     }
 
     function obtenerIdUltimaMascotaRegistrada(){
 
-		$mascotas = new mascotasAccesoDatos();
+		$mascotas = new mascotasModelo();
         $arrayMascotas = $mascotas->obtener(-1, -1);
 
         $ultimaEntrada = end($arrayMascotas);

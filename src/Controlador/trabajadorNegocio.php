@@ -1,9 +1,9 @@
 <?php
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
-require_once("../Infraestructura/trabajadorAccesoDatos.php");
+require_once("../Modelo/trabajadorModelo.php");
 
-class TrabajadorNegocio{
+class TrabajadorControlador{
     
     private $ID;
     private $nombre;
@@ -70,17 +70,17 @@ class TrabajadorNegocio{
     }
 
     function obtener(){
-        $trabajadores = new TrabajadorAccesoDatos();
+        $trabajadores = new TrabajadorModelo();
         $arrayTrabajadores = $trabajadores->obtener();
 
 		$listaTrabajadores =  array();
 
         foreach ($arrayTrabajadores as $trabajador){
            
-            $trabajadoresNegocio = new TrabajadorNegocio();
-            $trabajadoresNegocio->Init($trabajador['ID'], $trabajador['nombre'], $trabajador['apellidos'], $trabajador['trabajo'], $trabajador['n_colegiado'], $trabajador['fecha_alta'], $trabajador['num_contacto'], $trabajador['id_usuario']);
+            $trabajadoresControlador = new TrabajadorControlador();
+            $trabajadoresControlador->Init($trabajador['ID'], $trabajador['nombre'], $trabajador['apellidos'], $trabajador['trabajo'], $trabajador['n_colegiado'], $trabajador['fecha_alta'], $trabajador['num_contacto'], $trabajador['id_usuario']);
             
-            array_push($listaTrabajadores, $trabajadoresNegocio);
+            array_push($listaTrabajadores, $trabajadoresControlador);
         }
                 
         return $listaTrabajadores;
@@ -88,8 +88,8 @@ class TrabajadorNegocio{
 
     function buscarTrabajadorPorId($idTrabajador){
 
-        $trabajadoresNegocio = new TrabajadorNegocio();
-        $listaTrabajadores = $trabajadoresNegocio->obtener();
+        $trabajadoresControlador = new TrabajadorControlador();
+        $listaTrabajadores = $trabajadoresControlador->obtener();
 
         foreach($listaTrabajadores as $trabajador){
 

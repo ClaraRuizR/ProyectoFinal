@@ -3,8 +3,7 @@
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 
-class MascotasAccesoDatos
-{
+class MascotasModelo{
 	
 	function __construct(){
     }
@@ -12,8 +11,7 @@ class MascotasAccesoDatos
 	function obtener($filtro, $textoFiltro){
 
 		$conexion = mysqli_connect('localhost','Clara','2223');
-		if (mysqli_connect_errno())
-		{
+		if (mysqli_connect_errno()){
 				echo "Error al conectar a MySQL: ". mysqli_connect_error();
 		}
  		mysqli_select_db($conexion, 'veterinaria');
@@ -32,8 +30,7 @@ class MascotasAccesoDatos
 
 		$mascotas =  array();
 
-        while ($myrow = $result->fetch_assoc()) 
-        {
+        while ($myrow = $result->fetch_assoc()){
 			array_push($mascotas,$myrow);
 
         }
@@ -45,8 +42,7 @@ class MascotasAccesoDatos
 		$fechaAlta = date("Y-m-d");
 
         $conexion = mysqli_connect('localhost','Clara','2223');
-		if (mysqli_connect_errno())
-		{
+		if (mysqli_connect_errno()){
 				echo "Error al conectar a MySQL: ". mysqli_connect_error();
 		}
  		mysqli_select_db($conexion, 'veterinaria');

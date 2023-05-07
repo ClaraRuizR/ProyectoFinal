@@ -3,12 +3,12 @@
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 
-require_once("../Negocio/titularNegocio.php");
+require_once("../Controlador/titularControlador.php");
 
 $idTitular = $_GET["idTitular"];
 
-$titularsNegocio = new TitularNegocio();
-$titular = $titularsNegocio->buscarTitularPorId($idTitular);
+$titularsControlador = new TitularControlador();
+$titular = $titularsControlador->buscarTitularPorId($idTitular);
 
 ?>
 

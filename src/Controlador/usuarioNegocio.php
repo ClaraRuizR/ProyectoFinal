@@ -2,9 +2,9 @@
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 
-require("../Infraestructura/usuarioAccesoDatos.php");
+require("../Modelo/usuarioModelo.php");
 
-class UsuarioNegocio
+class UsuarioControlador
 {
 
 	function __construct()
@@ -12,7 +12,7 @@ class UsuarioNegocio
     }
     
     function verificar($usuario, $clave){
-        $usuariosDAL = new UsuarioAccesoDatos();
+        $usuariosDAL = new UsuarioModelo();
         $res = $usuariosDAL->verificar($usuario,$clave);
         return $res;
     }

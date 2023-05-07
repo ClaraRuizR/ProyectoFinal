@@ -1,19 +1,19 @@
 <?php
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
-require_once("../Negocio/mascotasNegocio.php");
-require_once("../Negocio/titularNegocio.php");
-require_once("../Negocio/consultaNegocio.php");
+require_once("../Controlador/mascotasControlador.php");
+require_once("../Controlador/titularControlador.php");
+require_once("../Controlador/consultaControlador.php");
 
 
-$mascotasNegocio = new MascotasNegocio();
-$titularesNegocio = new TitularNegocio();
-$consultasNegocio = new ConsultaNegocio();
+$mascotasControlador = new MascotasControlador();
+$titularesControlador = new TitularControlador();
+$consultasControlador = new ConsultaControlador();
 
 $idMascota = $_GET["id"];
 
-$listaMascotas = $mascotasNegocio->obtener('ID', $idMascota);
-$titular = $titularesNegocio->buscarTitularPorId($listaMascotas[0]->getTitular());
+$listaMascotas = $mascotasControlador->obtener('ID', $idMascota);
+$titular = $titularesControlador->buscarTitularPorId($listaMascotas[0]->getTitular());
 
 ?>
 
@@ -129,7 +129,7 @@ $titular = $titularesNegocio->buscarTitularPorId($listaMascotas[0]->getTitular()
                 <table cellspacing="0">
                     <?php 
 
-                    $listaConsultas = $consultasNegocio->buscarConsultasporMascota($listaMascotas[0]->getID());
+                    $listaConsultas = $consultasControlador->buscarConsultasporMascota($listaMascotas[0]->getID());
 
                     foreach($listaConsultas as $consulta){
                         echo"<tr>";
