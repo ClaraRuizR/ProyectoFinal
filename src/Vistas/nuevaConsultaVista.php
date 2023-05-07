@@ -1,3 +1,12 @@
+<?php
+
+ini_set('display_errors', 'On');
+ini_set('html_errors', 0);
+
+$idMascota = $_GET["idMascota"];
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -23,7 +32,7 @@
         
         <div class="cuerpo">
             <h1>Nueva consulta</h1>
-            <form action="">
+            <form action="consultaRegistrada.php" method="POST">
                 <fieldset>
 
                     <table cellspacing="0">
@@ -54,11 +63,11 @@
                         <legend>EFG</legend>
                         <tr>
                             <td><label for="pesoMascotaConsulta">Peso (kg):</label></td>
-                            <td><input type="number" id="pesoMascotaConsulta" name="pesoMascotaConsulta"></td>
+                            <td><input type="number" step="any" min="0" id="pesoMascotaConsulta" name="pesoMascotaConsulta"></td>
                         </tr>
                         <tr>
                             <td><label for="temperaturaMascotaConsulta">Temperatura (ºC):</label></td>
-                            <td><input type="number" id="temperaturaMascotaConsulta" name="temperaturaMascotaConsulta"></td>
+                            <td><input type="number" step="any" min="0" id="temperaturaMascotaConsulta" name="temperaturaMascotaConsulta"></td>
                         </tr>
                         <tr>
                             <td><label for="exploracionConsulta">Exploración física:</label></td>
@@ -96,7 +105,7 @@
                             <td><textarea placeholder="Escribe aquí..." id="medicamentosCedidosConsulta" cols="50" rows="5" name="medicamentosCedidosConsulta"></textarea></td>                        
                         </tr>
                         <tr>
-                            <td><label for="dietasConsulta">Medicamentos cedidos:</label></td>
+                            <td><label for="dietasConsulta">Dietas:</label></td>
                             <td><textarea placeholder="Escribe aquí..." id="dietasConsulta" cols="50" rows="5" name="dietasConsulta"></textarea></td>                        
                         </tr>
                         <tr>
@@ -125,7 +134,9 @@
                     </table>
                     
                 </fieldset>
-
+                <?php
+                    echo"<input id='mascota' name='mascota' type='hidden' value='$idMascota'>";
+                ?>
                 <br><br>
                 <input type="submit" value="Enviar" id="botonEnviar">
             </form>

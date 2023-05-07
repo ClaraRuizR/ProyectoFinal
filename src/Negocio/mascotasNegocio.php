@@ -114,5 +114,22 @@ class MascotasNegocio{
                 
         return $listaMascotas;
     }
-    
+
+    function crearFicha($pasaporte, $nombre, $titular, $especie, $raza, $sexo, $color, $codigoChip, $fechaNacimiento, $operado){
+
+        $mascotasAccesoDatos = new MascotasAccesoDatos();
+        $respuesta = $mascotasAccesoDatos->crearFicha($pasaporte, $nombre, $titular, $especie, $raza, $sexo, $color, $codigoChip, $fechaNacimiento, $operado);
+        
+        return $respuesta;
+    }
+
+    function obtenerIdUltimaMascotaRegistrada(){
+
+		$mascotas = new mascotasAccesoDatos();
+        $arrayMascotas = $mascotas->obtener(-1, -1);
+
+        $ultimaEntrada = end($arrayMascotas);
+
+        return $ultimaEntrada['ID'];
+	}
 }

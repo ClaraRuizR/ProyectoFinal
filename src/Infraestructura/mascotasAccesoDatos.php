@@ -39,4 +39,29 @@ class MascotasAccesoDatos
         }
 		return $mascotas;
 	}
+
+	function crearFicha($pasaporte, $nombre, $titular, $especie, $raza, $sexo, $color, $codigoChip, $fechaNacimiento, $operado){
+
+		$fechaAlta = date("Y-m-d");
+
+        $conexion = mysqli_connect('localhost','Clara','2223');
+		if (mysqli_connect_errno())
+		{
+				echo "Error al conectar a MySQL: ". mysqli_connect_error();
+		}
+ 		mysqli_select_db($conexion, 'veterinaria');
+
+		$consulta = mysqli_prepare($conexion, "INSERT INTO T_Mascota(pasaporte, nombre, id_titular, especie, raza, sexo, color, codigo_chip, fecha_nacimiento, operado, fecha_alta) VALUES ('$pasaporte', '$nombre', $titular, '$especie', '$raza', '$sexo', '$color', '$codigoChip', '$fechaNacimiento', '$operado', '$fechaAlta');");
+		
+		$result = $consulta->execute();
+
+		if(!$result){
+			$mensaje = 'Consulta inválida. ' .mysqli_error($conexion) . "\n";
+	
+		} else if ($result){
+			$mensaje = "Mascota guardada con éxito.";
+		}
+
+		return $mensaje;
+    }
 }

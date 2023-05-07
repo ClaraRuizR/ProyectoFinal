@@ -23,7 +23,7 @@
         
         <div class="cuerpo">
             <h1>Alta: nueva mascota</h1>
-            <form action="">
+            <form action="mascotaRegistrada.php" method="POST">
                 <fieldset>
                     <legend>Información de mascota</legend>
                     <table cellspacing="0">
@@ -82,7 +82,7 @@
     
                         <tr>
                             <td><label for="selectOperadoMascota">Operado:</label></td>
-                            <td><select name="selectSexoMascota" id="selectOperadoMascota" required>
+                            <td><select name="selectOperadoMascota" id="selectOperadoMascota" required>
                                 <option value="Si">Sí</option>
                                 <option value="No">No</option>
                                 <option value="?">?</option>

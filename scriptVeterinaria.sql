@@ -64,6 +64,7 @@ CREATE TABLE `T_Consulta`(
     `id_veterinario`INTEGER DEFAULT NULL,
     `fecha` DATE DEFAULT NOW(),
     `motivo_consulta` VARCHAR(500) DEFAULT NULL,
+    `antecedentes` VARCHAR(100) DEFAULT NULL,
     `peso` DECIMAL(5,2) DEFAULT NULL,
     `temperatura` DECIMAL(5,2) DEFAULT NULL,
     `exploracion_fisica` VARCHAR(500) DEFAULT NULL,
@@ -154,12 +155,12 @@ ALTER TABLE T_Fichero ADD FOREIGN KEY (id_mascota) REFERENCES T_Mascota (ID);
 /*INSERTS*/
 
 INSERT INTO T_Titular VALUES 
-(1, 'Clara Ruiz', '43465253V', 'Calle Falsa, 123', 07009, 666666666, '2021-09-11')
+(1, 'Clara Ruiz', '43465253V', 'Calle Falsa, 123', 07009, 666666666, '2021-09-11'),
 (2, 'Pau Valls', '43452023B', 'Calle Falsa, 123', 07009, 677777777, '2019-09-11'),
 (3, 'Alicia Ruiz', '43625128M', 'Calle Cuenca, 2', 07009, 688888888, '2018-09-11');
 
 INSERT INTO T_Mascota VALUES 
-(1, 'ES052588521', 'Weepy', 2, 'FEL', 'Europeo', 'Macho', 'Blanco y atigrado naranja', '258632145885210', '2019-01-02', 'Sí', '2019-09-11')
+(1, 'ES052588521', 'Weepy', 2, 'FEL', 'Europeo', 'Macho', 'Blanco y atigrado naranja', '258632145885210', '2019-01-02', 'Sí', '2019-09-11'),
 (2, 'ES052588522', 'Emi', 1, 'FEL', 'Europeo', 'Macho', 'Blanco y atigrado marrón', '258632145885211', '2020-01-02', 'Sí', '2021-09-11'),
 (3, 'ES052588523', 'Chacho', 3, 'CAN', 'Mezcla', 'Macho', 'Marrón', '258632145885212', '2018-01-02', 'Sí', '2018-09-11');
 
@@ -168,4 +169,6 @@ INSERT INTO T_Usuario VALUES(1, 'Pablo Martín', 'Veterinario', 'clave123'), (2,
 INSERT INTO T_Trabajador VALUES(1, 'Pablo', 'Martín', 'Veterinario', '94764830', '2020-02-05', 666666666, 2), (2, 'Laura', 'Sánchez', 'Veterinario', '94764831', '2019-03-11', 677777777, 1);
 
 INSERT INTO T_Consulta VALUES 
-(2, 2, 1, '2023-01-07', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 3.88, 35.1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', '-', '-', 'Lorem ipsum dolor sit amet.', 'Ninguna.', '-', '-'), (3, 2, 1, '2023-02-05', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 3.88, 35.1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', '-', '-', 'Lorem ipsum dolor sit amet.', 'Ninguna.', '-', '-'), (4, 3, 2, '2023-02-08', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 4.88, 34.2, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', '-','-', 'Lorem ipsum dolor sit amet.', 'Ninguna.', '-', '-');
+(2, 2, 1, '2023-01-07', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet.', 3.88, 35.1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', '-', '-', 'Lorem ipsum dolor sit amet.', 'Ninguna.', '-', '-'), 
+(3, 2, 1, '2023-02-05', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet.', 3.88, 35.1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', '-', '-', 'Lorem ipsum dolor sit amet.', 'Ninguna.', '-', '-'), 
+(4, 3, 2, '2023-02-08', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet.', 4.88, 34.2, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', '-','-', 'Lorem ipsum dolor sit amet.', 'Ninguna.', '-', '-');

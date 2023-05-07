@@ -135,9 +135,9 @@ $titular = $titularesNegocio->buscarTitularPorId($listaMascotas[0]->getTitular()
                         echo"<td><a href='consultaVista.php?id=".$consulta->getID()."'>Ver consulta</a></td>";
                         echo"</tr>";
                     }
-                    ?>
-                    
-                </table>
+                    echo"</table>";
+                    echo"<div class='enlacePie'><a href='nuevaConsultaVista.php?idMascota=".$listaMascotas[0]->getID()."'>Nueva consulta</a></div>";
+                ?>
             </fieldset>
         </div>
     </div>

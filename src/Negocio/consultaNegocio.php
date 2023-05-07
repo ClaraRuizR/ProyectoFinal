@@ -3,6 +3,7 @@ ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 require_once("../Infraestructura/consultaAccesoDatos.php");
 
+//REVISAR ATRIBUTOS
 
 class ConsultaNegocio{
     
@@ -11,6 +12,7 @@ class ConsultaNegocio{
     private $idVeterinario;
     private $fecha;
     private $motivoConsulta;
+    private $antecedentes;
     private $peso;
     private $temperatura;
     private $exploracionFisica;
@@ -28,13 +30,14 @@ class ConsultaNegocio{
     
     }
 
-    function init($ID, $idMascota, $idVeterinario, $fecha, $motivoConsulta, $peso, $temperatura, $exploracionFisica, $diagnostico, $actuacion, $procedimientos, $anestesia, $medicacionInyectada, $medicamentosCedidos, $dietas, $tienda, $otros){
+    function init($ID, $idMascota, $idVeterinario, $fecha, $motivoConsulta, $antecedentes, $peso, $temperatura, $exploracionFisica, $diagnostico, $actuacion, $procedimientos, $anestesia, $medicacionInyectada, $medicamentosCedidos, $dietas, $tienda, $otros){
 
         $this->ID = $ID;
         $this->idMascota = $idMascota;
         $this->idVeterinario = $idVeterinario;
         $this->fecha = $fecha;
         $this->motivoConsulta = $motivoConsulta;
+        $this->antecedentes = $antecedentes;
         $this->peso = $peso;
         $this->temperatura = $temperatura;
         $this->exploracionFisica = $exploracionFisica;
@@ -74,6 +77,11 @@ class ConsultaNegocio{
         return $this->motivoConsulta;
     }
 
+    function getAntecedentes() {
+
+        return $this->antecedentes;
+    }
+
     function getPeso(){
 
         return $this->peso;
@@ -89,7 +97,7 @@ class ConsultaNegocio{
         return $this->exploracionFisica;
     }
 
-    function getCodigoDiagnostico(){
+    function getDiagnostico(){
 
         return $this->diagnostico;
     }
@@ -143,7 +151,7 @@ class ConsultaNegocio{
         foreach ($arrayConsultas as $consulta){
            
             $consultasNegocio = new ConsultaNegocio();
-            $consultasNegocio->Init($consulta['ID'], $consulta['id_mascota'], $consulta['id_veterinario'], $consulta['fecha'], $consulta['motivo_consulta'], $consulta['peso'], $consulta['temperatura'], $consulta['exploracion_fisica'], $consulta['diagnostico'], $consulta['actuacion'], $consulta['procedimientos'], $consulta['anestesia'], $consulta['medicacion_inyectada'], $consulta['medicamentos_cedidos'], $consulta['dietas'], $consulta['tienda'], $consulta['otros']);
+            $consultasNegocio->Init($consulta['ID'], $consulta['id_mascota'], $consulta['id_veterinario'], $consulta['fecha'], $consulta['motivo_consulta'], $consulta['antecedentes'], $consulta['peso'], $consulta['temperatura'], $consulta['exploracion_fisica'], $consulta['diagnostico'], $consulta['actuacion'], $consulta['procedimientos'], $consulta['anestesia'], $consulta['medicacion_inyectada'], $consulta['medicamentos_cedidos'], $consulta['dietas'], $consulta['tienda'], $consulta['otros']);
             
             array_push($listaConsultas, $consultasNegocio);
         }
@@ -182,5 +190,25 @@ class ConsultaNegocio{
             }
         }
     }
+
+    function crearConsulta($veterinario, $mascota, $motivoConsulta, $fechaConsulta, $antecedentesConsulta, $pesoMascotaConsulta, $temperaturaMascotaConsulta, $exploracionConsulta, $diagnosticoConsulta, $actuacionConsulta, $procedimientosConsulta, $anestesiaConsulta, $medicacionInyectadaConsulta, $medicamentosCedidosConsulta, $dietasConsulta, $tiendaConsulta, $otrosConsulta, $fotosConsulta, $analiticasConsulta){
+
+        $consultasAccesoDatos = new ConsultaAccesoDatos();
+        $respuesta = $consultasAccesoDatos->crearConsulta($veterinario, $mascota, $motivoConsulta, $fechaConsulta, $antecedentesConsulta, $pesoMascotaConsulta, $temperaturaMascotaConsulta, $exploracionConsulta, $diagnosticoConsulta, $actuacionConsulta, $procedimientosConsulta, $anestesiaConsulta, $medicacionInyectadaConsulta, $medicamentosCedidosConsulta, $dietasConsulta, $tiendaConsulta, $otrosConsulta, $fotosConsulta, $analiticasConsulta);
+        
+        return $respuesta;
+    }
+
+    function obtenerIdUltimaConsultaRegistrada(){
+
+		$consultasAccesoDatos = new ConsultaAccesoDatos();
+        $arrayConsultas = $consultasAccesoDatos->obtener(-1, -1);
+
+        $ultimaEntrada = end($arrayConsultas);
+
+        return $ultimaEntrada['ID'];
+	}
+
+
     
 }
