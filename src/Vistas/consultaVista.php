@@ -4,15 +4,17 @@ ini_set('html_errors', 0);
 require_once("../Negocio/mascotasNegocio.php");
 require_once("../Negocio/titularNegocio.php");
 require_once("../Negocio/consultaNegocio.php");
-
+require_once("../Negocio/trabajadorNegocio.php");
 
 $mascotasNegocio = new MascotasNegocio();
 $titularesNegocio = new TitularNegocio();
 $consultasNegocio = new ConsultaNegocio();
+$trabajadoresNegocio = new TrabajadorNegocio();
 
 $id = $_GET["id"];
 
 $consulta = $consultasNegocio->buscarConsultasporId($id);
+$veterinario = $trabajadoresNegocio->buscarTrabajadorPorId($consulta->getIdVeterinario());
 
 ?>
 
@@ -48,10 +50,9 @@ $consulta = $consultasNegocio->buscarConsultasporId($id);
                 
                     <tr>
                         <td>Veterinario:</td>
-                        <td id="texto">POR AÑADIR!!!!
+                        <td id="texto">
                             <?php
-                            // $veterinario = 
-                            // print()
+                            print($veterinario->getNombre()." ".$veterinario->getApellidos())
                             ?>
                         </td>
                     </tr>

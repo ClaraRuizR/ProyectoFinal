@@ -47,7 +47,7 @@ class TitularNegocio{
         return $this->domicilio;
     }
 
-    function getCodigo_postal(){
+    function getCodigoPostal(){
 
         return $this->codigoPostal;
     }
