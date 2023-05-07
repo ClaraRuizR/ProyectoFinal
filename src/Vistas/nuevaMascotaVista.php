@@ -1,3 +1,17 @@
+<?php
+
+ini_set('display_errors', 'On');
+ini_set('html_errors', 0);
+
+require_once("../Negocio/titularNegocio.php");
+
+$idTitular = $_GET["idTitular"];
+
+$titularsNegocio = new TitularNegocio();
+$titular = $titularsNegocio->buscarTitularPorId($idTitular);
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -38,11 +52,23 @@
                             <td><input placeholder="Escribe aquí..." type="text" id="nombreMascota" name="nombreMascota" required></td>
                         </tr>
                         
-                        <tr>
-                            <td><label for="titularMascota">Titular:</label></td>
-                            <td><input placeholder="Escribe aquí..." type="text" id="titularMascota" name="titularMascota"></td>
-                        </tr>
-    
+                        <?php
+                        if($idTitular != 0){
+                            echo"<tr>";
+                            echo"<input id='titularMascota' name='titularMascota' type='hidden' value='<?php$idTitular?>'>";
+                            echo"<td><label for='titularMascota'>Titular:</label></td>";
+                            echo"<div><td>";
+                            print($titular->getNombre());
+                            echo"</td></div>";
+                            echo"</tr>";
+                        }else{
+                            echo"<tr>";
+                            echo"<td><label for='titularMascota'>Titular:</label></td>";
+                            echo"<td><input placeholder='Escribe aquí...' type='text' id='titularMascota' name='titularMascota'></td>";
+                            echo"</tr>";
+                        }
+                        ?>
+
                         <tr>
                             <td><label for="selectEspecieMascota">Especie:</label></td>
                             <td><select name="selectEspecieMascota" id="selectEspecieMascota" required>

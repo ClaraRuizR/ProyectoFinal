@@ -112,7 +112,7 @@ if ($_GET["filtros"] == 'si'){
                 ?>
                 
             </table>
-            <div class="enlacePie"><a href='nuevaMascotaVista.php'>Nueva mascota</a></div>
+            <div class="enlacePie"><a href='nuevaMascotaVista.php?idTitular=0'>Nueva mascota</a></div>
         </div>
         <footer></footer>
     </div>  

@@ -117,7 +117,9 @@ $titular = $titularesNegocio->buscarTitularPorId($listaMascotas[0]->getTitular()
                         <td><?php print($titular->getDomicilio())?></td>
                     </tr>
                 </table>
-                <div class="enlacePie"><a href=''>Acceder a ficha</a></div>
+                <?php
+                    echo"<div class='enlacePie'><a href='fichaTitularVista.php?id=".$titular->getID()."'>Acceder a ficha</a></div>";
+                ?>
             </fieldset>
 
             <h1>Consultas</h1>

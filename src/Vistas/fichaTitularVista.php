@@ -1,3 +1,19 @@
+<?php
+ini_set('display_errors', 'On');
+ini_set('html_errors', 0);
+require_once("../Negocio/mascotasNegocio.php");
+require_once("../Negocio/titularNegocio.php");
+
+$mascotasNegocio = new MascotasNegocio();
+$titularesNegocio = new TitularNegocio();
+
+$idTitular = $_GET["id"];
+
+$titular = $titularesNegocio->buscarTitularPorId($idTitular);
+$listaMascotas = $mascotasNegocio->obtener('id_titular', $titular->getID());
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,7 +38,7 @@
         </header>
         
         <div class="cuerpo">
-            <h1>Clara Ruiz</h1>
+            <h1><?php print($titular->getNombre())?></h1>
             
             <fieldset>
                 <legend>Información general</legend>
@@ -30,51 +46,52 @@
 
                     <tr>
                         <td>Nombre:</td>
-                        <td>Clara Ruiz</td>
+                        <td><?php print($titular->getNombre())?></td>
                     </tr>
     
                     <tr>
                         <td>DNI:</td>
-                        <td>43468982V</td>
+                        <td><?php print($titular->getDNI())?></td>
                     </tr>
                     
                    <tr>
                         <td>Domicilio:</td>
-                        <td>Calle Falsa, 123</td>
+                        <td><?php print($titular->getDomicilio())?></td>
                    </tr>
     
                     <tr>
                         <td>Código postal:</td>
-                        <td>07007</td>
+                        <td><?php print($titular->getCodigoPostal())?></td>
                     </tr>
     
                     <tr>
                         <td>Número de contacto:</td>
-                        <td>666-66-66-66</td>
+                        <td><?php print($titular->getNumContacto())?></td>
                     </tr>
     
                     <tr>
                         <td>Fecha alta:</td>
-                        <td>24/09/22</td>
+                        <td><?php print($titular->getFechaAlta())?></td>
                     </tr>
     
                 </table>
-                <div class="enlacePie"><a href=''>Editar ficha</a></div>
             </fieldset>
 
             <fieldset>
                 <legend>Mascotas</legend>
                 <table cellspacing="0">
-                    <tr>
-                        <td>Emi</td>
-                        <td><a href="">Acceder a ficha</a></td>
-                    </tr>
-                    <tr>
-                        <td>Weepy</td>
-                        <td><a href="">Acceder a ficha</a></td>
-                    </tr>
-
-                </table>
+                    <?php
+                        foreach($listaMascotas as $mascota){
+                            echo"<tr>";
+                            echo"<td>";
+                            print($mascota->getNombre());
+                            echo"</td>";
+                            echo"<td><a href='fichaMascotaVista.php?id=".$mascota->getID()."'>Acceder a ficha</a></td>";
+                            echo"</tr>";
+                        }
+                        echo"</table>";
+                        echo"<div class='enlacePie'><a href='nuevaMascotaVista.php?idTitular=".$titular->getID()."'>Añade una nueva mascota a este tituar</a></div>";
+                ?>
             </fieldset>
 
         </div>

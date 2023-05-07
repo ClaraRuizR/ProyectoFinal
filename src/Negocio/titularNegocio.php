@@ -24,7 +24,7 @@ class TitularNegocio{
         $this->domicilio = $domicilio;
         $this->codigoPostal = $codigoPostal;
         $this->numContacto = $numContacto;
-        $this->color = $fechaAlta;
+        $this->fechaAlta = $fechaAlta;
     }
 
     function getID(){
