@@ -12,13 +12,12 @@ class TrabajadorControlador{
     private $numColegiado;
     private $fechaAlta;
     private $numContacto;
-    private $idUsuario;
 
 	function __construct(){
     
     }
 
-    function init($id, $nombre, $apellidos, $trabajo, $numColegiado, $fechaAlta, $numContacto, $idUsuario){
+    function init($id, $nombre, $apellidos, $trabajo, $numColegiado, $fechaAlta, $numContacto){
         $this->ID = $id;
         $this->nombre = $nombre;
         $this->apellidos = $apellidos;
@@ -26,7 +25,6 @@ class TrabajadorControlador{
         $this->numColegiado = $numColegiado;
         $this->fechaAlta = $fechaAlta;
         $this->numContacto = $numContacto;
-        $this->idUsuario = $idUsuario;
     }
 
     function getID(){
@@ -64,11 +62,6 @@ class TrabajadorControlador{
         return $this->numContacto;
     }
 
-    function getIdUsuario(){
-
-        return $this->idUsuario;
-    }
-
     function obtener(){
         $trabajadores = new TrabajadorModelo();
         $arrayTrabajadores = $trabajadores->obtener();
@@ -78,7 +71,7 @@ class TrabajadorControlador{
         foreach ($arrayTrabajadores as $trabajador){
            
             $trabajadoresControlador = new TrabajadorControlador();
-            $trabajadoresControlador->Init($trabajador['ID'], $trabajador['nombre'], $trabajador['apellidos'], $trabajador['trabajo'], $trabajador['n_colegiado'], $trabajador['fecha_alta'], $trabajador['num_contacto'], $trabajador['id_usuario']);
+            $trabajadoresControlador->Init($trabajador['ID'], $trabajador['nombre'], $trabajador['apellidos'], $trabajador['trabajo'], $trabajador['n_colegiado'], $trabajador['fecha_alta'], $trabajador['num_contacto']);
             
             array_push($listaTrabajadores, $trabajadoresControlador);
         }

@@ -92,5 +92,31 @@ class TitularControlador{
             }
         }
     }
+
+    function obtenerIdUltimoTitularRegistrado(){
+
+		$titulares = new TitularModelo();
+        $arrayTitulares = $titulares->obtener();
+
+        $ultimaEntrada = end($arrayTitulares);
+
+        return $ultimaEntrada['ID'];
+	}
+
+    function crearFicha($nombre, $dniTitular, $domicilioTitular, $codigoPostalTitular, $numeroContactoTitular){
+
+        $titularModelo = new TitularModelo();
+        $respuesta = $titularModelo->crearFicha($nombre, $dniTitular, $domicilioTitular, $codigoPostalTitular, $numeroContactoTitular);
+        
+        return $respuesta;
+    }
+
+    function editarFicha($idTitular, $nombre, $dniTitular, $domicilioTitular, $codigoPostalTitular, $numeroContactoTitular){
+
+        $titularModelo = new TitularModelo();
+        $respuesta = $titularModelo->editarFicha($idTitular, $nombre, $dniTitular, $domicilioTitular, $codigoPostalTitular, $numeroContactoTitular);
+        
+        return $respuesta;
+    }
     
 }

@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS `T_Titular`;
 /*TABLE CREATION*/
 
 CREATE TABLE `T_Titular`(
-	`ID` INTEGER,
+	`ID` INTEGER AUTO_INCREMENT,
     `nombre` VARCHAR(50) DEFAULT NULL,
     `DNI` VARCHAR(9) DEFAULT NULL,
     `domicilio` VARCHAR(200) DEFAULT NULL,
@@ -30,7 +30,6 @@ CREATE TABLE `T_Trabajador`(
     `n_colegiado` VARCHAR(10) DEFAULT NULL,
     `fecha_alta` DATE DEFAULT NULL,
     `num_contacto` INTEGER DEFAULT NULL,
-    `id_usuario` INTEGER DEFAULT NULL,
     PRIMARY KEY (`ID`)
 );
 
@@ -39,6 +38,7 @@ CREATE TABLE `T_Usuario`(
     `nombre_usuario` VARCHAR(100) DEFAULT NULL,
     `perfil`ENUM('Veterinario/a','ACV','Peluquero/a','Administrador/a') DEFAULT NULL,
     `clave` VARCHAR(100) DEFAULT NULL,
+    `id_trabajador` INTEGER DEFAULT NULL,
     PRIMARY KEY (`ID`)
 );
 
@@ -125,7 +125,8 @@ CREATE TABLE `T_Fichero`(
 
 /*FOREIGN KEYS*/
 
-ALTER TABLE T_Trabajador ADD FOREIGN KEY (id_usuario) REFERENCES T_Usuario (ID);
+/*ALTER TABLE T_Trabajador ADD FOREIGN KEY (id_usuario) REFERENCES T_Usuario (ID);*/
+ALTER TABLE T_Usuario ADD FOREIGN KEY (id_trabajador) REFERENCES T_Trabajador (ID);
 
 ALTER TABLE T_Mascota ADD FOREIGN KEY (id_titular) REFERENCES T_Titular (ID);
 
@@ -164,9 +165,9 @@ INSERT INTO T_Mascota VALUES
 (2, 'ES052588522', 'Emi', 1, 'FEL', 'Europeo', 'Macho', 'Blanco y atigrado marrón', '258632145885211', '2020-01-02', 'Sí', '2021-09-11'),
 (3, 'ES052588523', 'Chacho', 3, 'CAN', 'Mezcla', 'Macho', 'Marrón', '258632145885212', '2018-01-02', 'Sí', '2018-09-11');
 
-INSERT INTO T_Usuario VALUES(1, 'Pablo Martín', 'Veterinario', 'clave123'), (2, 'Laura Sánchez', 'Veterinario', 'clave456');
+/*INSERT INTO T_Usuario VALUES(1, 'Pablo Martín', 'Veterinario', 'clave123'), (2, 'Laura Sánchez', 'Veterinario', 'clave456');*/
 
-INSERT INTO T_Trabajador VALUES(1, 'Pablo', 'Martín', 'Veterinario', '94764830', '2020-02-05', 666666666, 2), (2, 'Laura', 'Sánchez', 'Veterinario', '94764831', '2019-03-11', 677777777, 1);
+INSERT INTO T_Trabajador VALUES(1, 'Pablo', 'Martín', 'Veterinario', '94764830', '2020-02-05', 666666666), (2, 'Laura', 'Sánchez', 'Veterinario', '94764831', '2019-03-11', 677777777);
 
 INSERT INTO T_Consulta VALUES 
 (2, 2, 1, '2023-01-07', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet.', 3.88, 35.1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', '-', '-', 'Lorem ipsum dolor sit amet.', 'Ninguna.', '-', '-'), 

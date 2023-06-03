@@ -14,7 +14,7 @@ class TrabajadorModelo{
 				echo "Error al conectar a MySQL: ". mysqli_connect_error();
 		}
  		mysqli_select_db($conexion, 'veterinaria');
-		$consulta = mysqli_prepare($conexion, "SELECT ID, nombre, apellidos, trabajo, n_colegiado, fecha_alta, num_contacto, id_usuario FROM T_Trabajador ");
+		$consulta = mysqli_prepare($conexion, "SELECT ID, nombre, apellidos, trabajo, n_colegiado, fecha_alta, num_contacto FROM T_Trabajador ");
         
         $consulta->execute();
         $result = $consulta->get_result();

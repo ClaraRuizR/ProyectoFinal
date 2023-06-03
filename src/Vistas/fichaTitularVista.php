@@ -75,6 +75,10 @@ $listaMascotas = $mascotasControlador->obtener('id_titular', $titular->getID());
                     </tr>
     
                 </table>
+
+                <?php
+                    echo"<div class='enlacePie'><a href='editarTitularVista.php?idTitular=".$idTitular."'>Editar ficha</a></div>";
+                ?>
             </fieldset>
 
             <fieldset>

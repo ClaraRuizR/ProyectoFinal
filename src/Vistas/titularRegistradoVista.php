@@ -3,28 +3,25 @@
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 
-require_once("../Controlador/mascotasControlador.php");
+require_once("../Controlador/titularControlador.php");
 
-$pasaporte = $_POST["pasaporteMascota"];
-$nombre = $_POST["nombreMascota"];
-$titular = intval($_POST["idTitular"]);
-$especie = $_POST["selectEspecieMascota"];
-$raza = $_POST["razaMascota"];
-$sexo = $_POST["selectSexoMascota"];
-$color = $_POST["colorMascota"];
-$codigoChip = $_POST["codigoChipMascota"];
-$fechaNacimiento = $_POST["fechaNacimientoMascota"];
-$operado = $_POST["selectOperadoMascota"];
+$nombre = $_POST["nombreTitular"];
+$dniTitular = $_POST["dniTitular"];
+$domicilioTitular = $_POST["domicilioTitular"];
+$codigoPostalTitular = $_POST["codigoPostalTitular"];
+$numeroContactoTitular = $_POST["numeroContactoTitular"];
 $edit = $_POST["edit"];
 
-$mascotasControlador = new MascotasControlador();
+$titularControlador = new TitularControlador();
+
+
 
 if($edit == "s"){
-    $idMascota = intval($_POST["idMascota"]);
-    $respuesta = $mascotasControlador->editarFicha($idMascota, $pasaporte, $nombre, $titular, $especie, $raza, $sexo, $color, $codigoChip, $fechaNacimiento, $operado);
+    $idTitular = $_POST["idTitular"];
+    $respuesta = $titularControlador->editarFicha($idTitular, $nombre, $dniTitular, $domicilioTitular, $codigoPostalTitular, $numeroContactoTitular);
 
 } elseif($edit == "n"){
-    $respuesta = $mascotasControlador->crearFicha($pasaporte, $nombre, $titular, $especie, $raza, $sexo, $color, $codigoChip, $fechaNacimiento, $operado);
+    $respuesta = $titularControlador->crearFicha($nombre, $dniTitular, $domicilioTitular, $codigoPostalTitular, $numeroContactoTitular);
 
 }
 
@@ -53,18 +50,20 @@ if($edit == "s"){
                 <a href=''>Cerrar sesión</a>
             </div>
         </header>
-        
+
         <div class="cuerpo">
+
             <div class="mensaje">
                 <?php
                 echo"$respuesta";
                 if($edit == "s"){
-                    echo"<a id='enlaceFichaCreada' href='fichaMascotaVista.php?id=".$idMascota."'>Ver ficha</a>";
-                
+
+                    echo"<a id='enlaceFichaCreada' href='fichaTitularVista.php?id=".$idTitular."'>Ver ficha</a>";
                 } elseif($edit == "n"){
                     
-                echo"<a id='enlaceFichaCreada' href='fichaMascotaVista.php?id=".$mascotasControlador->obtenerIdUltimaMascotaRegistrada()."'>Ver ficha</a>";
+                echo"<a id='enlaceFichaCreada' href='fichaTitularVista.php?id=". $titularControlador->obtenerIdUltimoTitularRegistrado()."'>Ver ficha</a>";
                 }
+                
 
                 echo"<a id='enlaceFichaCreada' href='listaMascotasVista.php?filtros=no'>Volver a la lista de mascotas</a>";
                 ?>

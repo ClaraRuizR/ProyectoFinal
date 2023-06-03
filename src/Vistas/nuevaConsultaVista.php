@@ -136,6 +136,7 @@ $idMascota = $_GET["idMascota"];
                 </fieldset>
                 <?php
                     echo"<input id='mascota' name='mascota' type='hidden' value='$idMascota'>";
+                    echo"<input id='edit' name='edit' type='hidden' value='n'>";
                 ?>
                 <br><br>
                 <input type="submit" value="Enviar" id="botonEnviar">

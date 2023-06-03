@@ -123,6 +123,14 @@ class MascotasControlador{
         return $respuesta;
     }
 
+    function editarFicha($idMascota, $pasaporte, $nombre, $titular, $especie, $raza, $sexo, $color, $codigoChip, $fechaNacimiento, $operado){
+
+        $mascotasModelo = new MascotasModelo();
+        $respuesta = $mascotasModelo->editarFicha($idMascota, $pasaporte, $nombre, $titular, $especie, $raza, $sexo, $color, $codigoChip, $fechaNacimiento, $operado);
+        
+        return $respuesta;
+    }
+
     function obtenerIdUltimaMascotaRegistrada(){
 
 		$mascotas = new mascotasModelo();

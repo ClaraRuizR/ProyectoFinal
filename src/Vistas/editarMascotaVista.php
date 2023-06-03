@@ -4,11 +4,16 @@ ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 
 require_once("../Controlador/titularControlador.php");
+require_once("../Controlador/mascotasControlador.php");
 
 $idTitular = $_GET["idTitular"];
+$idMascota = $_GET["idMascota"];
 
-$titularsControlador = new TitularControlador();
-$titular = $titularsControlador->buscarTitularPorId($idTitular);
+// $titularControlador = new TitularControlador();
+// $titular = $titularControlador->buscarTitularPorId($idTitular);
+
+$mascotasControlador = new MascotasControlador();
+$mascota = $mascotasControlador->obtener('ID', $idMascota);
 
 ?>
 
@@ -22,7 +27,7 @@ $titular = $titularsControlador->buscarTitularPorId($idTitular);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Sans+Narrow&display=swap+Arimo&family=EB+Garamond&display=swap" rel="stylesheet">
-    <title>Nueva ficha de mascota</title>
+    <title>Editar ficha de mascota</title>
 </head>
 <body>
     <div class="contenedor">
@@ -36,7 +41,7 @@ $titular = $titularsControlador->buscarTitularPorId($idTitular);
         </header>
         
         <div class="cuerpo">
-            <h1>Alta: nueva mascota</h1>
+            <h1>Editar mascota</h1>
             <form action="mascotaRegistrada.php" method="POST">
                 <fieldset>
                     <legend>Información de mascota</legend>
@@ -44,34 +49,39 @@ $titular = $titularsControlador->buscarTitularPorId($idTitular);
                     
                         <tr>
                             <td><label for="pasaporteMascota">Pasaporte:</label></td>
-                            <td><input placeholder="Escribe aquí..." type="text" id="pasaporteMascota" name="pasaporteMascota"></td>
+                            <td><input placeholder="Escribe aquí..." type="text" id="pasaporteMascota" name="pasaporteMascota"
+                            <?php
+                            echo"value='".$mascota[0]->getPasaporte()."'";
+                            /*                            <?php
+                            echo"<td><input placeholder='Escribe aquí...' type='text' id='pasaporteMascota' name='pasaporteMascota'";
+                            echo"value='".$mascota->getPasaporte()."'";
+                            echo"</td>";
+                            ?>
+                             */
+                            ?>
+                            ></td>
                         </tr>
     
                         <tr>
                             <td><label for="nombreMascota">Nombre:</label></td>
-                            <td><input placeholder="Escribe aquí..." type="text" id="nombreMascota" name="nombreMascota" required></td>
+                            <td><input placeholder="Escribe aquí..." type="text" id="nombreMascota" name="nombreMascota" 
+                            <?php
+                            echo"value='".$mascota[0]->getNombre()."'";
+                            ?>required></td>
                         </tr>
                         
                         <?php
-                        if($idTitular != 0){
-                            echo"<tr>";
-                            echo"<input id='titularMascota' name='titularMascota' type='hidden' value='<?php$idTitular?>'>";
-                            echo"<td><label for='titularMascota'>Titular:</label></td>";
-                            echo"<div><td>";
-                            print($titular->getNombre());
-                            echo"</td></div>";
-                            echo"</tr>";
-                        }else{
                             echo"<tr>";
                             echo"<td><label for='titularMascota'>Titular:</label></td>";
-                            echo"<td><input placeholder='Escribe aquí...' type='text' id='titularMascota' name='titularMascota'></td>";
+                            echo"<td><input placeholder='Escribe aquí...' type='text' id='titularMascota' name='titularMascota' value='".$mascota[0]->getTitular()."'></td>";
                             echo"</tr>";
-                        }
                         ?>
 
                         <tr>
                             <td><label for="selectEspecieMascota">Especie:</label></td>
-                            <td><select name="selectEspecieMascota" id="selectEspecieMascota" required>
+                            <td><select name="selectEspecieMascota" id="selectEspecieMascota"<?php
+                            echo"value='".$mascota[0]->getEspecie()."'";
+                            ?> required>
                                 <option value="FEL">FEL</option>
                                 <option value="CAN">CAN</option>
                                 <option value="Otros">Otros</option>
@@ -80,12 +90,16 @@ $titular = $titularsControlador->buscarTitularPorId($idTitular);
     
                         <tr>
                             <td><label for="razaMascota">Raza:</label></td>
-                            <td><input placeholder="Escribe aquí..." type="text" id="razaMascota" name="razaMascota"></td>
+                            <td><input placeholder="Escribe aquí..." type="text" id="razaMascota" name="razaMascota"<?php
+                            echo"value='".$mascota[0]->getRaza()."'";
+                            ?>></td>
                         </tr>
     
                         <tr>
                             <td><label for="selectSexoMascota">Sexo:</label></td>
-                            <td><select name="selectSexoMascota" id="selectSexoMascota" required>
+                            <td><select name="selectSexoMascota" id="selectSexoMascota" <?php
+                            echo"value='".$mascota[0]->getSexo()."'";
+                            ?> required>
                                 <option value="Macho">Macho</option>
                                 <option value="Hembra">Hembra</option>
                             </select></td>
@@ -93,22 +107,30 @@ $titular = $titularsControlador->buscarTitularPorId($idTitular);
     
                         <tr>
                             <td><label for="colorMascota">Color:</label></td>
-                            <td><input placeholder="Escribe aquí..." type="text" id="colorMascota" name="colorMascota"></td>
+                            <td><input placeholder="Escribe aquí..." type="text" id="colorMascota" name="colorMascota"  <?php
+                            echo"value='".$mascota[0]->getColor()."'";
+                            ?>></td>
                         </tr>
     
                         <tr>
                             <td><label for="codigoChipMascota">Código chip:</label></td>
-                            <td><input placeholder="Escribe aquí..." type="text" id="codigoChipMascota" name="codigoChipMascota"></td>
+                            <td><input placeholder="Escribe aquí..." type="text" id="codigoChipMascota" name="codigoChipMascota"  <?php
+                            echo"value='".$mascota[0]->getCodigoChip()."'";
+                            ?>></td>
                         </tr>
     
                         <tr>
                             <td><label for="fechaNacimientoMascota">Fecha de nacimiento:</label></td>
-                            <td><input type="date" id="fechaNacimientoMascota" name="fechaNacimientoMascota"></td>
+                            <td><input type="date" id="fechaNacimientoMascota" name="fechaNacimientoMascota"  <?php
+                            echo"value='".$mascota[0]->getFechaNacimiento()."'";
+                            ?>></td>
                         </tr>
     
                         <tr>
                             <td><label for="selectOperadoMascota">Operado:</label></td>
-                            <td><select name="selectOperadoMascota" id="selectOperadoMascota" required>
+                            <td><select name="selectOperadoMascota" id="selectOperadoMascota"  <?php
+                            echo"value='".$mascota[0]->getOperado()."'";
+                            ?> required>
                                 <option value="Si">Sí</option>
                                 <option value="No">No</option>
                                 <option value="?">?</option>
@@ -118,8 +140,11 @@ $titular = $titularsControlador->buscarTitularPorId($idTitular);
                     </table>
                 </fieldset>
                 <?php
-                    echo"<input id='edit' name='edit' type='hidden' value='n'>";
+                    echo"<input id='edit' name='edit' type='hidden' value='s'>";
                     echo"<input id='idTitular' name='idTitular' type='hidden' value='".$idTitular."'>";
+                    echo"<input id='idMascota' name='idMascota' type='hidden' value='".$mascota[0]->getID()."'>";
+
+                    
                 ?>
                 <br><br>
                 <input type="submit" value="Enviar" id="botonEnviar">

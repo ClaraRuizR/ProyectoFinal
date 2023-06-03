@@ -28,4 +28,50 @@ class TitularModelo{
         }
 		return $titulares;
 	}
+
+	function crearFicha($nombre, $dniTitular, $domicilioTitular, $codigoPostalTitular, $numeroContactoTitular){
+
+		$fechaAlta = date("Y-m-d");
+
+        $conexion = mysqli_connect('localhost','Clara','2223');
+		if (mysqli_connect_errno()){
+				echo "Error al conectar a MySQL: ". mysqli_connect_error();
+		}
+ 		mysqli_select_db($conexion, 'veterinaria');
+
+		$consulta = mysqli_prepare($conexion, "INSERT INTO T_Titular(nombre, DNI, domicilio, codigo_postal, num_contacto, fecha_alta) VALUES ('$nombre', '$dniTitular', '$domicilioTitular', '$codigoPostalTitular', $numeroContactoTitular, '$fechaAlta');");
+		
+		$result = $consulta->execute();
+
+		if(!$result){
+			$mensaje = 'Consulta inválida. ' .mysqli_error($conexion) . "\n";
+	
+		} else if ($result){
+			$mensaje = "Titular guardado con éxito.";
+		}
+
+		return $mensaje;
+    }
+
+	function editarFicha($idTitular, $nombre, $dniTitular, $domicilioTitular, $codigoPostalTitular, $numeroContactoTitular){
+
+        $conexion = mysqli_connect('localhost','Clara','2223');
+		if (mysqli_connect_errno()){
+				echo "Error al conectar a MySQL: ". mysqli_connect_error();
+		}
+ 		mysqli_select_db($conexion, 'veterinaria');
+
+		$consulta = mysqli_prepare($conexion, "UPDATE T_Titular SET nombre = '$nombre', DNI = '$dniTitular', domicilio = '$domicilioTitular', codigo_postal = $codigoPostalTitular, num_contacto = $numeroContactoTitular WHERE ID = $idTitular;");
+		
+		$result = $consulta->execute();
+
+		if(!$result){
+			$mensaje = 'Consulta inválida. ' .mysqli_error($conexion) . "\n";
+	
+		} else if ($result){
+			$mensaje = "Titular guardado con éxito.";
+		}
+
+		return $mensaje;
+    }
 }

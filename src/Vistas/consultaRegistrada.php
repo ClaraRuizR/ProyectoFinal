@@ -4,7 +4,7 @@ ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 
 require_once("../Controlador/consultaControlador.php");
-require_once("../Controlador/MascotasControlador.php");
+require_once("../Controlador/mascotasControlador.php");
 
 $veterinario = intval($_POST["veterinario"]);
 $mascota = intval($_POST["mascota"]);
@@ -25,9 +25,17 @@ $tiendaConsulta = $_POST["tiendaConsulta"];
 $otrosConsulta = $_POST["otrosConsulta"];
 $fotosConsulta = $_POST["fotosConsulta"];
 $analiticasConsulta = $_POST["analiticasConsulta"];
+$edit = $_POST["edit"];
 
 $consultaControlador = new ConsultaControlador();
-$respuesta = $consultaControlador->crearConsulta($veterinario, $mascota, $motivoConsulta, $fechaConsulta, $antecedentesConsulta, $pesoMascotaConsulta, $temperaturaMascotaConsulta, $exploracionConsulta, $diagnosticoConsulta, $actuacionConsulta, $procedimientosConsulta, $anestesiaConsulta, $medicacionInyectadaConsulta, $medicamentosCedidosConsulta, $dietasConsulta, $tiendaConsulta, $otrosConsulta, $fotosConsulta, $analiticasConsulta);
+if($edit == "s"){
+    $idConsulta = $_POST["idConsulta"];
+    $respuesta = $consultaControlador->editarConsulta($idConsulta, $veterinario, $mascota, $motivoConsulta, $fechaConsulta, $antecedentesConsulta, $pesoMascotaConsulta, $temperaturaMascotaConsulta, $exploracionConsulta, $diagnosticoConsulta, $actuacionConsulta, $procedimientosConsulta, $anestesiaConsulta, $medicacionInyectadaConsulta, $medicamentosCedidosConsulta, $dietasConsulta, $tiendaConsulta, $otrosConsulta, $fotosConsulta, $analiticasConsulta);
+
+} elseif($edit == "n"){
+    $respuesta = $consultaControlador->crearConsulta($veterinario, $mascota, $motivoConsulta, $fechaConsulta, $antecedentesConsulta, $pesoMascotaConsulta, $temperaturaMascotaConsulta, $exploracionConsulta, $diagnosticoConsulta, $actuacionConsulta, $procedimientosConsulta, $anestesiaConsulta, $medicacionInyectadaConsulta, $medicamentosCedidosConsulta, $dietasConsulta, $tiendaConsulta, $otrosConsulta, $fotosConsulta, $analiticasConsulta);
+
+}
 
 ?>
 

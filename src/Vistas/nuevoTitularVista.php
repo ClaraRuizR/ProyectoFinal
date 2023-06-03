@@ -1,3 +1,10 @@
+<?php
+
+ini_set('display_errors', 'On');
+ini_set('html_errors', 0);
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -23,7 +30,7 @@
         
         <div class="cuerpo">
             <h1>Alta: nuevo titular</h1>
-            <form action="">
+            <form action="titularRegistradoVista.php" method="POST">
                 <fieldset>
                     <legend>Información de titular</legend>
                     <table cellspacing="0">
@@ -55,6 +62,9 @@
     
                     </table>
                 </fieldset>
+                <?php
+                    echo"<input id='edit' name='edit' type='hidden' value='n'>";
+                ?>
                 <br><br>
                 <input type="submit" value="Enviar" id="botonEnviar">
             </form>

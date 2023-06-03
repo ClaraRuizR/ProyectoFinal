@@ -102,7 +102,9 @@ $titular = $titularesControlador->buscarTitularPorId($listaMascotas[0]->getTitul
     
     
                 </table>
-                <div class="enlacePie"><a href=''>Editar ficha</a></div>
+                <?php
+                    echo"<div class='enlacePie'><a href='editarMascotaVista.php?idMascota=".$idMascota."&idTitular=".$titular->getID()."'>Editar ficha</a></div>";
+                ?>
             </fieldset>
             
             <fieldset>
