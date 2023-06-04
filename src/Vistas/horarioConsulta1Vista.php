@@ -19,9 +19,7 @@ $semana = [' ', date('Y-m-d',strtotime("monday -$contadorSemana week")), date('Y
 
 $horario = ['10:00:00', '11:00:00', '12:00:00', '13:00:00', '15:00:00', '16:00:00'];
 
-$arrayReservas = $reservasServicio->buscarReservas(date('Y-m-d', $primerDia), date('Y-m-d',$ultimoDia), "consulta1");
-
-$hoy = $fechaAlta = date("Y-m-d");
+$arrayReservas = $reservasServicio->buscarReservas(date('Y-m-d', strtotime("monday -$contadorSemana week")), date('Y-m-d', strtotime("friday -$contadorSemana week")), "Consulta 1");
 
 ?>
 
@@ -41,7 +39,7 @@ $hoy = $fechaAlta = date("Y-m-d");
     <div class="contenedor">
         <header>
             <div class="imgLogo">
-                <img src="../../img/logo.png" alt="logo">
+                <a href="menuInicioVeterinaria.php"><img src="../../img/logo.png" alt="logo"></a>
             </div>
             <div class="nav">
                 <a href='logOutVista.php'>Cerrar sesión</a>
@@ -85,6 +83,8 @@ $hoy = $fechaAlta = date("Y-m-d");
                                     $idMascota = $reserva->getIdMascota();
                                     $mascota = $mascotasControlador->obtener('ID', $idMascota);
                                     echo"Reserva: ".$mascota[0]->getNombre();
+                                }else{
+                                    print($reserva);
                                 }
                                 echo"</td>";
                             }
@@ -102,15 +102,15 @@ $hoy = $fechaAlta = date("Y-m-d");
                     <br>
                     <label for="sala">Sala: </label>
                     <select name="sala" id="sala" value='consulta1' required>
-                        <option value="consulta1">Consulta 1</option>
-                        <option value="consulta2">Consulta 2</option>
-                        <option value="Peluqueria">Peluquería</option>
+                        <option value="Consulta 1">Consulta 1</option>
+                        <option value="Consulta 2">Consulta 2</option>
+                        <option value="Peluquería">Peluquería</option>
                     </select>
 
                     <label for="tipoReserva">TipoReserva: </label>
                     <select name="tipoReserva" id="tipoReserva" required>
                         <option value="veterinario">Veterinario</option>
-                        <option value="peluqueria">Peluquería</option>
+                        <option value="Peluquería">Peluquería</option>
                     </select>
 
                     <label for="fechaReserva">Fecha: </label>
@@ -118,7 +118,7 @@ $hoy = $fechaAlta = date("Y-m-d");
                         echo"<input type='date' id='fechaReserva' name='fechaReserva' min='".$hoy."' required>";
                     ?>
                     <label for="horaInicio">Hora: </label>
-                    <input type="time" id='horaInicio' name='horaInicio' required>
+                    <input type="time" id='horaInicio' name='horaInicio' min='10:00' max='16:00' step="3600" required>
 
                     <label for="numeroContacto">Número de contacto: </label>
                     <input type="number" id='numeroContacto' name='numeroContacto' required>

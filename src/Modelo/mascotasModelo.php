@@ -47,7 +47,9 @@ class MascotasModelo{
 		}
  		mysqli_select_db($conexion, 'veterinaria');
 
-		$consulta = mysqli_prepare($conexion, "INSERT INTO T_Mascota(pasaporte, nombre, id_titular, especie, raza, sexo, color, codigo_chip, fecha_nacimiento, operado, fecha_alta) VALUES ('$pasaporte', '$nombre', $titular, '$especie', '$raza', '$sexo', '$color', '$codigoChip', '$fechaNacimiento', '$operado', '$fechaAlta');");
+		$consulta = mysqli_prepare($conexion, "INSERT INTO T_Mascota(pasaporte, nombre, id_titular, especie, raza, sexo, color, codigo_chip, fecha_nacimiento, operado, fecha_alta) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+
+		$consulta->bind_param("sssssssssss", $pasaporte, $nombre, $titular, $especie, $raza, $sexo, $color, $codigoChip, $fechaNacimiento, $operado, $fechaAlta);
 		
 		$result = $consulta->execute();
 
@@ -69,7 +71,9 @@ class MascotasModelo{
 		}
  		mysqli_select_db($conexion, 'veterinaria');
 
-		$consulta = mysqli_prepare($conexion, "UPDATE T_Mascota SET pasaporte = '$pasaporte', nombre = '$nombre', id_titular = $titular, especie = '$especie', raza = '$raza', sexo = '$sexo', color = '$color', codigo_chip = '$codigoChip', fecha_nacimiento = '$fechaNacimiento', operado = '$operado'WHERE ID = $idMascota;");
+		$consulta = mysqli_prepare($conexion, "UPDATE T_Mascota SET pasaporte = ?, nombre = ?, id_titular = ?, especie = ?, raza = ?, sexo = ?, color = ?, codigo_chip = ?, fecha_nacimiento = ?, operado = ? WHERE ID = ?;");
+
+		$consulta->bind_param("sssssssssss", $pasaporte, $nombre, $titular, $especie, $raza, $sexo, $color, $codigoChip, $fechaNacimiento, $operado, $idMascota);
 		
 		$result = $consulta->execute();
 

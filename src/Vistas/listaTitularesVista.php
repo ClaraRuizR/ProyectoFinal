@@ -28,13 +28,13 @@ if ($_GET["filtros"] == 'si'){
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Sans+Narrow&display=swap+Arimo&family=EB+Garamond&display=swap" rel="stylesheet">
-    <title>Buscar mascota</title>
+    <title>Buscar titular</title>
 </head>
 <body>
     <div class="contenedor">
         <header>
             <div class="imgLogo">
-                <img src="../../img/logo.png" alt="logo">
+                <a href="menuInicioVeterinaria.php"><img src="../../img/logo.png" alt="logo"></a>
             </div>
             <div class="nav">
                 <a href='logOutVista.php'>Cerrar sesión</a>
@@ -42,9 +42,9 @@ if ($_GET["filtros"] == 'si'){
         </header>
         
         <div class="cuerpo">
-            <h1>Buscar fichas de mascota</h1>
+            <h1>Buscar fichas de titular</h1>
             <div id="filtros">
-                <form action="listaMascotasVista.php?filtros=si" method="POST">
+                <form action="listaTitularesVista.php?filtros=si" method="POST">
                     <label for="selectFiltros">Filtrar por:</label>
                     <select name="selectFiltros" id="selectFiltros">
                         <option value="nombre">Nombre</option>
@@ -54,7 +54,7 @@ if ($_GET["filtros"] == 'si'){
                     <input type="text" name='textoFiltro' placeholder="Escribe aquí...">
                     <input type="submit" value="Filtrar">
                 </form>
-                <br><a href="listaMascotasVista.php?filtros=no">Borrar filtros</a>
+                <br><a href="listaTitularesVista.php?filtros=no">Borrar filtros</a>
 
             </div>
             <table>
@@ -66,6 +66,7 @@ if ($_GET["filtros"] == 'si'){
                     <th><div id='dato'>Código postal</div></th>
                     <th><div id='dato'>Número contacto</div></th>
                     <th><div id='dato'>Fecha Alta</div></th>
+                    <th><div id='dato'>Ver ficha</div></th>
                 </tr>
 
                 <?php
@@ -96,6 +97,10 @@ if ($_GET["filtros"] == 'si'){
                     echo"<td><div id='dato'>";
                     print($titular->getFechaAlta());
                     echo"</div></td>";
+
+                    echo"<td><div id='dato'>";
+                    echo"<a href='fichaTitularVista.php?id=".$titular->getID()."'>Ver Ficha</a>";
+                    echo"</div></td></tr>";
                 }
 
                 ?>

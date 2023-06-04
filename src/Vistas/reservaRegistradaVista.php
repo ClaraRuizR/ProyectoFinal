@@ -35,7 +35,7 @@ $respuesta = $reservaServicio->crearReserva($idMascota, $tipoReserva, $sala, $fe
     <div class="contenedor">
         <header>
             <div class="imgLogo">
-                <img src="../../img/logo.png" alt="logo">
+                <a href="menuInicioVeterinaria.php"><img src="../../img/logo.png" alt="logo"></a>
             </div>
             <div class="nav">
                 <a href='logOutVista.php'>Cerrar sesión</a>
@@ -46,11 +46,11 @@ $respuesta = $reservaServicio->crearReserva($idMascota, $tipoReserva, $sala, $fe
             <div class="mensaje">
                 <?php
 
-                if($sala == 'Peluqueria'){
-                    $reserva = 'PeluqueríaVista.php';
-                } elseif ($sala == "consulta1"){
+                if($sala == 'Peluquería'){
+                    $reserva = 'PeluqueriaVista.php';
+                } elseif ($sala == "Consulta 1"){
                     $reserva = 'Consulta1Vista.php';
-                }elseif ($sala == "consulta2"){
+                }elseif ($sala == "Consulta 2"){
                     $reserva = 'Consulta2Vista.php';
                 }
 

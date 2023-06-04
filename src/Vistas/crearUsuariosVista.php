@@ -21,7 +21,7 @@ ini_set('html_errors', 0);
     <div class="contenedor">
         <header>
             <div class="imgLogo">
-                <img src="../../img/logo.png" alt="logo">
+                <a href="menuAdministradorVista.php"><img src="../../img/logo.png" alt="logo"></a>
             </div>
             <div class="nav">
                 <a href='logOutVista.php'>Cerrar sesión</a>
@@ -48,8 +48,7 @@ ini_set('html_errors', 0);
                                     <option value="Administrador/a">Administrador/a</option>
                                     <option value="ACV">ACV</option>
                                     <option value="Peluquero/a">Peluquero/a</option>
-                                </select>
-                                <input type="text" placeholder="Escribe aquí..." id="perfil" name="perfil" required></td>
+                                </select></td>
                         </tr>
                         
                         <tr>

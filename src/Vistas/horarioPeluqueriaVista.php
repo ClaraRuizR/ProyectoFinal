@@ -19,8 +19,7 @@ $semana = [' ', date('Y-m-d',strtotime("monday -$contadorSemana week")), date('Y
 
 $horario = ['10:00:00', '11:00:00', '12:00:00', '13:00:00', '15:00:00', '16:00:00'];
 
-$arrayReservas = $reservasServicio->buscarReservas(date('Y-m-d', $primerDia), date('Y-m-d',$ultimoDia), "Peluqueria");
-
+$arrayReservas = $reservasServicio->buscarReservas(date('Y-m-d', strtotime("monday -$contadorSemana week")), date('Y-m-d', strtotime("friday -$contadorSemana week")), "Peluquería");
 ?>
 
 <!DOCTYPE html>
@@ -51,11 +50,11 @@ $arrayReservas = $reservasServicio->buscarReservas(date('Y-m-d', $primerDia), da
 
             <fieldset>
                 <?php
-                echo"<legend>Semana ".date('d', $primerDia). " - ".date('d', $ultimoDia)."</legend>";
+                echo"<legend>Semana ".date('d', strtotime("monday -$contadorSemana week")). " - ".date('d', strtotime("friday -$contadorSemana week"))."</legend>";
                 $semanaMas = $contadorSemana - 1;
                 $semanaMenos = $contadorSemana + 1;
-                echo"<a href='horarioConsulta2Vista.php?contadorSemana=".$semanaMas."'>Semana siguiente</a><br>";
-                echo"<a href='horarioConsulta2Vista.php?contadorSemana=".$semanaMenos."'>Semana anterior</a>";
+                echo"<a href='horarioPeluqueriaVista.php?contadorSemana=".$semanaMas."'>Semana siguiente</a><br>";
+                echo"<a href='horarioPeluqueriaVista.php?contadorSemana=".$semanaMenos."'>Semana anterior</a>";
 
                 echo"<table  id='tablaDias'>";
 
@@ -72,17 +71,20 @@ $arrayReservas = $reservasServicio->buscarReservas(date('Y-m-d', $primerDia), da
                     <?php
                         array_shift($semana);
                         foreach($horario as $hora){
-                            echo"<tr><th id='tablaHoras'>".$hora."</th>";
+                            echo"<tr><th id='tablaHoras'>".substr($hora, 0, 5) ."</th>";
                             
                             foreach ($semana as $dia){
                                 echo"<td>";
                                 $reserva = $reservasServicio->colocarReserva($arrayReservas, $dia, $hora);
-
                                 if($reserva != "-"){
                                     $idMascota = $reserva->getIdMascota();
                                     $mascota = $mascotasControlador->obtener('ID', $idMascota);
                                     echo"Reserva: ".$mascota[0]->getNombre();
+                                    
+                                } else{
+                                    print($reserva);
                                 }
+
                                 echo"</td>";
                             }
                             echo"</tr>";
@@ -99,12 +101,12 @@ $arrayReservas = $reservasServicio->buscarReservas(date('Y-m-d', $primerDia), da
                     <br>
                     <label for="sala">Sala: </label>
                     <select name="sala" id="sala" required>
-                        <option value="Peluqueria">Peluquería</option>
+                        <option value="Peluquería">Peluquería</option>
                     </select>
 
                     <label for="tipoReserva">TipoReserva: </label>
                     <select name="tipoReserva" id="tipoReserva" required>
-                        <option value="peluqueria">Peluquería</option>
+                        <option value="Peluquería">Peluquería</option>
                     </select>
 
                     <label for="fechaReserva">Fecha: </label>
@@ -112,7 +114,7 @@ $arrayReservas = $reservasServicio->buscarReservas(date('Y-m-d', $primerDia), da
                         echo"<input type='date' id='fechaReserva' name='fechaReserva' min='".$hoy."' required>";
                     ?>
                     <label for="horaInicio">Hora: </label>
-                    <input type="time" id='horaInicio' name='horaInicio' required>
+                    <input type="time" id='horaInicio' name='horaInicio' min='10:00' max='16:00' step="3600" required>
 
                     <label for="numeroContacto">Número de contacto: </label>
                     <input type="number" id='numeroContacto' name='numeroContacto' required>

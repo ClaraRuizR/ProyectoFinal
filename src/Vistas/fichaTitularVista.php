@@ -30,7 +30,7 @@ $listaMascotas = $mascotasControlador->obtener('id_titular', $titular->getID());
     <div class="contenedor">
         <header>
             <div class="imgLogo">
-                <img src="../../img/logo.png" alt="logo">
+                <a href="menuInicioVeterinaria.php"><img src="../../img/logo.png" alt="logo"></a>
             </div>
             <div class="nav">
                 <a href='logOutVista.php'>Cerrar sesión</a>
@@ -46,34 +46,26 @@ $listaMascotas = $mascotasControlador->obtener('id_titular', $titular->getID());
 
                     <tr>
                         <td>Nombre:</td>
-                        <td><?php print($titular->getNombre())?></td>
-                    </tr>
-    
-                    <tr>
-                        <td>DNI:</td>
-                        <td><?php print($titular->getDNI())?></td>
-                    </tr>
-                    
-                   <tr>
-                        <td>Domicilio:</td>
-                        <td><?php print($titular->getDomicilio())?></td>
-                   </tr>
-    
-                    <tr>
+                        <td id='borde'><?php print($titular->getNombre())?></td>
                         <td>Código postal:</td>
                         <td><?php print($titular->getCodigoPostal())?></td>
                     </tr>
     
                     <tr>
+                        <td>DNI:</td>
+                        <td id='borde'><?php print($titular->getDNI())?></td>
                         <td>Número de contacto:</td>
                         <td><?php print($titular->getNumContacto())?></td>
                     </tr>
-    
-                    <tr>
+                    
+                   <tr>
+                        <td>Domicilio:</td>
+                        <td id='borde'><?php print($titular->getDomicilio())?></td>
                         <td>Fecha alta:</td>
                         <td><?php print($titular->getFechaAlta())?></td>
-                    </tr>
+                   </tr>
     
+
                 </table>
 
                 <?php

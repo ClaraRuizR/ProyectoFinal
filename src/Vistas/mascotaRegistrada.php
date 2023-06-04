@@ -7,7 +7,7 @@ require_once("../Controlador/mascotasControlador.php");
 
 $pasaporte = $_POST["pasaporteMascota"];
 $nombre = $_POST["nombreMascota"];
-$titular = intval($_POST["idTitular"]);
+$titular = intval($_POST["titularMascota"]);
 $especie = $_POST["selectEspecieMascota"];
 $raza = $_POST["razaMascota"];
 $sexo = $_POST["selectSexoMascota"];
@@ -47,7 +47,7 @@ if($edit == "s"){
     <div class="contenedor">
         <header>
             <div class="imgLogo">
-                <img src="../../img/logo.png" alt="logo">
+                <a href="menuInicioVeterinaria.php"><img src="../../img/logo.png" alt="logo"></a>
             </div>
             <div class="nav">
                 <a href='logOutVista.php'>Cerrar sesión</a>

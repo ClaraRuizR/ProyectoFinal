@@ -41,7 +41,9 @@ class ConsultaModelo{
 		}
  		mysqli_select_db($conexion, 'veterinaria');
 
-		$consulta = mysqli_prepare($conexion, "INSERT INTO T_Consulta(id_mascota, id_veterinario, fecha, motivo_consulta, antecedentes, peso, temperatura, exploracion_fisica, diagnostico, actuacion, procedimientos, anestesia, medicacion_inyectada, medicamentos_cedidos, dietas, tienda, otros) VALUES ($mascota, $veterinario, '$fechaConsulta', '$motivoConsulta', '$antecedentesConsulta',$pesoMascotaConsulta, $temperaturaMascotaConsulta, '$exploracionConsulta', '$diagnosticoConsulta', '$actuacionConsulta', '$procedimientosConsulta', '$anestesiaConsulta', '$medicacionInyectadaConsulta', '$medicamentosCedidosConsulta', '$dietasConsulta', '$tiendaConsulta', '$otrosConsulta');");
+		$consulta = mysqli_prepare($conexion, "INSERT INTO T_Consulta(id_mascota, id_veterinario, fecha, motivo_consulta, antecedentes, peso, temperatura, exploracion_fisica, diagnostico, actuacion, procedimientos, anestesia, medicacion_inyectada, medicamentos_cedidos, dietas, tienda, otros) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+
+		$consulta->bind_param("sssssssssssssssss", $mascota, $veterinario, $fechaConsulta, $motivoConsulta, $antecedentesConsulta,$pesoMascotaConsulta, $temperaturaMascotaConsulta, $exploracionConsulta, $diagnosticoConsulta, $actuacionConsulta, $procedimientosConsulta, $anestesiaConsulta, $medicacionInyectadaConsulta, $medicamentosCedidosConsulta, $dietasConsulta, $tiendaConsulta, $otrosConsulta);
 		
 		$result = $consulta->execute();
 
@@ -64,7 +66,9 @@ class ConsultaModelo{
 		}
  		mysqli_select_db($conexion, 'veterinaria');
 
-		$consulta = mysqli_prepare($conexion, "UPDATE T_Consulta SET id_veterinario = $veterinario, motivo_consulta = '$motivoConsulta', fecha = '$fechaConsulta', antecedentes = '$antecedentesConsulta', peso = $pesoMascotaConsulta, temperatura = $temperaturaMascotaConsulta, exploracion_fisica = '$exploracionConsulta', diagnostico = '$diagnosticoConsulta', actuacion = '$actuacionConsulta', procedimientos = '$procedimientosConsulta', anestesia = '$anestesiaConsulta', medicacion_inyectada = '$medicacionInyectadaConsulta', medicamentos_cedidos = '$medicamentosCedidosConsulta', dietas = '$dietasConsulta', tienda = '$tiendaConsulta', otros = '$otrosConsulta' WHERE ID = $idConsulta;");
+		$consulta = mysqli_prepare($conexion, "UPDATE T_Consulta SET id_veterinario = ?, motivo_consulta = ?, fecha = ?, antecedentes = ?, peso = ?, temperatura = ?, exploracion_fisica = ?, diagnostico = ?, actuacion = ?, procedimientos = ?, anestesia = ?, medicacion_inyectada = ?, medicamentos_cedidos = ?, dietas = ?, tienda = ?, otros = ? WHERE ID = ?;");
+
+		$consulta->bind_param("sssssssssssssssss", $veterinario, $motivoConsulta, $fechaConsulta, $antecedentesConsulta, $pesoMascotaConsulta, $temperaturaMascotaConsulta, $exploracionConsulta, $diagnosticoConsulta, $actuacionConsulta, $procedimientosConsulta, $anestesiaConsulta, $medicacionInyectadaConsulta, $medicamentosCedidosConsulta, $dietasConsulta, $tiendaConsulta, $otrosConsulta, $idConsulta);
 
 		
 		$result = $consulta->execute();

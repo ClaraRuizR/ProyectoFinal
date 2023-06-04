@@ -61,7 +61,9 @@ class TitularModelo{
 		}
  		mysqli_select_db($conexion, 'veterinaria');
 
-		$consulta = mysqli_prepare($conexion, "INSERT INTO T_Titular(nombre, DNI, domicilio, codigo_postal, num_contacto, fecha_alta) VALUES ('$nombre', '$dniTitular', '$domicilioTitular', '$codigoPostalTitular', $numeroContactoTitular, '$fechaAlta');");
+		$consulta = mysqli_prepare($conexion, "INSERT INTO T_Titular(nombre, DNI, domicilio, codigo_postal, num_contacto, fecha_alta) VALUES (?, ?, ?, ?, ?, ?);");
+
+		$consulta->bind_param("ssssss", $nombre, $dniTitular, $domicilioTitular, $codigoPostalTitular, $numeroContactoTitular, $fechaAlta);
 		
 		$result = $consulta->execute();
 
@@ -83,7 +85,9 @@ class TitularModelo{
 		}
  		mysqli_select_db($conexion, 'veterinaria');
 
-		$consulta = mysqli_prepare($conexion, "UPDATE T_Titular SET nombre = '$nombre', DNI = '$dniTitular', domicilio = '$domicilioTitular', codigo_postal = $codigoPostalTitular, num_contacto = $numeroContactoTitular WHERE ID = $idTitular;");
+		$consulta = mysqli_prepare($conexion, "UPDATE T_Titular SET nombre = ?, DNI = ?, domicilio = ?, codigo_postal = ?, num_contacto = ? WHERE ID = ?;");
+
+		$consulta->bind_param("ssssss", $nombre, $dniTitular, $domicilioTitular, $codigoPostalTitular, $numeroContactoTitular, $idTitular);
 		
 		$result = $consulta->execute();
 

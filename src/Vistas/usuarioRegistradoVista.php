@@ -30,7 +30,7 @@ $respuesta= $usuarioServicio->crear($nombre, $perfil, $clave, $idTrabajador);
     <div class="contenedor">
         <header>
             <div class="imgLogo">
-                <img src="../../img/logo.png" alt="logo">
+                <a href="menuAdministradorVista.php"><img src="../../img/logo.png" alt="logo"></a>
             </div>
             <div class="nav">
                 <a href='logOutVista.php'>Cerrar sesión</a>
