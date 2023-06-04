@@ -63,17 +63,17 @@ table{
 
 table, td, tr, th{
     font-family: 'EB Garamond', serif;
-    font-size: 20px;
+    font-size: 18px;
     border: 0;
 }
 
 tbody tr:nth-child(odd) {
     background-color: #f1dae8;
 
-  }
+}
 
 td{
-    width: 50%;
+    width: 25%;
     padding: 30px;
     font-family: 'PT Sans Narrow', sans-serif;
 }
@@ -99,4 +99,8 @@ a{
     color: rgb(206, 61, 133);
     font-family: 'PT Sans Narrow', sans-serif;
     text-decoration: none;
+}
+
+#borde{
+    border-right: 1px dashed rgb(36, 173, 173);
 }

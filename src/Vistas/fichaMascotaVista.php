@@ -50,55 +50,42 @@ $titular = $titularesControlador->buscarTitularPorId($listaMascotas[0]->getTitul
 
                     <tr>
                         <td>Nombre:</td>
-                        <td>
+                        <td id='borde'>
                             <?php print($listaMascotas[0]->getNombre())?>
                         </td>
-                    </tr>
-    
-                    <tr>
-                        <td>Fecha de nacimiento:</td>
-                        <td><?php print($listaMascotas[0]->getFechaNacimiento())?></td>
-                    </tr>
-                    
-                   <tr>
-                        <td>Especie:</td>
-                        <td><?php print($listaMascotas[0]->getEspecie())?></td>
-                   </tr>
-    
-                    <tr>
-                        <td>Sexo:</td>
-                        <td><?php print($listaMascotas[0]->getSexo())?></td>
-                    </tr>
-    
-                    <tr>
-                        <td>Raza:</td>
-                        <td><?php print($listaMascotas[0]->getRaza())?></td>
-                    </tr>
-    
-                    <tr>
                         <td>Color:</td>
                         <td><?php print($listaMascotas[0]->getColor())?></td>
                     </tr>
     
                     <tr>
+                        <td>Fecha de nacimiento:</td>
+                        <td id='borde'><?php print($listaMascotas[0]->getFechaNacimiento())?></td>
                         <td>Pasaporte:</td>
                         <td><?php print($listaMascotas[0]->getPasaporte())?></td>
                     </tr>
-    
-                    <tr>
+                    
+                   <tr>
+                        <td>Especie:</td>
+                        <td id='borde'><?php print($listaMascotas[0]->getEspecie())?></td>
                         <td>Código de chip:</td>
                         <td><?php print($listaMascotas[0]->getCodigoChip())?></td>
-                    </tr>
+                   </tr>
     
                     <tr>
+                        <td>Sexo:</td>
+                        <td id='borde'><?php print($listaMascotas[0]->getSexo())?></td>
                         <td>Operado:</td>
                         <td><?php print($listaMascotas[0]->getOperado())?></td>
                     </tr>
     
                     <tr>
+                        <td>Raza:</td>
+                        <td id='borde'><?php print($listaMascotas[0]->getRaza())?></td>
                         <td>Fecha de alta:</td>
                         <td><?php print($listaMascotas[0]->getFechaAlta())?></td>
                     </tr>
+    
+
     
     
                 </table>
