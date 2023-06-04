@@ -65,7 +65,7 @@ if($edit == "s"){
                 }
                 
 
-                echo"<a id='enlaceFichaCreada' href='listaMascotasVista.php?filtros=no'>Volver a la lista de mascotas</a>";
+                echo"<a id='enlaceFichaCreada' href='listaTitularesVista.php?filtros=no'>Volver a la lista de titulares</a>";
                 ?>
             </div>
         </div>

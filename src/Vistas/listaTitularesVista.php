@@ -4,15 +4,16 @@ ini_set('html_errors', 0);
 require_once("../Controlador/mascotasControlador.php");
 require_once("../Controlador/titularControlador.php");
 
-$mascotasControlador = new MascotasControlador();
+//$mascotasControlador = new MascotasControlador();
 $titularesControlador = new TitularControlador();
 
 if ($_GET["filtros"] == 'si'){
     $filtro = $_POST["selectFiltros"];
     $textoFiltro = $_POST["textoFiltro"];
-    $listaMascotas = $mascotasControlador->obtener($filtro, $textoFiltro);
+
+    $listaTitulares = $titularesControlador->buscarConFiltros($filtro, $textoFiltro);
 }else{
-    $listaMascotas = $mascotasControlador->obtener(-1, -1);
+    $listaTitulares = $titularesControlador->obtener();
 }
 
 ?>
@@ -47,12 +48,8 @@ if ($_GET["filtros"] == 'si'){
                     <label for="selectFiltros">Filtrar por:</label>
                     <select name="selectFiltros" id="selectFiltros">
                         <option value="nombre">Nombre</option>
-                        <option value="especie">Especie</option>
-                        <option value="sexo">Sexo</option>
-                        <option value="pasaporte">Pasaporte</option>
-                        <option value="id_titular">Titular</option>
-                        <option value="fecha_alta">Fecha Alta</option>
-                    </select>
+                        <option value="DNI">DNI</option>
+                        <option value="num_contacto">Número contacto</option>
                     <label for="filtro"></label>
                     <input type="text" name='textoFiltro' placeholder="Escribe aquí...">
                     <input type="submit" value="Filtrar">
@@ -64,55 +61,48 @@ if ($_GET["filtros"] == 'si'){
 
                 <tr>
                     <th><div id='dato'>Nombre</div></th>
-                    <th><div id='dato'>Especie</div></th>
-                    <th><div id='dato'>Sexo</div></th>
-                    <th><div id='dato'>Pasaporte</div></th>
-                    <th><div id='dato'>Titular</div></th>
+                    <th><div id='dato'>DNI</div></th>
+                    <th><div id='dato'>Domicilio</div></th>
+                    <th><div id='dato'>Código postal</div></th>
+                    <th><div id='dato'>Número contacto</div></th>
                     <th><div id='dato'>Fecha Alta</div></th>
-                    <th><div id='dato'>Ver Ficha</div></th>
                 </tr>
 
                 <?php
 
-                foreach($listaMascotas as $mascota){
-
-                    $titular = $titularesControlador->buscarTitularPorId($mascota->getTitular());
+                foreach($listaTitulares as $titular){
 
                     echo"<tr>";
-                    echo"<td><div id='dato'>";
-                    print($mascota->getNombre());
-                    echo"</div></td>";
-
-                    echo"<td><div id='dato'>";
-                    print($mascota->getEspecie());
-                    echo"</div></td>";
-
-                    echo"<td><div id='dato'>";
-                    print($mascota->getSexo());
-                    echo"</div></td>";
-
-                    echo"<td><div id='dato'>";
-                    print($mascota->getPasaporte());
-                    echo"</div></td>";
-
                     echo"<td><div id='dato'>";
                     print($titular->getNombre());
                     echo"</div></td>";
 
                     echo"<td><div id='dato'>";
-                    print($mascota->getFechaAlta());
+                    print($titular->getDNI());
                     echo"</div></td>";
 
                     echo"<td><div id='dato'>";
-                    echo"<a href='fichaMascotaVista.php?id=".$mascota->getID()."'>Ver Ficha</a>";
-                    echo"</div></td></tr>";
+                    print($titular->getDomicilio());
+                    echo"</div></td>";
+
+                    echo"<td><div id='dato'>";
+                    print($titular->getCodigoPostal());
+                    echo"</div></td>";
+
+                    echo"<td><div id='dato'>";
+                    print($titular->getNumContacto());
+                    echo"</div></td>";
+
+                    echo"<td><div id='dato'>";
+                    print($titular->getFechaAlta());
+                    echo"</div></td>";
                 }
 
                 ?>
                 
             </table>
             <div class="enlacePie">
-                <a href='nuevaMascotaVista.php?idTitular=0'>Nueva mascota</a>
+                <a href='nuevoTitularVista.php'>Nuevo titular</a>
             </div>
         </div>
         <footer></footer>

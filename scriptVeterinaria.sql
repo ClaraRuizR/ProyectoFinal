@@ -3,8 +3,8 @@ DROP TABLE IF EXISTS `T_Reserva`;
 DROP TABLE IF EXISTS `T_Prescripcion`;
 DROP TABLE IF EXISTS `T_Fichero`;
 DROP TABLE IF EXISTS `T_Consulta`;
-DROP TABLE IF EXISTS `T_Trabajador`;
 DROP TABLE IF EXISTS `T_Usuario`;
+DROP TABLE IF EXISTS `T_Trabajador`;
 DROP TABLE IF EXISTS `T_Mascota`;
 DROP TABLE IF EXISTS `T_Titular`;
 
@@ -81,12 +81,12 @@ CREATE TABLE `T_Consulta`(
 );
 
 CREATE TABLE `T_Reserva`(
-	`ID` INTEGER,
+	`ID` INTEGER AUTO_INCREMENT,
     `id_mascota` INTEGER DEFAULT NULL,
-    `id_consulta` INTEGER DEFAULT NULL,
+    `tipo_reserva` ENUM ('Veterinario', 'Peluquería') DEFAULT NULL,
+    `sala` ENUM ('Consulta 1', 'Consulta 2', 'Peluquería') DEFAULT NULL,
     `fecha` DATE DEFAULT NULL,
     `hora_inicio` TIME DEFAULT NULL, /*'hh:mm:ss'*/
-    `hora_fin` TIME DEFAULT NULL,
     `num_contacto` INTEGER DEFAULT NULL,
     PRIMARY KEY (`ID`)
 );
@@ -136,8 +136,6 @@ ALTER TABLE T_Consulta ADD FOREIGN KEY (id_veterinario) REFERENCES T_trabajador 
 
 ALTER TABLE T_Reserva ADD FOREIGN KEY (id_mascota) REFERENCES T_Mascota (ID);
 
-ALTER TABLE T_Reserva ADD FOREIGN KEY (id_consulta) REFERENCES T_Consulta (ID);
-
 ALTER TABLE T_Reserva_Trabajador ADD FOREIGN KEY (id_reserva) REFERENCES T_Reserva (ID);
 
 ALTER TABLE T_Reserva_Trabajador ADD FOREIGN KEY (id_trabajador) REFERENCES T_Trabajador (ID);
@@ -152,7 +150,6 @@ ALTER TABLE T_Fichero ADD FOREIGN KEY (id_consulta) REFERENCES T_Consulta (ID);
 
 ALTER TABLE T_Fichero ADD FOREIGN KEY (id_mascota) REFERENCES T_Mascota (ID);
 
-
 /*INSERTS*/
 
 INSERT INTO T_Titular VALUES 
@@ -165,9 +162,17 @@ INSERT INTO T_Mascota VALUES
 (2, 'ES052588522', 'Emi', 1, 'FEL', 'Europeo', 'Macho', 'Blanco y atigrado marrón', '258632145885211', '2020-01-02', 'Sí', '2021-09-11'),
 (3, 'ES052588523', 'Chacho', 3, 'CAN', 'Mezcla', 'Macho', 'Marrón', '258632145885212', '2018-01-02', 'Sí', '2018-09-11');
 
-/*INSERT INTO T_Usuario VALUES(1, 'Pablo Martín', 'Veterinario', 'clave123'), (2, 'Laura Sánchez', 'Veterinario', 'clave456');*/
+INSERT INTO T_Reserva VALUES
+(1, 1, 'Peluquería', 'Peluquería', '2023-06-01', '10:00:00', '666552233'),
+(2, 2, 'Peluquería', 'Peluquería', '2023-06-02', '15:00:00', '666552233');
 
 INSERT INTO T_Trabajador VALUES(1, 'Pablo', 'Martín', 'Veterinario', '94764830', '2020-02-05', 666666666), (2, 'Laura', 'Sánchez', 'Veterinario', '94764831', '2019-03-11', 677777777);
+
+INSERT INTO T_Reserva_Trabajador VALUES
+(1, 1, 1),
+(2, 2, 2);
+
+/*INSERT INTO T_Usuario VALUES(1, 'Pablo Martín', 'Veterinario', 'clave123'), (2, 'Laura Sánchez', 'Veterinario', 'clave456');*/
 
 INSERT INTO T_Consulta VALUES 
 (2, 2, 1, '2023-01-07', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet.', 3.88, 35.1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', '-', '-', 'Lorem ipsum dolor sit amet.', 'Ninguna.', '-', '-'), 

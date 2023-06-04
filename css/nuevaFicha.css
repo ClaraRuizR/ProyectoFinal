@@ -108,3 +108,9 @@ input, select{
 #enlaceFichaCreada{
     padding: 10px;
 }
+
+a{
+    color: rgb(206, 61, 133);
+    font-family: 'PT Sans Narrow', sans-serif;
+    text-decoration: none;
+}

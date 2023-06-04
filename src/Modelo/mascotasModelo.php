@@ -16,7 +16,7 @@ class MascotasModelo{
 		}
  		mysqli_select_db($conexion, 'veterinaria');
 
-		$consulta1 = mysqli_prepare($conexion, "SELECT ID, pasaporte, nombre, id_titular, especie, raza, sexo, color, codigo_chip, fecha_nacimiento, operado, fecha_alta FROM T_Mascota WHERE $filtro = '$textoFiltro'");
+		$consulta1 = mysqli_prepare($conexion, "SELECT ID, pasaporte, nombre, id_titular, especie, raza, sexo, color, codigo_chip, fecha_nacimiento, operado, fecha_alta FROM T_Mascota WHERE $filtro LIKE '$textoFiltro%'");
 
 		$consulta2 = mysqli_prepare($conexion, "SELECT ID, pasaporte, nombre, id_titular, especie, raza, sexo, color, codigo_chip, fecha_nacimiento, operado, fecha_alta FROM T_Mascota");
 

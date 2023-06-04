@@ -110,3 +110,9 @@ img{
 input{
     margin-left: 7px;
 }
+
+a{
+    color: rgb(206, 61, 133);
+    font-family: 'PT Sans Narrow', sans-serif;
+    text-decoration: none;
+}

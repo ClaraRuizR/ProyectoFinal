@@ -79,6 +79,24 @@ class TitularControlador{
         return $listaTitulares;
     }
 
+    function buscarConFiltros($filtro, $textoFiltro){
+
+        $titulares = new TitularModelo();
+        $arrayTitulares = $titulares->obtenerConFiltros($filtro, $textoFiltro);
+
+        $listaTitulares =  array();
+
+        foreach ($arrayTitulares as $titular){
+           
+            $titularesControlador = new TitularControlador();
+            $titularesControlador->Init($titular['ID'], $titular['nombre'], $titular['DNI'], $titular['domicilio'], $titular['codigo_postal'], $titular['num_contacto'], $titular['fecha_alta']);
+            
+            array_push($listaTitulares, $titularesControlador);
+        }
+                
+        return $listaTitulares;
+    }
+
     function buscarTitularPorId($idTitular){
 
         $titularesControlador = new TitularControlador();
