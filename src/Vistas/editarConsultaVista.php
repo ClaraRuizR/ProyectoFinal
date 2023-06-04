@@ -50,8 +50,8 @@ $veterinario = $trabajadoresControlador->buscarTrabajadorPorId($consulta->getIdV
                         <tr>
                             <td><label for="veterinario">Veterinario:</label></td>
                             <?php
-                            echo"<td><input placeholder='Escribe aquí...' type='text' id='veterinario' name='veterinario' value='".$veterinario->getID()."' required></td>";
-                            // echo"<td><input placeholder='Escribe aquí...' type='text' id='veterinario' name='veterinario' value='".$veterinario->getNombre()." ".$veterinario->getApellidos()."' required></td>";
+                            //echo"<td><input placeholder='Escribe aquí...' type='text' id='veterinario' name='veterinario' value='".$veterinario->getID()."' required></td>";
+                            echo"<td><input placeholder='Escribe aquí...' type='text' id='veterinario' name='veterinario' value='".$veterinario->getNombre()."' required></td>";
                             ?>
                         </tr>
                         <tr>
@@ -153,22 +153,6 @@ $veterinario = $trabajadoresControlador->buscarTrabajadorPorId($consulta->getIdV
                             </textarea></td>        
                         </tr>
                     </table>
-                </fieldset>
-
-                <fieldset>
-                    
-                    <legend>Multimedia</legend>
-                    <table cellspacing="0">
-                        <tr>
-                            <td><label for="fotosConsulta">Fotos/Videos/Ecografías:</label></td>
-                            <td><input type="file" id="fotosConsulta" name="fotosConsulta"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="analiticasConsulta">Analíticas:</label></td>
-                            <td><input type="file" id="analiticasConsulta" name="analiticasConsulta"></td>
-                        </tr>
-                    </table>
-                    
                 </fieldset>
                 <?php
                     echo"<input id='mascota' name='mascota' type='hidden' value='".$consulta->getIdMascota()."'>";

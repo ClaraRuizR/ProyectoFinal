@@ -15,7 +15,7 @@ ini_set('html_errors', 0);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Sans+Narrow&display=swap+Arimo&family=EB+Garamond&display=swap" rel="stylesheet">
-    <title>Menú principal</title>
+    <title>Menú de administrador</title>
 </head>
 <body>
     <div class="contenedor">
@@ -29,7 +29,7 @@ ini_set('html_errors', 0);
         </header>
         
         <div class="cuerpo">
-            <h1>Menú principal</h1>"
+            <h1>Menú de administrador</h1>"
 
             <fieldset>
                 <legend>Elige una pantalla</legend>

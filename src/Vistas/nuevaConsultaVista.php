@@ -118,22 +118,6 @@ $idMascota = $_GET["idMascota"];
                         </tr>
                     </table>
                 </fieldset>
-
-                <fieldset>
-                    
-                    <legend>Multimedia</legend>
-                    <table cellspacing="0">
-                        <tr>
-                            <td><label for="fotosConsulta">Fotos/Videos/Ecografías:</label></td>
-                            <td><input type="file" id="fotosConsulta" name="fotosConsulta"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="analiticasConsulta">Analíticas:</label></td>
-                            <td><input type="file" id="analiticasConsulta" name="analiticasConsulta"></td>
-                        </tr>
-                    </table>
-                    
-                </fieldset>
                 <?php
                     echo"<input id='mascota' name='mascota' type='hidden' value='$idMascota'>";
                     echo"<input id='edit' name='edit' type='hidden' value='n'>";

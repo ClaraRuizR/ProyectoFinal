@@ -208,26 +208,10 @@ $veterinario = $trabajadoresControlador->buscarTrabajadorPorId($consulta->getIdV
                         </td>                        
                     </tr>
                 </table>
-            </fieldset>
-
-            <fieldset>
-                
-                <legend>Multimedia</legend>
-                <table cellspacing="0">
-                    <tr>
-                        <td>Fotos/Videos/Ecografías:</td>
-                        <td id="texto"></td>
-                    </tr>
-                    <tr>
-                        <td>Analíticas:</td>
-                        <td id="texto"></td>
-                    </tr>
-                </table>
                 <?php
                     echo"<div class='enlacePie'><a href='editarConsultaVista.php?idConsulta=".$consulta->getID()."'>Editar consulta</a></div>";
                 ?>
             </fieldset>
-
             <br><br>
         </div>
     </div>

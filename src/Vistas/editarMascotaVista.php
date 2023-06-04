@@ -9,11 +9,13 @@ require_once("../Controlador/mascotasControlador.php");
 $idTitular = $_GET["idTitular"];
 $idMascota = $_GET["idMascota"];
 
-// $titularControlador = new TitularControlador();
-// $titular = $titularControlador->buscarTitularPorId($idTitular);
+$titularControlador = new TitularControlador();
+$titular = $titularControlador->buscarTitularPorId($idTitular);
 
 $mascotasControlador = new MascotasControlador();
 $mascota = $mascotasControlador->obtener('ID', $idMascota);
+
+$idTitular = $mascota[0]->getTitular()
 
 ?>
 
@@ -52,12 +54,6 @@ $mascota = $mascotasControlador->obtener('ID', $idMascota);
                             <td><input placeholder="Escribe aquí..." type="text" id="pasaporteMascota" name="pasaporteMascota"
                             <?php
                             echo"value='".$mascota[0]->getPasaporte()."'";
-                            /*                            <?php
-                            echo"<td><input placeholder='Escribe aquí...' type='text' id='pasaporteMascota' name='pasaporteMascota'";
-                            echo"value='".$mascota->getPasaporte()."'";
-                            echo"</td>";
-                            ?>
-                             */
                             ?>
                             ></td>
                         </tr>
@@ -73,7 +69,7 @@ $mascota = $mascotasControlador->obtener('ID', $idMascota);
                         <?php
                             echo"<tr>";
                             echo"<td><label for='titularMascota'>Titular:</label></td>";
-                            echo"<td><input placeholder='Escribe aquí...' type='text' id='titularMascota' name='titularMascota' value='".$mascota[0]->getTitular()."'></td>";
+                            echo"<td><input placeholder='Escribe aquí...' type='text' id='titularMascota' name='titularMascota' value='".$titular->getNombre()."'></td>";
                             echo"</tr>";
                         ?>
 

@@ -5,8 +5,9 @@ ini_set('html_errors', 0);
 
 require_once("../Controlador/consultaControlador.php");
 require_once("../Controlador/mascotasControlador.php");
+require_once("../Controlador/trabajadorControlador.php");
 
-$veterinario = intval($_POST["veterinario"]);
+$veterinario = $_POST["veterinario"];
 $mascota = intval($_POST["mascota"]);
 $motivoConsulta = $_POST["motivoConsulta"];
 $fechaConsulta = $_POST["fechaConsulta"];
@@ -23,17 +24,20 @@ $medicamentosCedidosConsulta = $_POST["medicamentosCedidosConsulta"];
 $dietasConsulta = $_POST["dietasConsulta"];
 $tiendaConsulta = $_POST["tiendaConsulta"];
 $otrosConsulta = $_POST["otrosConsulta"];
-$fotosConsulta = $_POST["fotosConsulta"];
-$analiticasConsulta = $_POST["analiticasConsulta"];
 $edit = $_POST["edit"];
 
 $consultaControlador = new ConsultaControlador();
+$trabajadorControlador = new TrabajadorControlador();
+
+$trabajador = $trabajadorControlador->buscarConFiltros('nombre', $veterinario);
+$idTrabajador = $trabajador[0]->getID();
+
 if($edit == "s"){
     $idConsulta = $_POST["idConsulta"];
-    $respuesta = $consultaControlador->editarConsulta($idConsulta, $veterinario, $mascota, $motivoConsulta, $fechaConsulta, $antecedentesConsulta, $pesoMascotaConsulta, $temperaturaMascotaConsulta, $exploracionConsulta, $diagnosticoConsulta, $actuacionConsulta, $procedimientosConsulta, $anestesiaConsulta, $medicacionInyectadaConsulta, $medicamentosCedidosConsulta, $dietasConsulta, $tiendaConsulta, $otrosConsulta, $fotosConsulta, $analiticasConsulta);
+    $respuesta = $consultaControlador->editarConsulta($idConsulta, $idTrabajador, $mascota, $motivoConsulta, $fechaConsulta, $antecedentesConsulta, $pesoMascotaConsulta, $temperaturaMascotaConsulta, $exploracionConsulta, $diagnosticoConsulta, $actuacionConsulta, $procedimientosConsulta, $anestesiaConsulta, $medicacionInyectadaConsulta, $medicamentosCedidosConsulta, $dietasConsulta, $tiendaConsulta, $otrosConsulta);
 
 } elseif($edit == "n"){
-    $respuesta = $consultaControlador->crearConsulta($veterinario, $mascota, $motivoConsulta, $fechaConsulta, $antecedentesConsulta, $pesoMascotaConsulta, $temperaturaMascotaConsulta, $exploracionConsulta, $diagnosticoConsulta, $actuacionConsulta, $procedimientosConsulta, $anestesiaConsulta, $medicacionInyectadaConsulta, $medicamentosCedidosConsulta, $dietasConsulta, $tiendaConsulta, $otrosConsulta, $fotosConsulta, $analiticasConsulta);
+    $respuesta = $consultaControlador->crearConsulta($idTrabajador, $mascota, $motivoConsulta, $fechaConsulta, $antecedentesConsulta, $pesoMascotaConsulta, $temperaturaMascotaConsulta, $exploracionConsulta, $diagnosticoConsulta, $actuacionConsulta, $procedimientosConsulta, $anestesiaConsulta, $medicacionInyectadaConsulta, $medicamentosCedidosConsulta, $dietasConsulta, $tiendaConsulta, $otrosConsulta);
 
 }
 

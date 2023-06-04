@@ -79,6 +79,24 @@ class TrabajadorControlador{
         return $listaTrabajadores;
     }
 
+    function buscarConFiltros($filtro, $textoFiltro){
+
+        $trabajadores = new TrabajadorModelo();
+        $arrayTrabajadores = $trabajadores->obtenerConFiltros($filtro, $textoFiltro);
+
+        $listaTrabajadores =  array();
+
+        foreach ($arrayTrabajadores as $trabajador){
+           
+            $trabajadoresControlador = new TrabajadorControlador();
+            $trabajadoresControlador->Init($trabajador['ID'], $trabajador['nombre'], $trabajador['apellidos'], $trabajador['trabajo'], $trabajador['n_colegiado'], $trabajador['fecha_alta'], $trabajador['num_contacto']);
+            
+            array_push($listaTrabajadores, $trabajadoresControlador);
+        }
+                
+        return $listaTrabajadores;
+    }
+
     function buscarTrabajadorPorId($idTrabajador){
 
         $trabajadoresControlador = new TrabajadorControlador();
