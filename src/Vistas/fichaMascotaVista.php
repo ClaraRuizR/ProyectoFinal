@@ -36,7 +36,7 @@ $titular = $titularesControlador->buscarTitularPorId($listaMascotas[0]->getTitul
                 <img src="../../img/logo.png" alt="logo">
             </div>
             <div class="nav">
-                <a href=''>Cerrar sesión</a>
+                <a href='logOutVista.php'>Cerrar sesión</a>
             </div>
         </header>
         
