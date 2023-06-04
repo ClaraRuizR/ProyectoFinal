@@ -13,6 +13,7 @@ $ultimoDia = strtotime("friday -1 week");
 
 $contadorSemana = intval($_GET["contadorSemana"]);
 
+$hoy = date("Y-m-d");
 
 $semana = [' ', date('Y-m-d',strtotime("monday -$contadorSemana week")), date('Y-m-d',strtotime("tuesday -$contadorSemana week")), date('Y-m-d',strtotime("wednesday -$contadorSemana week")), date('Y-m-d',strtotime("thursday -$contadorSemana week")), date('Y-m-d',strtotime("friday -$contadorSemana week"))];
 
@@ -113,8 +114,9 @@ $hoy = $fechaAlta = date("Y-m-d");
                     </select>
 
                     <label for="fechaReserva">Fecha: </label>
-                    <input type="date" id='fechaReserva' name='fechaReserva' required>
-
+                    <?php
+                        echo"<input type='date' id='fechaReserva' name='fechaReserva' min='".$hoy."' required>";
+                    ?>
                     <label for="horaInicio">Hora: </label>
                     <input type="time" id='horaInicio' name='horaInicio' required>
 

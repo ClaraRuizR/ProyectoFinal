@@ -3,20 +3,15 @@
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 
-require_once("../Servicio/reservaServicio.php");
-require_once("../Controlador/mascotasControlador.php");
+require_once("../Servicio/usuarioServicio.php");
 
-$idMascota = intval($_POST["idMascota"]);
-$tipoReserva = $_POST["tipoReserva"];
-$sala = $_POST["sala"];
-$fecha = $_POST["fechaReserva"];
-$horaInicio = $_POST["horaInicio"];
-$numContacto = $_POST["numeroContacto"];
+$nombre = $_POST["nombreUsuario"];
+$perfil = $_POST["perfil"];
+$clave = $_POST["clave"];
+$idTrabajador = intval($_POST["idTrabajador"]);
 
-$reservaServicio = new ReservaServicio();
-$respuesta = $reservaServicio->crearReserva($idMascota, $tipoReserva, $sala, $fecha, $horaInicio, $numContacto);
-
-
+$usuarioServicio = new UsuarioServicio();
+$respuesta= $usuarioServicio->crear($nombre, $perfil, $clave, $idTrabajador);
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +24,7 @@ $respuesta = $reservaServicio->crearReserva($idMascota, $tipoReserva, $sala, $fe
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Sans+Narrow&display=swap+Arimo&family=EB+Garamond&display=swap" rel="stylesheet">
-    <title>Reserva registrada</title>
+    <title>Mascota registrada</title>
 </head>
 <body>
     <div class="contenedor">
@@ -41,21 +36,13 @@ $respuesta = $reservaServicio->crearReserva($idMascota, $tipoReserva, $sala, $fe
                 <a href=''>Cerrar sesión</a>
             </div>
         </header>
-        
+
         <div class="cuerpo">
+
             <div class="mensaje">
                 <?php
-
-                if($sala == 'Peluqueria'){
-                    $reserva = 'PeluqueríaVista.php';
-                } elseif ($sala == "consulta1"){
-                    $reserva = 'Consulta1Vista.php';
-                }elseif ($sala == "consulta2"){
-                    $reserva = 'Consulta2Vista.php';
-                }
-
                 echo"$respuesta";
-                echo"<a id='enlaceFichaCreada' href='horario$reserva?contadorSemana=1'>Volver al horario</a>";
+                echo"<a id='enlaceFichaCreada' href='menuAdministradorVista.php'>Volver al menú de administrador</a>";
                 ?>
             </div>
         </div>

@@ -13,6 +13,7 @@ $ultimoDia = strtotime("friday -1 week");
 
 $contadorSemana = intval($_GET["contadorSemana"]);
 
+$hoy = date("Y-m-d");
 
 $semana = [' ', date('Y-m-d',strtotime("monday -$contadorSemana week")), date('Y-m-d',strtotime("tuesday -$contadorSemana week")), date('Y-m-d',strtotime("wednesday -$contadorSemana week")), date('Y-m-d',strtotime("thursday -$contadorSemana week")), date('Y-m-d',strtotime("friday -$contadorSemana week"))];
 
@@ -98,20 +99,18 @@ $arrayReservas = $reservasServicio->buscarReservas(date('Y-m-d', $primerDia), da
                     <br>
                     <label for="sala">Sala: </label>
                     <select name="sala" id="sala" required>
-                                    <option value="consulta1">Consulta 1</option>
-                                    <option value="consulta2">Consulta 2</option>
-                                    <option value="Peluqueria">Peluquería</option>
+                        <option value="Peluqueria">Peluquería</option>
                     </select>
 
                     <label for="tipoReserva">TipoReserva: </label>
                     <select name="tipoReserva" id="tipoReserva" required>
-                                    <option value="veterinario">Veterinario</option>
-                                    <option value="peluqueria">Peluquería</option>
+                        <option value="peluqueria">Peluquería</option>
                     </select>
 
                     <label for="fechaReserva">Fecha: </label>
-                    <input type="date" id='fechaReserva' name='fechaReserva' required>
-
+                    <?php
+                        echo"<input type='date' id='fechaReserva' name='fechaReserva' min='".$hoy."' required>";
+                    ?>
                     <label for="horaInicio">Hora: </label>
                     <input type="time" id='horaInicio' name='horaInicio' required>
 

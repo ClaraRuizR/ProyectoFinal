@@ -3,20 +3,26 @@
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 
-require_once ("../Controlador/usuarioControlador.php");
+require_once ("../Servicio/usuarioServicio.php");
 
 if ($_SERVER["REQUEST_METHOD"]=="POST"){
-    $usuarioControlador = new UsuarioControlador();
-    $perfil =  $usuarioControlador->verificar($_POST['nombre_usuario'], $_POST['clave']);
+    $usuarioServicio = new UsuarioServicio();
+    $perfil =  $usuarioServicio->verificar($_POST['nombre_usuario'], $_POST['clave']);
 
-    if ($perfil==="Administrador/a"||$perfil==="Veterinario/a"||$perfil==="ACV"){
+    if ($perfil==="Administrador/a"){
         session_start();
         $_SESSION['nombre_usuario'] = $_POST['nombre_usuario'];
-        header("Location: listaMascotasVista.php?filtros=no");
+        header("Location: menuAdministradorVista.php");
+        
+    }else if($perfil==="Veterinario/a"||$perfil==="ACV"){
+        session_start();
+        $_SESSION['nombre_usuario'] = $_POST['nombre_usuario'];
+        header("Location: menuInicioVeterinaria.php");
+
     }else if($perfil==="Peluquero/a"){
         session_start();
         $_SESSION['nombre_usuario'] = $_POST['nombre_usuario'];
-        header("Location: listaMascotasVista.php?filtros=no");
+        header("Location: horarioPeluqueriaVista.php?contadorSemana=1");
     }else{
         $error = true;
     }
@@ -47,8 +53,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
                         <input clas='button' type = "submit">
                     </form>
                     <?php
-                    if (isset($error))
-                    {
+                    if (isset($error)) {
                         print("<div> No tienes acceso </div>");
                     }
                 ?>

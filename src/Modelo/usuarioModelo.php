@@ -7,19 +7,27 @@ class UsuarioModelo{
 	function __construct(){
     }
 
-	function insertar($usuario, $perfil, $clave){
+	function insertar($usuario, $perfil, $clave, $codigo){
 		$conexion = mysqli_connect('localhost','Clara','2223');
 		if (mysqli_connect_errno()){
 				echo "Error al conectar a MySQL: ". mysqli_connect_error();
 		}
  		
         mysqli_select_db($conexion, 'veterinaria');
-		$consulta = mysqli_prepare($conexion, "INSERT INTO T_Usuario(nombre_usuario, clave, perfil) VALUES (?,?,?);");
+		$consulta = mysqli_prepare($conexion, "INSERT INTO T_Usuario(nombre_usuario, clave, perfil, id_trabajador) VALUES (?,?,?,?);");
         $hash = password_hash($clave, PASSWORD_DEFAULT);
-        $consulta->bind_param("sss", $usuario, $hash, $perfil);
-        $res = $consulta->execute();
+        $consulta->bind_param("ssss", $usuario, $hash, $perfil, $codigo);
+        $result = $consulta->execute();
+
+        if(!$result){
+			$mensaje = 'Consulta inválida. ' .mysqli_error($conexion) . "\n";
+	
+		} else if ($result){
+			$mensaje = "Usuario guardado con éxito.";
+		}
+
         
-		return $res;
+		return $mensaje;
 	}
 
     function verificar($usuario,$clave){

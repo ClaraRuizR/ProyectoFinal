@@ -4,11 +4,9 @@ ini_set('html_errors', 0);
 
 require("../Modelo/usuarioModelo.php");
 
-class UsuarioControlador
-{
+class UsuarioServicio{
 
-	function __construct()
-    {
+	function __construct(){
     }
     
     function verificar($usuario, $clave){
@@ -16,4 +14,11 @@ class UsuarioControlador
         $res = $usuariosDAL->verificar($usuario,$clave);
         return $res;
     }
+
+    function crear($usuario, $perfil, $clave, $codigo){
+		$usuariosDAL = new UsuarioModelo();
+        $res = $usuariosDAL->insertar($usuario, $perfil, $clave, $codigo);
+        
+		return $res;
+	}
 }

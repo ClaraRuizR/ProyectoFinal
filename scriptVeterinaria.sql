@@ -99,7 +99,7 @@ CREATE TABLE `T_Reserva_Trabajador`(
 );
 
 CREATE TABLE `T_Prescripcion`(
-	`ID` INTEGER,
+	`ID` INTEGER AUTO_INCREMENT,
     `id_mascota` INTEGER DEFAULT NULL,
     `id_consulta` INTEGER DEFAULT NULL,
     `id_veterinario` INTEGER DEFAULT NULL,
@@ -113,19 +113,9 @@ CREATE TABLE `T_Prescripcion`(
     PRIMARY KEY (`ID`)
 );
 
-CREATE TABLE `T_Fichero`(
-	`ID` INTEGER,
-    `id_consulta` INTEGER DEFAULT NULL,
-    `id_mascota` INTEGER DEFAULT NULL,
-    `fecha_hora_subida` DATETIME DEFAULT NULL,
-    `fichero` LONGBLOB DEFAULT NULL,
-    PRIMARY KEY (`ID`)
-);
-
 
 /*FOREIGN KEYS*/
 
-/*ALTER TABLE T_Trabajador ADD FOREIGN KEY (id_usuario) REFERENCES T_Usuario (ID);*/
 ALTER TABLE T_Usuario ADD FOREIGN KEY (id_trabajador) REFERENCES T_Trabajador (ID);
 
 ALTER TABLE T_Mascota ADD FOREIGN KEY (id_titular) REFERENCES T_Titular (ID);
@@ -166,13 +156,17 @@ INSERT INTO T_Reserva VALUES
 (1, 1, 'Peluquería', 'Peluquería', '2023-06-01', '10:00:00', '666552233'),
 (2, 2, 'Peluquería', 'Peluquería', '2023-06-02', '15:00:00', '666552233');
 
-INSERT INTO T_Trabajador VALUES(1, 'Pablo', 'Martín', 'Veterinario', '94764830', '2020-02-05', 666666666), (2, 'Laura', 'Sánchez', 'Veterinario', '94764831', '2019-03-11', 677777777);
+INSERT INTO T_Trabajador VALUES
+(1, 'Pablo', 'Martín', 'Veterinario/a', '94764830', '2020-02-05', 666666666), 
+(2, 'Laura', 'Sánchez', 'Veterinario/a', '94764831', '2019-03-11', 677777777),
+(3, 'Pepi', 'Sánchez', 'Peluquero/a', '94764831', '2019-03-11', 677777777);
 
 INSERT INTO T_Reserva_Trabajador VALUES
 (1, 1, 1),
 (2, 2, 2);
 
-/*INSERT INTO T_Usuario VALUES(1, 'Pablo Martín', 'Veterinario', 'clave123'), (2, 'Laura Sánchez', 'Veterinario', 'clave456');*/
+INSERT INTO T_Reserva_Trabajador ('nombre_usuario', 'perfil', 'clave') VALUES
+('Clara', 'Administrador/a', 'clave123');
 
 INSERT INTO T_Consulta VALUES 
 (2, 2, 1, '2023-01-07', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet.', 3.88, 35.1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', '-', '-', 'Lorem ipsum dolor sit amet.', 'Ninguna.', '-', '-'), 
