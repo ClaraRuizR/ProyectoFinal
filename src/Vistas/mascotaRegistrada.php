@@ -21,15 +21,17 @@ $edit = $_POST["edit"];
 $mascotasControlador = new MascotasControlador();
 $titularControlador = new TitularControlador();
 
-$busquedaTitular = $titularControlador->buscarConFiltros('nombre', $titular);
-$idtitular = $busquedaTitular[0]->getID();
+if(!is_numeric($titular)){
+    $busquedaTitular = $titularControlador->buscarConFiltros('nombre', $titular);
+    $titular = $busquedaTitular[0]->getID();
+}
 
 if($edit == "s"){
     $idMascota = intval($_POST["idMascota"]);
-    $respuesta = $mascotasControlador->editarFicha($idMascota, $pasaporte, $nombre, $idtitular, $especie, $raza, $sexo, $color, $codigoChip, $fechaNacimiento, $operado);
+    $respuesta = $mascotasControlador->editarFicha($idMascota, $pasaporte, $nombre, $titular, $especie, $raza, $sexo, $color, $codigoChip, $fechaNacimiento, $operado);
 
 } elseif($edit == "n"){
-    $respuesta = $mascotasControlador->crearFicha($pasaporte, $nombre, $idtitular, $especie, $raza, $sexo, $color, $codigoChip, $fechaNacimiento, $operado);
+    $respuesta = $mascotasControlador->crearFicha($pasaporte, $nombre, $titular, $especie, $raza, $sexo, $color, $codigoChip, $fechaNacimiento, $operado);
 
 }
 

@@ -14,6 +14,12 @@ class UsuarioModelo{
 		}
  		
         mysqli_select_db($conexion, 'veterinaria');
+
+		$sanitizedUsuario = mysqli_real_escape_string($conexion, $usuario);
+		$sanitizedPerfil = mysqli_real_escape_string($conexion, $perfil);
+		$sanitizedClave = mysqli_real_escape_string($conexion, $clave);
+		$sanitizedCodigo = mysqli_real_escape_string($conexion, $codigo);
+
 		$consulta = mysqli_prepare($conexion, "INSERT INTO T_Usuario(nombre_usuario, clave, perfil, id_trabajador) VALUES (?,?,?,?);");
         $hash = password_hash($clave, PASSWORD_DEFAULT);
         $consulta->bind_param("ssss", $usuario, $hash, $perfil, $codigo);
@@ -26,7 +32,6 @@ class UsuarioModelo{
 			$mensaje = "Usuario guardado con éxito.";
 		}
 
-        
 		return $mensaje;
 	}
 

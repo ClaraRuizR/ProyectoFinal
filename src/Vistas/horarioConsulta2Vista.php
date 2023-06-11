@@ -3,23 +3,20 @@ ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 
 require_once("../Servicio/reservaServicio.php");
-require_once("../Controlador/mascotasControlador.php");
+require_once("../Servicio/mascotasServicio.php");
 
-$mascotasControlador = new MascotasControlador();
+$mascotasServicio = new MascotasServicio();
 $reservasServicio = new ReservaServicio();
-
-$primerDia = strtotime("this week");
-$ultimoDia = strtotime("friday -1 week");
 
 $contadorSemana = intval($_GET["contadorSemana"]);
 
-$hoy = date("Y-m-d");
+$hoy = date('Y-m-d',strtotime("now"));
 
-$semana = [' ', date('Y-m-d',strtotime("monday -$contadorSemana week")), date('Y-m-d',strtotime("tuesday -$contadorSemana week")), date('Y-m-d',strtotime("wednesday -$contadorSemana week")), date('Y-m-d',strtotime("thursday -$contadorSemana week")), date('Y-m-d',strtotime("friday -$contadorSemana week"))];
+$semana = [' ', date('Y-m-d', strtotime("+$contadorSemana week 0 days")), date('Y-m-d', strtotime("+$contadorSemana week 1 days")), date('Y-m-d', strtotime("+$contadorSemana week 2 days")), date('Y-m-d', strtotime("+$contadorSemana week 3 days")), date('Y-m-d', strtotime("+$contadorSemana week 4 days")), date('Y-m-d', strtotime("+$contadorSemana week 5 days")), date('Y-m-d', strtotime("+$contadorSemana week 6 days"))];
 
 $horario = ['10:00:00', '11:00:00', '12:00:00', '13:00:00', '15:00:00', '16:00:00'];
 
-$arrayReservas = $reservasServicio->buscarReservas(date('Y-m-d', strtotime("monday -$contadorSemana week")), date('Y-m-d', strtotime("friday -$contadorSemana week")), "Consulta 2");
+$arrayReservas = $reservasServicio->buscarReservas(date('Y-m-d', strtotime("+$contadorSemana week 0 days")), date('Y-m-d', strtotime("+$contadorSemana week 6 days")), "Consulta 1");
 
 ?>
 
@@ -51,9 +48,8 @@ $arrayReservas = $reservasServicio->buscarReservas(date('Y-m-d', strtotime("mond
 
             echo"<fieldset>";
                 
-                echo"<legend>Semana ".date('d', $primerDia). " - ".date('d', $ultimoDia)."</legend>";
-                $semanaMas = $contadorSemana - 1;
-                $semanaMenos = $contadorSemana + 1;
+                $semanaMas = $contadorSemana + 1;
+                $semanaMenos = $contadorSemana - 1;
                 echo"<a href='horarioConsulta2Vista.php?contadorSemana=".$semanaMas."'>Semana siguiente</a><br>";
                 echo"<a href='horarioConsulta2Vista.php?contadorSemana=".$semanaMenos."'>Semana anterior</a>";
 
@@ -81,7 +77,7 @@ $arrayReservas = $reservasServicio->buscarReservas(date('Y-m-d', strtotime("mond
 
                                 if($reserva != "-"){
                                     $idMascota = $reserva->getIdMascota();
-                                    $mascota = $mascotasControlador->obtener('ID', $idMascota);
+                                    $mascota = $mascotasServicio->obtener('ID', $idMascota);
                                     echo"Reserva: ".$mascota[0]->getNombre();
                                 }else{
                                     print($reserva);
@@ -97,9 +93,11 @@ $arrayReservas = $reservasServicio->buscarReservas(date('Y-m-d', strtotime("mond
             <fieldset>
                 <legend>Crear nueva reserva</legend>
                 <form action="reservaRegistradaVista.php" method='POST'>
-                    <label for="idMascota">Mascota: </label>
-                    <input type="text" id='idMascota' name='idMascota' required>
-                    <br>
+                    <label for="nombreMascota">Mascota: </label>
+                    <input type="text" id='nombreMascota' name='nombreMascota' required>
+                    
+                    <label for="nombreMascota">ID trabajador: </label>
+                    <input type="number" id='idTrabajador' name='idTrabajador' required><br>
                     <label for="sala">Sala: </label>
                     <select name="sala" id="sala" value='consulta2' required>
                         <option value="Consulta 1">Consulta 1</option>

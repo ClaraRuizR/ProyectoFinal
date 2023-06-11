@@ -4,7 +4,7 @@ ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 
 require_once("../Controlador/consultaControlador.php");
-require_once("../Controlador/mascotasControlador.php");
+require_once("../Servicio/mascotasServicio.php");
 require_once("../Controlador/trabajadorControlador.php");
 
 $veterinario = $_POST["veterinario"];

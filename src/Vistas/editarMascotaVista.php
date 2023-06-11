@@ -4,7 +4,7 @@ ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 
 require_once("../Controlador/titularControlador.php");
-require_once("../Controlador/mascotasControlador.php");
+require_once("../Servicio/mascotasServicio.php");
 
 $idTitular = $_GET["idTitular"];
 $idMascota = $_GET["idMascota"];
@@ -12,8 +12,8 @@ $idMascota = $_GET["idMascota"];
 $titularControlador = new TitularControlador();
 $titular = $titularControlador->buscarTitularPorId($idTitular);
 
-$mascotasControlador = new MascotasControlador();
-$mascota = $mascotasControlador->obtener('ID', $idMascota);
+$mascotasServicio = new MascotasServicio();
+$mascota = $mascotasServicio->obtener('ID', $idMascota);
 
 $idTitular = $mascota[0]->getTitular()
 

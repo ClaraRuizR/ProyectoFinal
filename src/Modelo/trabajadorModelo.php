@@ -36,7 +36,10 @@ class TrabajadorModelo{
 		}
  		mysqli_select_db($conexion, 'veterinaria');
 
-		$consulta = mysqli_prepare($conexion, "SELECT ID, nombre, apellidos, trabajo, n_colegiado, fecha_alta, num_contacto FROM T_Trabajador WHERE $filtro LIKE '$textoFiltro%'");
+		$sanitizedFiltro = mysqli_real_escape_string($conexion, $filtro);
+		$sanitizedTextoFiltro = mysqli_real_escape_string($conexion, $textoFiltro);
+
+		$consulta = mysqli_prepare($conexion, "SELECT ID, nombre, apellidos, trabajo, n_colegiado, fecha_alta, num_contacto FROM T_Trabajador WHERE $sanitizedFiltro LIKE '$sanitizedTextoFiltro%'");
 
 		$consulta->execute();
 		$result = $consulta->get_result();

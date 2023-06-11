@@ -41,9 +41,44 @@ class ReservaModelo{
 		}
  		mysqli_select_db($conexion, 'veterinaria');
 
+		$sanitizedIdMascota = mysqli_real_escape_string($conexion, $idMascota);
+		$sanitizedTipoReserva = mysqli_real_escape_string($conexion, $tipoReserva);
+		$sanitizedSala = mysqli_real_escape_string($conexion, $sala);
+		$sanitizedFecha = mysqli_real_escape_string($conexion, $fecha);
+		$sanitizedHoraInicio = mysqli_real_escape_string($conexion, $horaInicio);
+		$sanitizedNumContacto = mysqli_real_escape_string($conexion, $numContacto);
+
 		$consulta = mysqli_prepare($conexion, "INSERT INTO T_Reserva (id_mascota, tipo_reserva, sala, fecha, hora_inicio, num_contacto) VALUES (?, ?, ?, ?, ?, ?);");
 
-		$consulta->bind_param("ssssss", $idMascota, $tipoReserva, $sala, $fecha, $horaInicio, $numContacto);
+		$consulta->bind_param("ssssss", $sanitizedIdMascota, $sanitizedTipoReserva, $sanitizedSala, $sanitizedFecha, $sanitizedHoraInicio, $sanitizedNumContacto);
+		
+		$result = $consulta->execute();
+
+		if(!$result){
+			$mensaje = 'Consulta inválida. ' .mysqli_error($conexion) . "\n";
+	
+		} else if ($result){
+			$mensaje = "Reserva guardada con éxito.";
+		}
+
+		return $mensaje;
+    }
+
+	function crearReservaTrabajador($idReserva, $idTrabajador){
+
+        $conexion = mysqli_connect('localhost','Clara','2223');
+
+		if (mysqli_connect_errno()){
+				echo "Error al conectar a MySQL: ". mysqli_connect_error();
+		}
+ 		mysqli_select_db($conexion, 'veterinaria');
+
+		$sanitizedIdReserva = mysqli_real_escape_string($conexion, $idReserva);
+		$sanitizedIdTrabajador = mysqli_real_escape_string($conexion, $idTrabajador);
+
+		$consulta = mysqli_prepare($conexion, "INSERT INTO T_Reserva_Trabajador (id_reserva, id_trabajador) VALUES (?, ?);");
+
+		$consulta->bind_param("ss", $sanitizedIdReserva, $sanitizedIdTrabajador);
 		
 		$result = $consulta->execute();
 

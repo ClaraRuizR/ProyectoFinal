@@ -1,12 +1,12 @@
 <?php
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
-require_once("../Controlador/mascotasControlador.php");
+require_once("../Servicio/mascotasServicio.php");
 require_once("../Controlador/titularControlador.php");
 require_once("../Controlador/consultaControlador.php");
 require_once("../Controlador/trabajadorControlador.php");
 
-$mascotasControlador = new MascotasControlador();
+$mascotasServicio = new MascotasServicio();
 $titularesControlador = new TitularControlador();
 $consultasControlador = new ConsultaControlador();
 $trabajadoresControlador = new TrabajadorControlador();
@@ -59,7 +59,7 @@ $veterinario = $trabajadoresControlador->buscarTrabajadorPorId($consulta->getIdV
                     <tr>
                         <td>Mascota:</td>
                         <?php
-                        $mascota = $mascotasControlador->obtener('ID', $consulta->getIdMascota());
+                        $mServicio->obtener('ID', $consulta->getIdMascota());
                             echo"<td><a href='fichaMascotaVista.php?id=".$consulta->getIdMascota()."'>";
                             print($mascota[0]->getNombre());
                             echo"</a></td>";

@@ -16,11 +16,14 @@ class MascotasModelo{
 		}
  		mysqli_select_db($conexion, 'veterinaria');
 
-		$consulta1 = mysqli_prepare($conexion, "SELECT ID, pasaporte, nombre, id_titular, especie, raza, sexo, color, codigo_chip, fecha_nacimiento, operado, fecha_alta FROM T_Mascota WHERE $filtro LIKE '$textoFiltro%'");
+		$sanitizedFiltro = mysqli_real_escape_string($conexion, $filtro);
+		$sanitizedTextoFiltro = mysqli_real_escape_string($conexion, $textoFiltro);
+
+		$consulta1 = mysqli_prepare($conexion, "SELECT ID, pasaporte, nombre, id_titular, especie, raza, sexo, color, codigo_chip, fecha_nacimiento, operado, fecha_alta FROM T_Mascota WHERE $sanitizedFiltro LIKE '$sanitizedTextoFiltro%'");
 
 		$consulta2 = mysqli_prepare($conexion, "SELECT ID, pasaporte, nombre, id_titular, especie, raza, sexo, color, codigo_chip, fecha_nacimiento, operado, fecha_alta FROM T_Mascota");
 
-		if($filtro == -1 || $textoFiltro == -1){
+		if($filtro == 0 || $textoFiltro == 0){
 			$consulta2->execute();
 			$result = $consulta2->get_result();
 		} else{

@@ -118,8 +118,22 @@ class ReservaServicio {
         return $respuesta;
     }
 
-    function validarReserva(){
+    function crearReservaTrabajador($idReserva, $idTrabajador){
+
+        $reservaModelo = new ReservaModelo();
+        $respuesta = $reservaModelo->crearReservaTrabajador($idReserva, $idTrabajador);
         
+        return $respuesta;
     }
+
+    function obtenerIdUltimaReservaRegistrada(){
+
+		$reservaModelo = new ReservaModelo();
+        $arrayReservas = $reservaModelo->obtener();
+
+        $ultimaEntrada = end($arrayReservas);
+
+        return $ultimaEntrada['ID'];
+	}
     
 }

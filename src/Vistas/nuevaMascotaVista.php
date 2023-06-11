@@ -119,7 +119,7 @@ $titular = $titularsControlador->buscarTitularPorId($idTitular);
                 </fieldset>
                 <?php
                     echo"<input id='edit' name='edit' type='hidden' value='n'>";
-                    echo"<input id='idTitular' name='idTitular' type='hidden' value='".$idTitular."'>";
+                    echo"<input id='idTitular' name='titularMascota' type='hidden' value='".$idTitular."'>";
                 ?>
                 <br><br>
                 <input type="submit" value="Enviar" id="botonEnviar">

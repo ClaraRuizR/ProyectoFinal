@@ -37,7 +37,10 @@ class TitularModelo{
 		}
  		mysqli_select_db($conexion, 'veterinaria');
 
-		$consulta = mysqli_prepare($conexion, "SELECT ID, nombre, DNI, domicilio, codigo_postal, num_contacto, fecha_alta FROM T_Titular WHERE $filtro LIKE '$textoFiltro%'");
+		 $sanitizedFiltro = mysqli_real_escape_string($conexion, $filtro);
+		 $sanitizedTextoFiltro = mysqli_real_escape_string($conexion, $textoFiltro);
+
+		$consulta = mysqli_prepare($conexion, "SELECT ID, nombre, DNI, domicilio, codigo_postal, num_contacto, fecha_alta FROM T_Titular WHERE $sanitizedFiltro LIKE '$sanitizedTextoFiltro%'");
 
 		$consulta->execute();
 		$result = $consulta->get_result();

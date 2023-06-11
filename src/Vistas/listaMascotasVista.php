@@ -1,19 +1,44 @@
 <?php
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
-require_once("../Controlador/mascotasControlador.php");
+//require_once("../Controlador/mascotasControlador.php");
 require_once("../Controlador/titularControlador.php");
 
-$mascotasControlador = new MascotasControlador();
+//$mascotasControlador = new MascotasControlador();
 $titularesControlador = new TitularControlador();
 
-if ($_GET["filtros"] == 'si'){
-    $filtro = $_POST["selectFiltros"];
-    $textoFiltro = $_POST["textoFiltro"];
-    $listaMascotas = $mascotasControlador->obtener($filtro, $textoFiltro);
-}else{
-    $listaMascotas = $mascotasControlador->obtener(-1, -1);
+ if ($_GET["filtros"] == 'si'){
+     $filtro = $_POST["selectFiltros"];
+     $textoFiltro = $_POST["textoFiltro"];
+
+ }else{
+    $filtro = 0;
+    $textoFiltro = 0;
+ }
+
+$apiUrl = "http://127.0.0.1:5000/listaMascotas/$filtro/$textoFiltro";
+
+$metodo = "GET";
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $apiUrl);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $metodo);
+
+$response = curl_exec($ch);
+
+curl_close($ch);
+
+if(curl_errno($ch)){
+    echo 'Error en la solicitud cURL: ' . curl_error($ch);
 }
+
+if ($response) {
+    $listaMascotas = json_decode($response, true);
+} else {
+    echo 'Error en la respuesta.';
+}
+
 
 ?>
 
@@ -73,26 +98,25 @@ if ($_GET["filtros"] == 'si'){
                 </tr>
 
                 <?php
-
+     
                 foreach($listaMascotas as $mascota){
-
-                    $titular = $titularesControlador->buscarTitularPorId($mascota->getTitular());
+                    $titular = $titularesControlador->buscarTitularPorId($mascota['id_titular']);
 
                     echo"<tr>";
                     echo"<td><div id='dato'>";
-                    print($mascota->getNombre());
+                    print($mascota['nombre']);
                     echo"</div></td>";
 
                     echo"<td><div id='dato'>";
-                    print($mascota->getEspecie());
+                    print($mascota['especie']);
                     echo"</div></td>";
 
                     echo"<td><div id='dato'>";
-                    print($mascota->getSexo());
+                    print($mascota['sexo']);
                     echo"</div></td>";
 
                     echo"<td><div id='dato'>";
-                    print($mascota->getPasaporte());
+                    print($mascota['pasaporte']);
                     echo"</div></td>";
 
                     echo"<td><div id='dato'>";
@@ -100,11 +124,11 @@ if ($_GET["filtros"] == 'si'){
                     echo"</div></td>";
 
                     echo"<td><div id='dato'>";
-                    print($mascota->getFechaAlta());
+                    print($mascota['fecha_alta']);
                     echo"</div></td>";
 
                     echo"<td><div id='dato'>";
-                    echo"<a href='fichaMascotaVista.php?id=".$mascota->getID()."'>Ver Ficha</a>";
+                    echo"<a href='fichaMascotaVista.php?id=".$mascota['ID']."'>Ver Ficha</a>";
                     echo"</div></td></tr>";
                 }
 

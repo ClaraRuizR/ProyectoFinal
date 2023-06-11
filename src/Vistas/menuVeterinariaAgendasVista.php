@@ -35,8 +35,8 @@ ini_set('html_errors', 0);
                 <legend>Elige una pantalla</legend>
 
                 <div id="enlacesMenu">
-                    <div id="enlaceIcono"><a href="horarioConsulta1Vista.php?contadorSemana=1"><img id='imgMenu' src="../../img/menu5.jpeg" alt="imgMenu5"><p id="enlaceimg">Consulta 1</p></a></div>
-                    <div id="enlaceIcono"><a href="horarioConsulta2Vista.php?contadorSemana=1"><img id='imgMenu' src="../../img/menu6.jpeg" alt="imgMenu6"><p id="enlaceimg">Consulta 2</p></a></div>
+                    <div id="enlaceIcono"><a href="horarioConsulta1Vista.php?contadorSemana=0"><img id='imgMenu' src="../../img/menu5.jpeg" alt="imgMenu5"><p id="enlaceimg">Consulta 1</p></a></div>
+                    <div id="enlaceIcono"><a href="horarioConsulta2Vista.php?contadorSemana=0"><img id='imgMenu' src="../../img/menu6.jpeg" alt="imgMenu6"><p id="enlaceimg">Consulta 2</p></a></div>
                 </div>
                 
             </fieldset>

@@ -1,7 +1,6 @@
 DROP TABLE IF EXISTS `T_Reserva_Trabajador`;
 DROP TABLE IF EXISTS `T_Reserva`;
 DROP TABLE IF EXISTS `T_Prescripcion`;
-DROP TABLE IF EXISTS `T_Fichero`;
 DROP TABLE IF EXISTS `T_Consulta`;
 DROP TABLE IF EXISTS `T_Usuario`;
 DROP TABLE IF EXISTS `T_Trabajador`;
@@ -92,7 +91,7 @@ CREATE TABLE `T_Reserva`(
 );
 
 CREATE TABLE `T_Reserva_Trabajador`(
-	`ID` INTEGER,
+	`ID` INTEGER AUTO_INCREMENT,
     `id_reserva` INTEGER DEFAULT NULL,
     `id_trabajador` INTEGER DEFAULT NULL,
     PRIMARY KEY (`ID`)
@@ -136,9 +135,6 @@ ALTER TABLE T_Prescripcion ADD FOREIGN KEY (id_mascota) REFERENCES T_Mascota (ID
 
 ALTER TABLE T_Prescripcion ADD FOREIGN KEY (id_veterinario) REFERENCES T_Trabajador (ID);
 
-ALTER TABLE T_Fichero ADD FOREIGN KEY (id_consulta) REFERENCES T_Consulta (ID);
-
-ALTER TABLE T_Fichero ADD FOREIGN KEY (id_mascota) REFERENCES T_Mascota (ID);
 
 /*INSERTS*/
 
@@ -165,8 +161,8 @@ INSERT INTO T_Reserva_Trabajador VALUES
 (1, 1, 1),
 (2, 2, 2);
 
-INSERT INTO T_Reserva_Trabajador ('nombre_usuario', 'perfil', 'clave') VALUES
-('Clara', 'Administrador/a', 'clave123');
+INSERT INTO T_Usuario VALUES
+(1, 'Clara', 'Administrador/a', 'clave123', 1);
 
 INSERT INTO T_Consulta VALUES 
 (2, 2, 1, '2023-01-07', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet.', 3.88, 35.1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', '-', '-', 'Lorem ipsum dolor sit amet.', 'Ninguna.', '-', '-'), 

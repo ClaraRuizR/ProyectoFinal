@@ -4,18 +4,31 @@ ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 
 require_once("../Servicio/reservaServicio.php");
-require_once("../Controlador/mascotasControlador.php");
+require_once("../Servicio/mascotasServicio.php");
 
-$idMascota = intval($_POST["idMascota"]);
+$mascota = $_POST["nombreMascota"];
 $tipoReserva = $_POST["tipoReserva"];
 $sala = $_POST["sala"];
 $fecha = $_POST["fechaReserva"];
 $horaInicio = $_POST["horaInicio"];
 $numContacto = $_POST["numeroContacto"];
+$idTrabajador = $_POST["idTrabajador"];
 
-$reservaServicio = new ReservaServicio();
-$respuesta = $reservaServicio->crearReserva($idMascota, $tipoReserva, $sala, $fecha, $horaInicio, $numContacto);
+$mascotaServicio = new MascotasServicio();
+$mascotaObjeto = $mascotaServicio->obtener('nombre', $mascota);
 
+if(empty($mascotaObjeto)){
+
+    $respuesta = 'No se ha encontrado la mascota.';
+} else{
+
+    $idMascota = $mascotaObjeto[0]->getID();
+
+    $reservaServicio = new ReservaServicio();
+    $respuesta = $reservaServicio->crearReserva($idMascota, $tipoReserva, $sala, $fecha, $horaInicio, $numContacto);
+    $idReserva = $reservaServicio->obtenerIdUltimaReservaRegistrada();
+    $respuesta2 = $reservaServicio->crearReservaTrabajador($idReserva, $idTrabajador);
+}
 
 ?>
 
@@ -54,8 +67,19 @@ $respuesta = $reservaServicio->crearReserva($idMascota, $tipoReserva, $sala, $fe
                     $reserva = 'Consulta2Vista.php';
                 }
 
-                echo"$respuesta";
-                echo"<a id='enlaceFichaCreada' href='horario$reserva?contadorSemana=1'>Volver al horario</a>";
+                $bothTrue = str_contains('Reserva guardada con éxito.', $respuesta) && str_contains('Reserva guardada con éxito.', $respuesta2);
+                $bothFalse = !str_contains('Reserva guardada con éxito.', $respuesta) && !str_contains('Reserva guardada con éxito.', $respuesta2);
+
+                if($bothTrue){
+                    echo"$respuesta";
+                }else if($bothFalse){
+                    echo"$respuesta - $respuesta2";
+                }else{
+                    echo"Consulta inválida.";
+                }
+
+                
+                echo"<a id='enlaceFichaCreada' href='horario$reserva?contadorSemana=0'>Volver al horario</a>";
                 ?>
             </div>
         </div>
