@@ -1,11 +1,9 @@
 <?php
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
-//require_once("../Controlador/mascotasControlador.php");
-require_once("../Controlador/titularControlador.php");
 
-//$mascotasControlador = new MascotasControlador();
-$titularesControlador = new TitularControlador();
+require_once("../Servicio/titularServicio.php");
+$titularServicio = new TitularServicio();
 
  if ($_GET["filtros"] == 'si'){
      $filtro = $_POST["selectFiltros"];
@@ -100,7 +98,7 @@ if ($response) {
                 <?php
      
                 foreach($listaMascotas as $mascota){
-                    $titular = $titularesControlador->buscarTitularPorId($mascota['id_titular']);
+                    $titular = $titularServicio->buscarTitularPorId($mascota['id_titular']);
 
                     echo"<tr>";
                     echo"<td><div id='dato'>";

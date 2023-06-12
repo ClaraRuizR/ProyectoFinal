@@ -3,9 +3,9 @@
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 
-require_once("../Controlador/consultaControlador.php");
+require_once("../Servicio/consultaServicio.php");
 require_once("../Servicio/mascotasServicio.php");
-require_once("../Controlador/trabajadorControlador.php");
+require_once("../Servicio/trabajadorServicio.php");
 
 $veterinario = $_POST["veterinario"];
 $mascota = intval($_POST["mascota"]);
@@ -26,18 +26,18 @@ $tiendaConsulta = $_POST["tiendaConsulta"];
 $otrosConsulta = $_POST["otrosConsulta"];
 $edit = $_POST["edit"];
 
-$consultaControlador = new ConsultaControlador();
-$trabajadorControlador = new TrabajadorControlador();
+$consultaServicio = new ConsultaServicio();
+$trabajadorServicio = new TrabajadorServicio();
 
-$trabajador = $trabajadorControlador->buscarConFiltros('nombre', $veterinario);
+$trabajador = $trabajadorServicio->buscarConFiltros('nombre', $veterinario);
 $idTrabajador = $trabajador[0]->getID();
 
 if($edit == "s"){
     $idConsulta = $_POST["idConsulta"];
-    $respuesta = $consultaControlador->editarConsulta($idConsulta, $idTrabajador, $mascota, $motivoConsulta, $fechaConsulta, $antecedentesConsulta, $pesoMascotaConsulta, $temperaturaMascotaConsulta, $exploracionConsulta, $diagnosticoConsulta, $actuacionConsulta, $procedimientosConsulta, $anestesiaConsulta, $medicacionInyectadaConsulta, $medicamentosCedidosConsulta, $dietasConsulta, $tiendaConsulta, $otrosConsulta);
+    $respuesta = $consultaServicio->editarConsulta($idConsulta, $idTrabajador, $mascota, $motivoConsulta, $fechaConsulta, $antecedentesConsulta, $pesoMascotaConsulta, $temperaturaMascotaConsulta, $exploracionConsulta, $diagnosticoConsulta, $actuacionConsulta, $procedimientosConsulta, $anestesiaConsulta, $medicacionInyectadaConsulta, $medicamentosCedidosConsulta, $dietasConsulta, $tiendaConsulta, $otrosConsulta);
 
 } elseif($edit == "n"){
-    $respuesta = $consultaControlador->crearConsulta($idTrabajador, $mascota, $motivoConsulta, $fechaConsulta, $antecedentesConsulta, $pesoMascotaConsulta, $temperaturaMascotaConsulta, $exploracionConsulta, $diagnosticoConsulta, $actuacionConsulta, $procedimientosConsulta, $anestesiaConsulta, $medicacionInyectadaConsulta, $medicamentosCedidosConsulta, $dietasConsulta, $tiendaConsulta, $otrosConsulta);
+    $respuesta = $consultaServicio->crearConsulta($idTrabajador, $mascota, $motivoConsulta, $fechaConsulta, $antecedentesConsulta, $pesoMascotaConsulta, $temperaturaMascotaConsulta, $exploracionConsulta, $diagnosticoConsulta, $actuacionConsulta, $procedimientosConsulta, $anestesiaConsulta, $medicacionInyectadaConsulta, $medicamentosCedidosConsulta, $dietasConsulta, $tiendaConsulta, $otrosConsulta);
 
 }
 
@@ -70,7 +70,7 @@ if($edit == "s"){
             <div class="mensaje">
                 <?php
                 echo"$respuesta";
-                echo"<a id='enlaceFichaCreada' href='consultaVista.php?id=".$consultaControlador->obtenerIdUltimaConsultaRegistrada()."'>Ver consulta</a>";
+                echo"<a id='enlaceFichaCreada' href='consultaVista.php?id=".$consultaServicio->obtenerIdUltimaConsultaRegistrada()."'>Ver consulta</a>";
                 ?>
             </div>
         </div>

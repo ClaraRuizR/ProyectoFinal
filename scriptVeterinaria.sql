@@ -161,9 +161,6 @@ INSERT INTO T_Reserva_Trabajador VALUES
 (1, 1, 1),
 (2, 2, 2);
 
-INSERT INTO T_Usuario VALUES
-(1, 'Clara', 'Administrador/a', 'clave123', 1);
-
 INSERT INTO T_Consulta VALUES 
 (2, 2, 1, '2023-01-07', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet.', 3.88, 35.1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', '-', '-', 'Lorem ipsum dolor sit amet.', 'Ninguna.', '-', '-'), 
 (3, 2, 1, '2023-02-05', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet.', 3.88, 35.1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, suscipit?', '-', '-', 'Lorem ipsum dolor sit amet.', 'Ninguna.', '-', '-'), 

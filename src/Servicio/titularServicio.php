@@ -3,7 +3,7 @@ ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 require_once("../Modelo/titularModelo.php");
 
-class TitularControlador{
+class TitularServicio{
     
     private $ID;
     private $nombre;
@@ -70,10 +70,10 @@ class TitularControlador{
 
         foreach ($arrayTitulares as $titular){
            
-            $titularesControlador = new TitularControlador();
-            $titularesControlador->Init($titular['ID'], $titular['nombre'], $titular['DNI'], $titular['domicilio'], $titular['codigo_postal'], $titular['num_contacto'], $titular['fecha_alta']);
+            $titularesServicio = new TitularServicio();
+            $titularesServicio->Init($titular['ID'], $titular['nombre'], $titular['DNI'], $titular['domicilio'], $titular['codigo_postal'], $titular['num_contacto'], $titular['fecha_alta']);
             
-            array_push($listaTitulares, $titularesControlador);
+            array_push($listaTitulares, $titularesServicio);
         }
                 
         return $listaTitulares;
@@ -88,10 +88,10 @@ class TitularControlador{
 
         foreach ($arrayTitulares as $titular){
            
-            $titularesControlador = new TitularControlador();
-            $titularesControlador->Init($titular['ID'], $titular['nombre'], $titular['DNI'], $titular['domicilio'], $titular['codigo_postal'], $titular['num_contacto'], $titular['fecha_alta']);
+            $titularesServicio = new TitularServicio();
+            $titularesServicio->Init($titular['ID'], $titular['nombre'], $titular['DNI'], $titular['domicilio'], $titular['codigo_postal'], $titular['num_contacto'], $titular['fecha_alta']);
             
-            array_push($listaTitulares, $titularesControlador);
+            array_push($listaTitulares, $titularesServicio);
         }
                 
         return $listaTitulares;
@@ -99,8 +99,8 @@ class TitularControlador{
 
     function buscarTitularPorId($idTitular){
 
-        $titularesControlador = new TitularControlador();
-        $listaTitulares = $titularesControlador->obtener();
+        $titularesServicio = new TitularServicio();
+        $listaTitulares = $titularesServicio->obtener();
 
         foreach($listaTitulares as $titular){
 

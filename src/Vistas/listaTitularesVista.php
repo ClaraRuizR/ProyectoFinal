@@ -1,19 +1,18 @@
 <?php
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
-require_once("../Controlador/mascotasControlador.php");
-require_once("../Controlador/titularControlador.php");
 
-//$mascotasControlador = new MascotasControlador();
-$titularesControlador = new TitularControlador();
+require_once("../Servicio/titularServicio.php");
+
+$titularesServicio = new TitularServicio();
 
 if ($_GET["filtros"] == 'si'){
     $filtro = $_POST["selectFiltros"];
     $textoFiltro = $_POST["textoFiltro"];
 
-    $listaTitulares = $titularesControlador->buscarConFiltros($filtro, $textoFiltro);
+    $listaTitulares = $titularesServicio->buscarConFiltros($filtro, $textoFiltro);
 }else{
-    $listaTitulares = $titularesControlador->obtener();
+    $listaTitulares = $titularesServicio->obtener();
 }
 
 ?>

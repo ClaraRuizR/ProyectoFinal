@@ -2,18 +2,18 @@
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 require_once("../Servicio/mascotasServicio.php");
-require_once("../Controlador/titularControlador.php");
-require_once("../Controlador/consultaControlador.php");
+require_once("../Servicio/titularServicio.php");
+require_once("../Servicio/consultaServicio.php");
 
 
 $mascotasServicio = new MascotasServicio();
-$titularesControlador = new TitularControlador();
-$consultasControlador = new ConsultaControlador();
+$titularesServicio = new TitularServicio();
+$consultaServicio = new ConsultaServicio();
 
 $idMascota = $_GET["id"];
 
 $listaMascotas = $mascotasServicio->obtener('ID', $idMascota);
-$titular = $titularesControlador->buscarTitularPorId($listaMascotas[0]->getTitular());
+$titular = $titularesServicio->buscarTitularPorId($listaMascotas[0]->getTitular());
 
 ?>
 
@@ -118,7 +118,7 @@ $titular = $titularesControlador->buscarTitularPorId($listaMascotas[0]->getTitul
                 <table cellspacing="0">
                     <?php 
 
-                    $listaConsultas = $consultasControlador->buscarConsultasporMascota($listaMascotas[0]->getID());
+                    $listaConsultas = $consultaServicio->buscarConsultasporMascota($listaMascotas[0]->getID());
 
                     foreach($listaConsultas as $consulta){
                         echo"<tr>";

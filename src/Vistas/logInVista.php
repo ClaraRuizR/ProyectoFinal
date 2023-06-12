@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
     }else if($perfil==="Peluquero/a"){
         session_start();
         $_SESSION['nombre_usuario'] = $_POST['nombre_usuario'];
-        header("Location: horarioPeluqueriaVista.php?contadorSemana=1");
+        header("Location: horarioPeluqueriaVista.php?contadorSemana=0");
     }else{
         $error = true;
     }

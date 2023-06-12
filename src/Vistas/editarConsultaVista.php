@@ -3,17 +3,17 @@
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 
-require_once("../Controlador/consultaControlador.php");
-require_once("../Controlador/trabajadorControlador.php");
+require_once("../Servicio/consultaServicio.php");
+require_once("../Servicio/trabajadorServicio.php");
 
 
 $idConsulta = $_GET["idConsulta"];
 
-$consultasControlador = new ConsultaControlador();
-$trabajadoresControlador = new TrabajadorControlador();
+$consultaServicio = new ConsultaServicio();
+$trabajadoresServicio = new TrabajadorServicio();
 
-$consulta = $consultasControlador->buscarConsultasporId($idConsulta);
-$veterinario = $trabajadoresControlador->buscarTrabajadorPorId($consulta->getIdVeterinario());
+$consulta = $consultaServicio->buscarConsultasporId($idConsulta);
+$veterinario = $trabajadoresServicio->buscarTrabajadorPorId($consulta->getIdVeterinario());
 
 ?>
 

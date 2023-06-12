@@ -3,14 +3,14 @@
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 
-require_once("../Controlador/titularControlador.php");
+require_once("../Servicio/titularServicio.php");
 require_once("../Servicio/mascotasServicio.php");
 
 $idTitular = $_GET["idTitular"];
 $idMascota = $_GET["idMascota"];
 
-$titularControlador = new TitularControlador();
-$titular = $titularControlador->buscarTitularPorId($idTitular);
+$titularServicio = new TitularServicio();
+$titular = $titularServicio->buscarTitularPorId($idTitular);
 
 $mascotasServicio = new MascotasServicio();
 $mascota = $mascotasServicio->obtener('ID', $idMascota);

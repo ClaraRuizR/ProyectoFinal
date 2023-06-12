@@ -3,12 +3,12 @@
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 
-require_once("../Controlador/titularControlador.php");
+require_once("../Servicio/titularServicio.php");
 
 $idTitular = $_GET["idTitular"];
 
-$titularsControlador = new TitularControlador();
-$titular = $titularsControlador->buscarTitularPorId($idTitular);
+$titularesServicio = new TitularServicio();
+$titular = $titularesServicio->buscarTitularPorId($idTitular);
 
 ?>
 
@@ -55,7 +55,7 @@ $titular = $titularsControlador->buscarTitularPorId($idTitular);
                         <?php
                         if($idTitular != 0){
                             echo"<tr>";
-                            echo"<input id='titularMascota' name='titularMascota' type='hidden' value='<?php$idTitular?>'>";
+                            //echo"<input id='titularMascota' name='titularMascota' type='hidden' value='$idTitular'>";
                             echo"<td><label for='titularMascota'>Titular:</label></td>";
                             echo"<div><td>";
                             print($titular->getNombre());
@@ -119,7 +119,9 @@ $titular = $titularsControlador->buscarTitularPorId($idTitular);
                 </fieldset>
                 <?php
                     echo"<input id='edit' name='edit' type='hidden' value='n'>";
-                    echo"<input id='idTitular' name='titularMascota' type='hidden' value='".$idTitular."'>";
+                    if($idTitular != 0){
+                        echo"<input id='idTitular' name='titularMascota' type='hidden' value='".$titular->getNombre()."'>";
+                    }
                 ?>
                 <br><br>
                 <input type="submit" value="Enviar" id="botonEnviar">

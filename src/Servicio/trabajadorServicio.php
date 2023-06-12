@@ -3,7 +3,7 @@ ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 require_once("../Modelo/trabajadorModelo.php");
 
-class TrabajadorControlador{
+class TrabajadorServicio{
     
     private $ID;
     private $nombre;
@@ -70,10 +70,10 @@ class TrabajadorControlador{
 
         foreach ($arrayTrabajadores as $trabajador){
            
-            $trabajadoresControlador = new TrabajadorControlador();
-            $trabajadoresControlador->Init($trabajador['ID'], $trabajador['nombre'], $trabajador['apellidos'], $trabajador['trabajo'], $trabajador['n_colegiado'], $trabajador['fecha_alta'], $trabajador['num_contacto']);
+            $trabajadoresServicio = new TrabajadorServicio();
+            $trabajadoresServicio->Init($trabajador['ID'], $trabajador['nombre'], $trabajador['apellidos'], $trabajador['trabajo'], $trabajador['n_colegiado'], $trabajador['fecha_alta'], $trabajador['num_contacto']);
             
-            array_push($listaTrabajadores, $trabajadoresControlador);
+            array_push($listaTrabajadores, $trabajadoresServicio);
         }
                 
         return $listaTrabajadores;
@@ -88,10 +88,10 @@ class TrabajadorControlador{
 
         foreach ($arrayTrabajadores as $trabajador){
            
-            $trabajadoresControlador = new TrabajadorControlador();
-            $trabajadoresControlador->Init($trabajador['ID'], $trabajador['nombre'], $trabajador['apellidos'], $trabajador['trabajo'], $trabajador['n_colegiado'], $trabajador['fecha_alta'], $trabajador['num_contacto']);
+            $trabajadoresServicio = new TrabajadorServicio();
+            $trabajadoresServicio->Init($trabajador['ID'], $trabajador['nombre'], $trabajador['apellidos'], $trabajador['trabajo'], $trabajador['n_colegiado'], $trabajador['fecha_alta'], $trabajador['num_contacto']);
             
-            array_push($listaTrabajadores, $trabajadoresControlador);
+            array_push($listaTrabajadores, $trabajadoresServicio);
         }
                 
         return $listaTrabajadores;
@@ -99,8 +99,8 @@ class TrabajadorControlador{
 
     function buscarTrabajadorPorId($idTrabajador){
 
-        $trabajadoresControlador = new TrabajadorControlador();
-        $listaTrabajadores = $trabajadoresControlador->obtener();
+        $trabajadoresServicio = new TrabajadorServicio();
+        $listaTrabajadores = $trabajadoresServicio->obtener();
 
         foreach($listaTrabajadores as $trabajador){
 

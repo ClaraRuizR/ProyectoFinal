@@ -3,7 +3,7 @@
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 
-require_once("../Controlador/titularControlador.php");
+require_once("../Servicio/titularServicio.php");
 
 $nombre = $_POST["nombreTitular"];
 $dniTitular = $_POST["dniTitular"];
@@ -12,16 +12,16 @@ $codigoPostalTitular = $_POST["codigoPostalTitular"];
 $numeroContactoTitular = $_POST["numeroContactoTitular"];
 $edit = $_POST["edit"];
 
-$titularControlador = new TitularControlador();
+$titularServicio = new TitularServicio();
 
 
 
 if($edit == "s"){
     $idTitular = $_POST["idTitular"];
-    $respuesta = $titularControlador->editarFicha($idTitular, $nombre, $dniTitular, $domicilioTitular, $codigoPostalTitular, $numeroContactoTitular);
+    $respuesta = $titularServicio->editarFicha($idTitular, $nombre, $dniTitular, $domicilioTitular, $codigoPostalTitular, $numeroContactoTitular);
 
 } elseif($edit == "n"){
-    $respuesta = $titularControlador->crearFicha($nombre, $dniTitular, $domicilioTitular, $codigoPostalTitular, $numeroContactoTitular);
+    $respuesta = $titularServicio->crearFicha($nombre, $dniTitular, $domicilioTitular, $codigoPostalTitular, $numeroContactoTitular);
 
 }
 
@@ -61,7 +61,7 @@ if($edit == "s"){
                     echo"<a id='enlaceFichaCreada' href='fichaTitularVista.php?id=".$idTitular."'>Ver ficha</a>";
                 } elseif($edit == "n"){
                     
-                echo"<a id='enlaceFichaCreada' href='fichaTitularVista.php?id=". $titularControlador->obtenerIdUltimoTitularRegistrado()."'>Ver ficha</a>";
+                echo"<a id='enlaceFichaCreada' href='fichaTitularVista.php?id=". $titularServicio->obtenerIdUltimoTitularRegistrado()."'>Ver ficha</a>";
                 }
                 
 

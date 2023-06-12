@@ -19,7 +19,7 @@ class MascotasModelo{
 		$sanitizedFiltro = mysqli_real_escape_string($conexion, $filtro);
 		$sanitizedTextoFiltro = mysqli_real_escape_string($conexion, $textoFiltro);
 
-		$consulta1 = mysqli_prepare($conexion, "SELECT ID, pasaporte, nombre, id_titular, especie, raza, sexo, color, codigo_chip, fecha_nacimiento, operado, fecha_alta FROM T_Mascota WHERE $sanitizedFiltro LIKE '$sanitizedTextoFiltro%'");
+		$consulta1 = mysqli_prepare($conexion, "SELECT ID, pasaporte, nombre, id_titular, especie, raza, sexo, color, codigo_chip, fecha_nacimiento, operado, fecha_alta FROM T_Mascota WHERE $sanitizedFiltro LIKE '%$sanitizedTextoFiltro%'");
 
 		$consulta2 = mysqli_prepare($conexion, "SELECT ID, pasaporte, nombre, id_titular, especie, raza, sexo, color, codigo_chip, fecha_nacimiento, operado, fecha_alta FROM T_Mascota");
 

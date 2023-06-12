@@ -1,16 +1,16 @@
 <?php
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
-require_once("../Controlador/mascotasControlador.php");
-require_once("../Controlador/titularControlador.php");
+require_once("../Servicio/mascotasServicio.php");
+require_once("../Servicio/titularServicio.php");
 
-$mascotasControlador = new MascotasControlador();
-$titularesControlador = new TitularControlador();
+$mascotasServicio = new MascotasServicio();
+$titularesServicio = new TitularServicio();
 
 $idTitular = $_GET["id"];
 
-$titular = $titularesControlador->buscarTitularPorId($idTitular);
-$listaMascotas = $mascotasControlador->obtener('id_titular', $titular->getID());
+$titular = $titularesServicio->buscarTitularPorId($idTitular);
+$listaMascotas = $mascotasServicio->obtener('id_titular', $titular->getID());
 
 ?>
 

@@ -3,8 +3,8 @@
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 
-require_once("../Controlador/mascotasControlador.php");
-require_once("../Controlador/titularControlador.php");
+require_once("../Servicio/mascotasServicio.php");
+require_once("../Servicio/titularServicio.php");
 
 $pasaporte = $_POST["pasaporteMascota"];
 $nombre = $_POST["nombreMascota"];
@@ -18,20 +18,20 @@ $fechaNacimiento = $_POST["fechaNacimientoMascota"];
 $operado = $_POST["selectOperadoMascota"];
 $edit = $_POST["edit"];
 
-$mascotasControlador = new MascotasControlador();
-$titularControlador = new TitularControlador();
+$mascotasServicio = new MascotasServicio();
+$titularServicio = new TitularServicio();
 
-if(!is_numeric($titular)){
-    $busquedaTitular = $titularControlador->buscarConFiltros('nombre', $titular);
+//if(!is_numeric($titular)){
+    $busquedaTitular = $titularServicio->buscarConFiltros('nombre', $titular);
     $titular = $busquedaTitular[0]->getID();
-}
+//}
 
 if($edit == "s"){
     $idMascota = intval($_POST["idMascota"]);
-    $respuesta = $mascotasControlador->editarFicha($idMascota, $pasaporte, $nombre, $titular, $especie, $raza, $sexo, $color, $codigoChip, $fechaNacimiento, $operado);
+    $respuesta = $mascotasServicio->editarFicha($idMascota, $pasaporte, $nombre, $titular, $especie, $raza, $sexo, $color, $codigoChip, $fechaNacimiento, $operado);
 
 } elseif($edit == "n"){
-    $respuesta = $mascotasControlador->crearFicha($pasaporte, $nombre, $titular, $especie, $raza, $sexo, $color, $codigoChip, $fechaNacimiento, $operado);
+    $respuesta = $mascotasServicio->crearFicha($pasaporte, $nombre, $titular, $especie, $raza, $sexo, $color, $codigoChip, $fechaNacimiento, $operado);
 
 }
 
@@ -70,7 +70,7 @@ if($edit == "s"){
                 
                 } elseif($edit == "n"){
                     
-                echo"<a id='enlaceFichaCreada' href='fichaMascotaVista.php?id=".$mascotasControlador->obtenerIdUltimaMascotaRegistrada()."'>Ver ficha</a>";
+                echo"<a id='enlaceFichaCreada' href='fichaMascotaVista.php?id=".$mascotasServicio->obtenerIdUltimaMascotaRegistrada()."'>Ver ficha</a>";
                 }
 
                 echo"<a id='enlaceFichaCreada' href='listaMascotasVista.php?filtros=no'>Volver a la lista de mascotas</a>";

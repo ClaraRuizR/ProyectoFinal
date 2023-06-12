@@ -16,7 +16,7 @@ $semana = [' ', date('Y-m-d', strtotime("+$contadorSemana week 0 days")), date('
 
 $horario = ['10:00:00', '11:00:00', '12:00:00', '13:00:00', '15:00:00', '16:00:00'];
 
-$arrayReservas = $reservasServicio->buscarReservas(date('Y-m-d', strtotime("+$contadorSemana week 0 days")), date('Y-m-d', strtotime("+$contadorSemana week 6 days")), "Consulta 1");
+$arrayReservas = $reservasServicio->buscarReservas(date('Y-m-d', strtotime("+$contadorSemana week 0 days")), date('Y-m-d', strtotime("+$contadorSemana week 6 days")), "Consulta 2");
 
 ?>
 

@@ -3,7 +3,7 @@ ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 require_once("../Modelo/consultaModelo.php");
 
-class ConsultaControlador{
+class ConsultaServicio{
     
     private $ID;
     private $idMascota;
@@ -148,10 +148,10 @@ class ConsultaControlador{
 
         foreach ($arrayConsultas as $consulta){
            
-            $consultasControlador = new ConsultaControlador();
-            $consultasControlador->Init($consulta['ID'], $consulta['id_mascota'], $consulta['id_veterinario'], $consulta['fecha'], $consulta['motivo_consulta'], $consulta['antecedentes'], $consulta['peso'], $consulta['temperatura'], $consulta['exploracion_fisica'], $consulta['diagnostico'], $consulta['actuacion'], $consulta['procedimientos'], $consulta['anestesia'], $consulta['medicacion_inyectada'], $consulta['medicamentos_cedidos'], $consulta['dietas'], $consulta['tienda'], $consulta['otros']);
+            $consultasServicio = new ConsultaServicio();
+            $consultasServicio->Init($consulta['ID'], $consulta['id_mascota'], $consulta['id_veterinario'], $consulta['fecha'], $consulta['motivo_consulta'], $consulta['antecedentes'], $consulta['peso'], $consulta['temperatura'], $consulta['exploracion_fisica'], $consulta['diagnostico'], $consulta['actuacion'], $consulta['procedimientos'], $consulta['anestesia'], $consulta['medicacion_inyectada'], $consulta['medicamentos_cedidos'], $consulta['dietas'], $consulta['tienda'], $consulta['otros']);
             
-            array_push($listaConsultas, $consultasControlador);
+            array_push($listaConsultas, $consultasServicio);
         }
                 
         return $listaConsultas;
@@ -159,8 +159,8 @@ class ConsultaControlador{
 
     function buscarConsultasporMascota($idMascota){
 
-        $consultasControlador = new ConsultaControlador();
-        $listaConsultas = $consultasControlador->obtener();
+        $consultasServicio = new ConsultaServicio();
+        $listaConsultas = $consultasServicio->obtener();
 
         $arrayConsultas =  array();
 
@@ -177,8 +177,8 @@ class ConsultaControlador{
 
     function buscarConsultasporId($idConsulta){
 
-        $consultasControlador = new ConsultaControlador();
-        $listaConsultas = $consultasControlador->obtener();
+        $consultasServicio = new ConsultaServicio();
+        $listaConsultas = $consultasServicio->obtener();
 
         foreach($listaConsultas as $consulta){
 
